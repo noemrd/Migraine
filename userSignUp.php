@@ -18,7 +18,10 @@
     <![endif]-->
   </head>
   <body>
-  	<nav class="navbar navbar-inverse" role="navigation">
+  	
+	<!-- [ Uncomment these once we have a Landing page and Home page ]
+	
+	<nav class="navbar navbar-inverse" role="navigation">
   		<div class="navbar-header">
 		<a href="home.php" class="navbar-brand">Home</a>
   		</div>
@@ -30,7 +33,7 @@
   		</div>
   	</nav>
 
-	
+	-->
 	
 <!--Form to submit to: addUser.php and add a volunteer to the database-->
 
