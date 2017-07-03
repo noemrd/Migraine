@@ -57,15 +57,15 @@
                 <div class="col-md-3">
                     <input class="form-control col-md-6" type="text" id="screenName" name="screenName" placeholder="screenName">
                 </div>				
-            </div>
-
+            
 			<!-- PASSWORD -->
-            <div class="form-group row">
-                <label class="col-md-1" for="text">Password:</label>
-                <div class="col-md-3">
-                    <input class="form-control col-md-6" type="password" id="password" name="password" placeholder="password">
-                </div>				
-            </div>
+				<div class="form-group row">
+					<label class="col-md-1" for="text">Password:</label>
+					<div class="col-md-3">
+						<input class="form-control col-md-6" type="password" id="password" name="password" placeholder="password">
+					</div>				
+				</div>
+			</div>
 
 			
             <button type="button" class="btn btn-default" onclick="window.location='landing.html'">Cancel</button>
