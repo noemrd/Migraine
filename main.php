@@ -29,7 +29,7 @@
 				</select><br>
 			</form>
 			
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Migraine Time Stamp:</strong>
 				<input type="date"> <input type="time" name="startTime"> <input type="time" name="endTime">
 				<br>
@@ -48,7 +48,7 @@
 				<input type="text"><br>	
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Sensory:</strong>	
 				<select>
 					<option>Exposed to bright light</option>
@@ -61,7 +61,7 @@
 				<input type="text"><br>	
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Water Intake:</strong>
 				<select>
 					<option>Had below 0.5 liters  of water</option>
@@ -73,7 +73,7 @@
 				</select><br>
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Stress:</strong>
 				<select>
 					<option>Not stressed</option>
@@ -83,7 +83,7 @@
 				</select><br>
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Physical Activity:</strong>
 				<select>
 					<option>Extremely inactive</option>
@@ -94,7 +94,7 @@
 				</select><br>
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Sleep:</strong>
 				<select>
 					<option>Did not sleep</option>
@@ -105,7 +105,7 @@
 				</select><br>
 			</form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Hormone:</strong>
 				<select>
 					<option>Menstruation</option>
@@ -115,7 +115,7 @@
 				</select><br>
 			<form>
 
-			<form>
+			<form class="form-group form-style img-rounded" role="form">
 				<strong>Other:</strong>
 				<input type="text"><br>		
 			</form>
