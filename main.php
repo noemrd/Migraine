@@ -12,7 +12,7 @@
   <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 
 	<body>
-		<form>
+		<form class="form-group form-style img-rounded" role="form">
 			<form>
 				<strong>Migraine Intensity:</strong>
 				<select>
