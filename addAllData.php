@@ -120,7 +120,7 @@
 	
 	/******************************************
 	 * 		Physical Activity Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtPhy = $mysqli->prepare(
 									"INSERT INTO PhysicalActivityTrigger
 									(PhysicalActivityTriggerID,
@@ -248,10 +248,10 @@
 	}
 	if ( !$stmtHormone->execute() ){
 		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-	}
+	}*/
 	if ( !$stmtPhy->execute() ){
 		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	}*/	
+	}
 	if ( !$stmtStress->execute() ){
 		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
 	}	
