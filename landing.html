@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Migraine Tracker</title>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-inverse" role="navigation">
+  		<div class="navbar-header">
+  			<a href="#" class="navbar-brand">Home</a>
+  		</div>
+
+  		<div>
+  			<ul class="nav navbar-nav pull-right">
+				<li><a href="#about-us">About Us</a></li>
+  				<li><a href="userSignUp.php">User Sign Up</a></li>
+  				<li><a href="userLogin.php">Login</a></li>
+  			</ul>
+  		</div>
+  	</nav>
+
+        <div class="jumbotron">
+        	<div class="text-center">
+            	<h1 class="jumbotron_title" style="color:#003366">Tracking Migraines to eliminate triggers</h1>
+            </div>
+        </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            	<a name="about-us"></a>
+                <h3 class="header-text">About Us</h3>
+                <blockquote>
+                    Our goal is to eliminate migraines by tracking certain triggers by logging daily activities, etc.
+                </blockquote>
+            </div>
+
+            <div class="container col-md-6">
+                <form action="home.php" method="post" class="form-style img-rounded col-md-12" role="form">
+                  <div>
+                    <h3 class="header-text" style="color:#003366">Migraine Login</h3>
+                  </div>
+                  <hr>
+                    <a name="login"></a> <!-- Add functionality here -->
+                    <p></p>
+
+                    <div class="row">
+                        <label class="col-md-2 control-label pull-left" for="UserScreenName">Screen Name:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email" id="UserScreenName" name="UserScreenName" placeholder="">
+                        </div>
+						
+						<label class="col-md-2 control-label pull-left" for="UserPassword">Password:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email" id="UserPassword" name="UserPassword" placeholder="">
+                        </div>
+						
+                    </div>
+                    <p></p>
+                    <div class="row">
+                      <small class="col-md-offset-2 col-md-10 text-muted">Enter your Screen Name and Password to login</small>
+                    </div>
+                    <p></p>
+
+                  <div class="row">
+                    <div class="col-md-offset-2">
+                      <input type="submit" class="btn btn-primary button-style" value="Login">
+                      <a href="userLogin.php">Login</a>
+                    </div>
+                  </div>
+				        </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
