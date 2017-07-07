@@ -11,7 +11,7 @@
   <body>
 	<nav class="navbar navbar-inverse" role="navigation">
   		<div class="navbar-header">
-		<a href="home.php" class="navbar-brand">Home</a>
+		<a href="landing.html" class="navbar-brand">Home</a>
   		</div>
 
   		<div>
