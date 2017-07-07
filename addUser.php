@@ -19,8 +19,8 @@
 	}
 
 	// Add user data to User Table
-	if( !($stmt = $mysqli->prepare(
-									"INSERT INTO user 
+	if( !($stmtUser = $mysqli->prepare(
+									"INSERT INTO Users
 									(UserID,
 									UserFirstName
 									UserLastName,
@@ -29,10 +29,10 @@
 									VALUES (?, ?, ?, ?, ?)")))
 									{
 										
-		echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+		echo "Prepare failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	}
 
-	if( !($stmt->bind_param(
+	if( !($stmtUser->bind_param(
 							"sssss", 
 							$_POST['UserID'], 
 							$_POST['UserFirstName'], 
@@ -41,11 +41,11 @@
 							$_POST['UserPassword'])))
 							{
 								
-		echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
+		echo "Bind failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	}
 
-	if(!$stmt->execute()){
-		echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+	if(!$stmtUser->execute()){
+		echo "Execute failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 
 	} else {
 		
