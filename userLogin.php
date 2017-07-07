@@ -34,6 +34,8 @@
 
 	if ($UserPassword == "" || $UserScreenName == ""){
 		echo "The Screen Name or Password is incorrect";
+	} else {
+		header("Refresh: 0, url=main.php");
 	}
 	
 	$stmt->close();
