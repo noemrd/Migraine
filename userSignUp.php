@@ -45,12 +45,12 @@
             <div class="form-group row">
                 <label class="col-md-1" for="text">First Name:</label>
                 <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" name="fname" id="UserFirstName" required="" placeholder="First name">
+                    <input class="form-control col-md-6" type="text" name="UserFirstName" id="UserFirstName" required="" placeholder="First name">
                 </div>
 
                 <label class="col-md-1" for="text">Last Name:</label>
                 <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" name="lname" id="UserLastName" required="" placeholder="Last name">
+                    <input class="form-control col-md-6" type="text" name="UserLastName" id="UserLastName" required="" placeholder="Last name">
                 </div>
             </div>
 
@@ -58,13 +58,13 @@
             <div class="form-group row">
                 <label class="col-md-1" for="text">Screen Name:</label>
                 <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" id="screenName" name="UserScreenName" placeholder="screenName">
+                    <input class="form-control col-md-6" type="text" id="UserScreenName" name="UserScreenName" placeholder="screenName">
                 </div>				
             
 			<!-- PASSWORD -->
 				<label class="col-md-1" for="text">Password:</label>
 				<div class="col-md-3">
-					<input class="form-control col-md-6" type="password" id="password" name="UserPassword" placeholder="password">
+					<input class="form-control col-md-6" type="password" id="UserPassword" name="UserPassword" placeholder="password">
 				</div>								
 			
 			</div>
