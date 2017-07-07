@@ -239,30 +239,29 @@
 		
 	} /*else if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
-		
-	} */else if ( !$stmtFAD->execute() ){
+	*/	
+	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
-
-	} else if ( !$stmtSensor->execute() ){
-		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
-
-	} else if ( !$stmtHormone->execute() ){
-		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-
-	} else if ( !$stmtPhy->execute() ){
-		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	
-	} else if ( !$stmtStress->execute() ){
-		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
-
-	} else if ( !$stmtSleep->execute() ){
-		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;
-
-		
-	} else {
-		// No ERRORS, proceed to landing page with all summary data
-		echo "No Errors from DB";
-		//header("Refresh: 0, url=landing.html");
-
 	}
+	if ( !$stmtSensor->execute() ){
+		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
+	}
+	if ( !$stmtHormone->execute() ){
+		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
+	}
+	if ( !$stmtPhy->execute() ){
+		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
+	}	
+	if ( !$stmtStress->execute() ){
+		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
+	}
+	if ( !$stmtSleep->execute() ){
+		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;		
+	} 
+	
+	// No ERRORS, proceed to landing page with all summary data
+	echo "No Errors from DB";
+	//header("Refresh: 0, url=landing.html");
+
+	
 ?>
