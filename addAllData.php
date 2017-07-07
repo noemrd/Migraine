@@ -73,7 +73,7 @@
 	
 	/******************************************
 	 * 				Sensory Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtSensor = $mysqli->prepare(
 									"INSERT INTO SensoryTrigger 
 									(SensoryTriggerID,
@@ -242,10 +242,10 @@
 	*
 	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
-	}
+	}*/
 	if ( !$stmtSensor->execute() ){
 		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
-	}*/
+	}
 	if ( !$stmtHormone->execute() ){
 		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
 	}
