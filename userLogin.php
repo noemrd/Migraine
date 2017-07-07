@@ -11,7 +11,7 @@
 	$passwordVar = $_POST['UserPassword'];
 
 	if(!($stmt = $mysqli->prepare("
-		SELECT UserPassword
+		SELECT UserFirstName, UserLastName, UserScreenName, UserPassword
 		FROM Users
 		WHERE (Users.UserPassword = '$passwordVar')" ))){
 		echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
