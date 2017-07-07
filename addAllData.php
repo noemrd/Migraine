@@ -192,7 +192,7 @@
 	
 	/******************************************
 	 * 			Migraine Table Input		  *
-	 ******************************************/
+	 *****************************************
 	if( !($stmtMigraine = $mysqli->prepare(
 									"INSERT INTO migraines 
 									(MigraineID,
@@ -228,7 +228,7 @@
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
-
+	*/
 	
 	
 	/**********************************************
@@ -237,10 +237,10 @@
 	if( !$stmtWater->execute() ){
 		echo "Execute failed: "  . $stmtWater->errno . " " . $stmtWater->error;
 		
-	} else if ( !$stmtMigraine->execute() ){		
+	} /*else if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
-	
-	} else if ( !$stmtFAD->execute() ){
+		
+	} */else if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
 
 	} else if ( !$stmtSensor->execute() ){
