@@ -28,9 +28,9 @@
 	$stmt->fetch();
 	
 	if ($UserPassword == "" || $UserScreenName == ""){
-		echo "The Screen Name or Password is incorrect";
+		header("Refresh: 0, url=userLoginError.html");
 	} else {
-		header("Refresh: 0, url=main.php");
+		header("Refresh: 0, url=main.php"); // User is Logged in proceed to next page
 	}
 	
 	//while($stmt->fetch()){
