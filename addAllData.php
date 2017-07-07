@@ -143,7 +143,7 @@
 	
 	/******************************************
 	 * 				Stress Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtStress = $mysqli->prepare(
 									"INSERT INTO StressTrigger
 									(StressTriggerID,
@@ -251,11 +251,10 @@
 	}
 	if ( !$stmtPhy->execute() ){
 		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	}	
+	}*/	
 	if ( !$stmtStress->execute() ){
 		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
-	}
-	*/
+	}	
 	if ( !$stmtSleep->execute() ){
 		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;		
 	} 
