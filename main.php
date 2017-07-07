@@ -31,7 +31,7 @@
 			
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Migraine Intensity:</label>
-					<select class="selectpicker" name="MigraineIntensity" required="">
+					<select class="selectpicker" data-width="fit" name="MigraineIntensity" required="">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -53,7 +53,7 @@
 				
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Food and Drink:</label>
-					<select class="selectpicker" name="FoodTriggerItem" required="">
+					<select class="selectpicker" data-width="fit" name="FoodTriggerItem" required="">
 						<option>Chocolate</option>
 						<option>Alcohol</option>
 						<option>Cheese</option>
@@ -68,7 +68,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Sensory:</label>
-					<select class="selectpicker" name="SensoryTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="SensoryTriggerValue" required="">
 						<option>Exposed to bright light</option>
 						<option>Exposed to loud sounds</option>
 						<option>Exposed to strong smells</option>
@@ -81,7 +81,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Water Intake:</label>
-					<select class="selectpicker" name="WaterIntakeTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="WaterIntakeTriggerValue" required="">
 						<option>Had below 0.5 liters  of water</option>
 						<option>Had between  0.5 - 1 liters of water</option>
 						<option>Had between  1 - 1.5 liters of water</option>
@@ -93,7 +93,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Stress:</label>
-					<select class="selectpicker" name="StressTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="StressTriggerValue" required="">
 						<option>Not stressed</option>
 						<option>Slightly stressed</option>
 						<option>Moderately stressed</option>
@@ -103,7 +103,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Physical Activity:</label>
-					<select class="selectpicker" name="PhysicalActivityTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="PhysicalActivityTriggerValue" required="">
 						<option>Extremely inactive</option>
 						<option>Moderately inactive</option>
 						<option>Neutral</option>
@@ -115,7 +115,7 @@
 				
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Sleep:</label>
-					<select class="selectpicker" name="SleepTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="SleepTriggerValue" required="">
 						<option>Did not sleep</option>
 						<option>Between 1 - 3  hours of sleep</option>
 						<option>Between 4 - 6 hours  hours of sleep</option>
@@ -126,7 +126,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Hormone:</label>
-					<select class="selectpicker" name="HormoneTriggerValue" required="">
+					<select class="selectpicker" data-width="fit" name="HormoneTriggerValue" required="">
 						<option>Menstruation</option>
 						<option>Follicular Phase (0 - 14 days from menstruation)</option>
 						<option>Luteal phase (14 - 28 days from menstruation</option>
