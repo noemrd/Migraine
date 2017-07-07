@@ -115,7 +115,7 @@
 				
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Sleep:</label>
-					<select class="form-control col-md-6" name="SleepTriggerValue" required="">
+					<select class="form-control col-md-4" name="SleepTriggerValue" required="">
 						<option>Did not sleep</option>
 						<option>Between 1 - 3  hours of sleep</option>
 						<option>Between 4 - 6 hours  hours of sleep</option>
