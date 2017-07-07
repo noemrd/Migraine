@@ -97,7 +97,7 @@
 	
 	/******************************************
 	 * 				Hormone Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtHormone = $mysqli->prepare(
 									"INSERT INTO HormoneTrigger
 									(HormoneTriggerID,
@@ -245,10 +245,10 @@
 	}
 	if ( !$stmtSensor->execute() ){
 		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
-	}
+	}*/
 	if ( !$stmtHormone->execute() ){
 		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-	}*/
+	}
 	if ( !$stmtPhy->execute() ){
 		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
 	}
