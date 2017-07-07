@@ -26,10 +26,10 @@
 	}
 
 	while($stmt->fetch()){
-		echo "User First Name: " . $UserFirstName . "\n";
-		echo "User Last Name: " . $UserLastName . "\n";
-		echo "User Screen Name: " . $UserScreenName . "\n";
-		echo "User Password: " . $UserPassword . "\n";
+		echo "User First Name: " . $UserFirstName . PHP_EOL;
+		echo "User Last Name: " . $UserLastName . PHP_EOL;
+		echo "User Screen Name: " . $UserScreenName . PHP_EOL;
+		echo "User Password: " . $UserPassword . PHP_EOL;
 	}
 
 	$stmt->close();
