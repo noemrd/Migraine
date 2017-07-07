@@ -77,7 +77,7 @@
 	if( !($stmtSensor = $mysqli->prepare(
 									"INSERT INTO SensoryTrigger 
 									(SensoryTriggerID,
-									SensoryTriggerItem) 
+									SensoryTriggerValue) 
 									VALUES (?, ?)")))
 									{
 										
@@ -87,7 +87,7 @@
 	if( !($stmtSensor->bind_param(
 							"ss", 
 							$_POST['SensoryTriggerID'], 
-							$_POST['SensoryTriggerItem'])))
+							$_POST['SensoryTriggerValue'])))
 							{
 								
 		echo "Bind failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;

@@ -68,7 +68,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Sensory:</label>
-					<select class="form-control col-md-6" name="SensoryTriggerItem" required="">
+					<select class="form-control col-md-6" name="SensoryTriggerValue" required="">
 						<option>Exposed to bright light</option>
 						<option>Exposed to loud sounds</option>
 						<option>Exposed to strong smells</option>
