@@ -25,18 +25,20 @@
 		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}
 	
-	while($stmt->fetch()){
-		echo "User First Name: " . $UserFirstName . PHP_EOL;
-		echo "User Last Name: " . $UserLastName . PHP_EOL;
-		echo "User Screen Name: " . $UserScreenName . PHP_EOL;
-		echo "User Password: " . $UserPassword . PHP_EOL;
-	}
-
+	$stmt->fetch();
+	
 	if ($UserPassword == "" || $UserScreenName == ""){
 		echo "The Screen Name or Password is incorrect";
 	} else {
 		header("Refresh: 0, url=main.php");
 	}
+	
+	//while($stmt->fetch()){
+	//	echo "User First Name: " . $UserFirstName . PHP_EOL;
+	//	echo "User Last Name: " . $UserLastName . PHP_EOL;
+	//	echo "User Screen Name: " . $UserScreenName . PHP_EOL;
+	//	echo "User Password: " . $UserPassword . PHP_EOL;
+	//}
 	
 	$stmt->close();
 ?>
