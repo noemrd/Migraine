@@ -261,7 +261,7 @@
 		
 	} else {
 		// No ERRORS, proceed to landing page with all summary data
-		echo "No Errors from DB"
+		echo "No Errors from DB";
 		//header("Refresh: 0, url=landing.html");
 
 	}
