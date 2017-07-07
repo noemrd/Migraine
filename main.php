@@ -46,7 +46,7 @@
 				</div>
 				
 				<div class="form-group row">
-					<label class="col-md-1" for="text">Migraine Time Stamp:<4/label>
+					<label class="col-md-1" for="text">Migraine Time Stamp:</label>
 					<input type="date"> <input type="time" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> <input type="time" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
 					<br>
 				</div>
