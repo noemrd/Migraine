@@ -168,7 +168,7 @@
 	
 	/******************************************
 	 * 				Sleep Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtSleep = $mysqli->prepare(
 									"INSERT INTO SleepTrigger
 									(SleepTriggerID,
@@ -239,7 +239,7 @@
 		
 	} /*else if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
-	*
+	*/
 	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
 	}
@@ -258,7 +258,7 @@
 	if ( !$stmtSleep->execute() ){
 		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;		
 	} 
-	*/
+	
 	// No ERRORS, proceed to landing page with all summary data
 	echo "No Errors from DB";
 	//header("Refresh: 0, url=landing.html");
