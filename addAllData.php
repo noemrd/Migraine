@@ -169,7 +169,7 @@
 	/******************************************
 	 * 				Sleep Input
 	 ******************************************/
-	if( !($stmtSleep = $mysqliSleep->prepare(
+	if( !($stmtSleep = $mysqli->prepare(
 									"INSERT INTO SleepTrigger
 									(SleepTriggerID,
 									SleepTriggerValue) 
