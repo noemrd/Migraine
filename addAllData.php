@@ -50,7 +50,7 @@
 	
 	/******************************************
 	 * 			Food and Drink Input
-	 ******************************************
+	 ******************************************/
 	if( !($stmtFAD = $mysqli->prepare(
 									"INSERT INTO FoodDrinkTrigger 
 									(FoodTriggerID,
@@ -239,10 +239,10 @@
 		
 	} /*else if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
-	*
+	*/
 	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
-	}*/
+	}
 	if ( !$stmtSensor->execute() ){
 		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
 	}
