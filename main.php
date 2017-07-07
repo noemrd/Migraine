@@ -126,7 +126,7 @@
 
 				<div class="form-group row">
 					<label class="col-md-1" for="text">Hormone:</label>
-					<select class="form-control col-md-6" name="HormoneTriggerValue" required="">
+					<select class="selectpicker" name="HormoneTriggerValue" required="">
 						<option>Menstruation</option>
 						<option>Follicular Phase (0 - 14 days from menstruation)</option>
 						<option>Luteal phase (14 - 28 days from menstruation</option>
