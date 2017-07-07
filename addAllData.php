@@ -219,11 +219,11 @@
 							$_POST['MigraineEndTimestamp'], 
 							$_POST['UserID'],
 							$_POST['MigraineIntensityID'],
-							S_POST['WaterIntakeTriggerID'],
-							S_POST['StressTriggerID'],
-							S_POST['PhysicalActivityTriggerID'],
-							S_POST['SleepTriggerID'],
-							S_POST['HormoneTriggerID'])))
+							$_POST['WaterIntakeTriggerID'],
+							$_POST['StressTriggerID'],
+							$_POST['PhysicalActivityTriggerID'],
+							$_POST['SleepTriggerID'],
+							$_POST['HormoneTriggerID'])))
 							{
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
