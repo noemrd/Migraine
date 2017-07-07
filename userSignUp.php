@@ -4,23 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Clean Water</title>
-
-    <!-- Bootstrap -->
+    <title>Migraine Tracker</title>
     <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-  	
-	<!-- [ Uncomment these once we have a Landing page and Home page ]
-	
 	<nav class="navbar navbar-inverse" role="navigation">
   		<div class="navbar-header">
 		<a href="home.php" class="navbar-brand">Home</a>
@@ -31,11 +19,9 @@
   				<li><a href="landing.html">Login</a></li>
   			</ul>
   		</div>
-  	</nav>
-
-	-->
+  	</nav>	
 	
-<!--Form to submit to: addUser.php and add a volunteer to the database-->
+	<!--Form to submit to: addUser.php and add a volunteer to the database-->
 
     <div class="col-md-12">
         <h3 class="header-text">New User Profile</h3>
