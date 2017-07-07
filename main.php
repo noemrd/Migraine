@@ -19,7 +19,7 @@
 
 			<div>
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="landing.html">Login</a></li>
+					<li><a href="userSignUp.php">Login</a></li>
 				</ul>
 			</div>
 		</nav>

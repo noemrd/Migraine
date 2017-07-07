@@ -49,7 +49,7 @@
 
 	} else {
 		
-		header("Refresh: 0, url=landing.html");
-
+		//header("Refresh: 0, url=landing.html");
+		echo "NO Errors when adding user.";
 	}
 ?>
