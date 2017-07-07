@@ -21,7 +21,7 @@
 		echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}
 
-	if(!$stmt->bind_result($UserScreenName, $UserFirstName, $UserLastName, $UserPassword)){
+	if(!$stmt->bind_result($UserFirstName, $UserLastName, $UserScreenName, $UserPassword)){
 		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}
 
