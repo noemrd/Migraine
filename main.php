@@ -30,8 +30,8 @@
 			<form class="form-group form-style img-rounded" role="form" name="migraineForm" method="post" action="addAllData.php">
 			
 				<div class="form-group row">
-					<strong>Migraine Intensity:</strong>
-					<select>
+					<label class="col-md-1" for="text">Migraine Intensity:</label>
+					<select class="form-control col-md-6" name="MigraineIntensity" required="">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -47,13 +47,13 @@
 				
 				<div class="form-group row">
 					<strong>Migraine Time Stamp:</strong>
-					<input type="date"> <input type="time" name="startTime"> <input type="time" name="endTime">
+					<input type="date"> <input type="time" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> <input type="time" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
 					<br>
 				</div>
 				
 				<div class="form-group row">
-					<strong>Food and Drink:</strong>	
-					<select>
+					<label class="col-md-1" for="text">Food and Drink:</label>
+					<select class="form-control col-md-6" name="FoodTriggerItem" required="">
 						<option>Chocolate</option>
 						<option>Alcohol</option>
 						<option>Cheese</option>
@@ -67,8 +67,8 @@
 				</div>
 
 				<div class="form-group row">
-					<strong>Sensory:</strong>	
-					<select>
+					<label class="col-md-1" for="text">Sensory:</label>
+					<select class="form-control col-md-6" name="SensoryTriggerValue" required="">
 						<option>Exposed to bright light</option>
 						<option>Exposed to loud sounds</option>
 						<option>Exposed to strong smells</option>
@@ -80,20 +80,20 @@
 				</div>
 
 				<div class="form-group row">
-					<strong>Water Intake:</strong>
-					<select>
+					<label class="col-md-1" for="text">Water Intake:</label>
+					<select class="form-control col-md-6" name="WaterIntakeTriggerValue" required="">
 						<option>Had below 0.5 liters  of water</option>
-						<option>Had between  0.5 - 1 liters of water </option>
+						<option>Had between  0.5 - 1 liters of water</option>
 						<option>Had between  1 - 1.5 liters of water</option>
-						<option>Had between  1.5 - 2 liters of water  </option>
-						<option>Had between  2 - 2.5 liters of water </option>
+						<option>Had between  1.5 - 2 liters of water</option>
+						<option>Had between  2 - 2.5 liters of water</option>
 						<option>Had between  2.5  - 3 liters of water</option>
 					</select><br>
 				</div>
 
 				<div class="form-group row">
-					<strong>Stress:</strong>
-					<select>
+					<label class="col-md-1" for="text">Stress:</label>
+					<select class="form-control col-md-6" name="StressTriggerValue" required="">
 						<option>Not stressed</option>
 						<option>Slightly stressed</option>
 						<option>Moderately stressed</option>
@@ -102,8 +102,8 @@
 				</div>
 
 				<div class="form-group row">
-					<strong>Physical Activity:</strong>
-					<select>
+					<label class="col-md-1" for="text">Physical Activity:</label>
+					<select class="form-control col-md-6" name="PhysicalActivityTriggerValue" required="">
 						<option>Extremely inactive</option>
 						<option>Moderately inactive</option>
 						<option>Neutral</option>
@@ -114,8 +114,8 @@
 
 				
 				<div class="form-group row">
-					<strong>Sleep:</strong>
-					<select>
+					<label class="col-md-1" for="text">Sleep:</label>
+					<select class="form-control col-md-6" name="SleepTriggerValue" required="">
 						<option>Did not sleep</option>
 						<option>Between 1 - 3  hours of sleep</option>
 						<option>Between 4 - 6 hours  hours of sleep</option>
@@ -125,8 +125,8 @@
 				</div>
 
 				<div class="form-group row">
-					<strong>Hormone:</strong>
-					<select>
+					<label class="col-md-1" for="text">Hormone:</label>
+					<select class="form-control col-md-6" name="HormoneTriggerValue" required="">
 						<option>Menstruation</option>
 						<option>Follicular Phase (0 - 14 days from menstruation)</option>
 						<option>Luteal phase (14 - 28 days from menstruation</option>
