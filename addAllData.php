@@ -239,7 +239,7 @@
 		
 	} /*else if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
-	*/
+	*
 	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
 	}
@@ -255,6 +255,7 @@
 	if ( !$stmtStress->execute() ){
 		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
 	}
+	*/
 	if ( !$stmtSleep->execute() ){
 		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;		
 	} 
