@@ -26,10 +26,10 @@
 	}
 
 	while($stmt->fetch()){
-		echo "<tr>\n<td>\n" . $UserFirstName .  "\n</td>\n</tr>";
-		echo "<tr>\n<td>\n" . $UserLastName .  "\n</td>\n</tr>";
-		echo "<tr>\n<td>\n" . $UserScreenName .  "\n</td>\n</tr>";
-		echo "<tr>\n<td>\n" . $UserPassword .  "\n</td>\n</tr>";
+		echo "User First Name: " . $UserFirstName . "\n";
+		echo "User Last Name: " . $UserLastName . "\n";
+		echo "User Screen Name: " . $UserScreenName . "\n";
+		echo "User Password: " . $UserPassword . "\n";
 	}
 
 	$stmt->close();
