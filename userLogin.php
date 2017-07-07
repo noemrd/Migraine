@@ -32,11 +32,8 @@
 		echo "User Password: " . $UserPassword . PHP_EOL;
 	}
 
-	if ($UserPassword == ""){
-		echo "Incorrect Password";
-	}
-	if ($UserScreenName == ""){
-		echo "Screen Name does not exist";
+	if ($UserPassword == "" || $UserScreenName == ""){
+		echo "The Screen Name or Password is incorrect";
 	}
 	
 	$stmt->close();
