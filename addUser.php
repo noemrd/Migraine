@@ -22,7 +22,7 @@
 	if( !($stmtUser = $mysqli->prepare(
 									"INSERT INTO Users
 									(UserID,
-									UserFirstName
+									UserFirstName,
 									UserLastName,
 									UserScreenName,
 									UserPassword) 
