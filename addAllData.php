@@ -82,7 +82,8 @@
 	 *****************************************/
 	if( !($stmtMigraine = $mysqli->prepare("
 									INSERT INTO Migraine
-									SET Migraine.MigraineStartTimestamp = '$startVar',
+									SET 
+									Migraine.MigraineStartTimestamp = '$startVar',
 									Migraine.MigraineEndTimestamp = '$endVar',
 									UserID = {
 										SELECT UserID
@@ -126,24 +127,23 @@
 	}
 
 	
-	/*
+	
 	if( !($stmtMigraine->bind_param(
-							"ssssssssss", 
-							$_POST['MigraineID'], 							
-							$_POST['MigraineStartTimestamp'], 
-							$_POST['MigraineEndTimestamp'], 
-							$_POST['UserID'],
-							$_POST['MigraineIntensityID'],
-							$_POST['WaterIntakeTriggerID'],
-							$_POST['StressTriggerID'],
-							$_POST['PhysicalActivityTriggerID'],
-							$_POST['SleepTriggerID'],
-							$_POST['HormoneTriggerID'])))
+							"ssssssssss", 	
+							$_POST['MigraineStartTimestamp'],
+							$_POST['MigraineEndTimestamp'],
+							['jgg'],
+							$_POST['MigraineIntensityValue'],
+							$_POST['WaterIntakeTriggerValue'],
+							$_POST['StressTriggerValue'],
+							$_POST['PhysicalActivityTriggerValue'],
+							$_POST['SleepTriggerValue'],
+							$_POST['HormoneTriggerValue']
 							{
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
-	*/
+	
 	
 	
 	/**********************************************
