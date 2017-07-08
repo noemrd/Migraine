@@ -23,7 +23,7 @@
 		
 	/******************************************
 	 * 			Food and Drink Input
-	 ******************************************/
+	 ******************************************
 	if( !($stmtFAD = $mysqli->prepare(
 									"INSERT INTO HasFoodTriggers 
 									(MigraineID
@@ -46,7 +46,7 @@
 	
 	/******************************************
 	 * 				Sensory Input
-	 ******************************************/
+	 ******************************************
 	if( !($stmtSensor = $mysqli->prepare(
 									"INSERT INTO HasSensoryTriggers
 									(MigraineID,
@@ -65,31 +65,68 @@
 								
 		echo "Bind failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
 	}
-
+	*/
 	
-		
+	$startVar 		= $_POST['MigraineStartTimestamp'];
+	$endVar 		= $_POST['MigraineEndTimestamp'];
+	//$screenName 	= $_POST['UserScreenName'];
+	$screenName = "jgg"
+	$migraineVal 	= $_POST['MigraineIntensityValue'];
+	$waterVal 		= $_POST['WaterIntakeTriggerValue'];
+	$stressVal		= $_POST['StressTriggerValue'];
+	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
+	$sleepVal		= $_POST['SleepTriggerValue'];
+	$hormoneVal		= $_POST['HormoneTriggerValue'];
 	/******************************************
 	 * 			Migraine Table Input		  *
 	 *****************************************/
 	if( !($stmtMigraine = $mysqli->prepare(
 									"INSERT INTO Migraine
-									(MigraineID,
-									MigraineStartTimestamp,
-									MigraineEndTimestamp,
-									UserID,
-									MigraineIntensityID,
-									WaterIntakeTriggerID,
-									StressTriggerID,
-									PhysicalActivityTriggerID,
-									SleepTriggerID,
-									HormoneTriggerID
-									) 
-									VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")))
+									SET MigraineStartTimestamp = '$startVar',
+									MigraineEndTimestamp = '$endVar',
+									UserID = {
+										SELECT UserID
+										FROM Users
+										WHERE Users.UserScreenName = '$screenName'
+										),
+									MigraineIntensityID = {
+										SELECT MigraineIntensityID
+										FROM MigraineIntensity
+										WHERE MigraineIntensity.MigraineIntensityValue = '$migraineVal'
+										),
+									WaterIntakeTriggerID = {
+										SELECT WaterIntakeTriggerID
+										FROM WaterIntakeTrigger
+										WHERE WaterIntakeTrigger.WaterIntakeTriggerValue = '$waterVal'
+										),
+									StressTriggerID = {
+										SELECT StressTriggerID
+										FROM StressTrigger
+										WHERE StressTrigger.StressTriggerValue = '$stressVal'
+										),
+									PhysicalActivityTriggerID = (
+										SELECT PhysicalActivityTriggerID
+										FROM PhysicalActivityTrigger
+										WHERE PhysicalActivityTrigger.PhysicalActivityTriggerValue = '$phyVal'
+										),
+									SleepTriggerID = (
+										SELECT SleepTriggerID
+										FROM SleepTrigger
+										WHERE SleepTrigger.SleepTriggerValue = '$sleepVal'
+										),
+									HormoneTriggerID = {
+										SELECT HormoneTriggerID
+										FROM HormoneTrigger
+										WHERE HormoneTrigger.HormoneTriggerValue = '$hormoneVal'
+										)																				
+									")))
 									{
 										
 		echo "Prepare failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
 
+	
+	/*
 	if( !($stmtMigraine->bind_param(
 							"ssssssssss", 
 							$_POST['MigraineID'], 							
@@ -106,23 +143,24 @@
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
-	
+	*/
 	
 	
 	/**********************************************
 	 * Execute mySLQi commands for each table data		
 	 **********************************************/
-	/*
+	
 	if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
-	*/
+	/*
 	if ( !$stmtFAD->execute() ){
 		echo "Execute failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
 	}
 	if ( !$stmtSensor->execute() ){
 		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
 	}
+	*/
 	
 	
 	// No ERRORS, proceed to landing page with all summary data
