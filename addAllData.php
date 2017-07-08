@@ -125,7 +125,7 @@
 		echo "Prepare failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
 
-	
+	/*
 	
 	if( !($stmtMigraine->bind_param(
 							"sssssssss", 	
@@ -142,7 +142,7 @@
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
-	
+	*/
 	
 	
 	/**********************************************
