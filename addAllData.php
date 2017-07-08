@@ -69,8 +69,7 @@
 	
 	$startVar 		= $_POST['MigraineStartTimestamp'];
 	$endVar 		= $_POST['MigraineEndTimestamp'];
-	//$screenName 	= $_POST['UserScreenName'];
-	$screenName 	= 'jgg';
+	$screenName 	= $_POST['UserScreenName'];
 	$migraineVal 	= $_POST['MigraineIntensityValue'];
 	$waterVal 		= $_POST['WaterIntakeTriggerValue'];
 	$stressVal		= $_POST['StressTriggerValue'];
@@ -129,10 +128,10 @@
 	
 	
 	if( !($stmtMigraine->bind_param(
-							"ssssssssss", 	
+							"sssssssss", 	
 							$_POST['MigraineStartTimestamp'],
 							$_POST['MigraineEndTimestamp'],
-							['jgg'],
+							$_POST['screenName'],
 							$_POST['MigraineIntensityValue'],
 							$_POST['WaterIntakeTriggerValue'],
 							$_POST['StressTriggerValue'],
