@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <title>Migraine Tracker</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Bootstrap -->
+	<link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Personal CSS -->
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+
+	<body>
+		<!--Navigation menu bar-->
+		<nav class="navbar navbar-default navbar-custom">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="home.php">Home</a></li>
+					<li><a href="main.php">Migraine Form</a></li>
+					<li><a href="results.html">Results</a></li>
+					<li><a href="landing.html">Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<h2>Most Common Triggers</h2>
+			<div class="resultBoxesStyle">
+				<form>
+					<div class="WeeklyStyle">
+						<label class="resultsNameStyle">Weekly result:</label>
+						<select name="MCTWeekValue" required="">
+							<option>Week 1</option>
+							<option>Week 2</option>
+							<option>Week 3</option>
+							<option>Week 4</option>
+						</select>
+			
+						<select name="MCTMonthValue1" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				</form>
+
+				<form>
+					<div class="MonthylStyle">
+						<label class="resultsNameStyle">Monthly result:</label>
+						<select name="MCTMonthValue2" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				</form>
+			</div>
+		<button class="rButtonStyle" type="button" onclick="window.location='mct.html'" value="">Get selected results</button>
+		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='mct.html'">Get all results</button>
+		
+
+		<h2>Average Migraine Attack</h2>
+			<div class="resultBoxesStyle">	
+				<form>
+					<div class="WeeklyStyle">
+						<label class="resultsNameStyle">Weekly result:</label>
+						<select name="MCTWeekValue" required="">
+							<option>Week 1</option>
+							<option>Week 2</option>
+							<option>Week 3</option>
+							<option>Week 4</option>
+						</select>
+
+					
+						<select name="MCTMonthValue1" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				</form>
+
+				<form>
+					<div class="MonthylStyle">
+						<label class="resultsNameStyle">Monthly result:</label>
+						<select name="MCTMonthValue2" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				<form>
+			</div>
+		<button class="rButtonStyle" type="button" onclick="window.location='ama.html'" value="">Get selected results</button>
+		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='ama.html'">Get all results</button>
+
+		
+		<h2>Average Migraine Duration</h2>
+			<div class="resultBoxesStyle">
+				<form>
+					<div class="WeeklyStyle">
+						<label class="resultsNameStyle">Weekly result:</label>
+						<select name="MCTWeekValue" required="">
+							<option>Week 1</option>
+							<option>Week 2</option>
+							<option>Week 3</option>
+							<option>Week 4</option>
+						</select>
+
+					
+						<select name="MCTMonthValue1" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				</form>
+
+				<form>
+					<div class="MonthylStyle">
+						<label class="resultsNameStyle">Monthly result:</label>
+						<select name="MCTMonthValue2" required="">
+							<option>January</option>
+							<option>February</option>
+							<option>March</option>
+							<option>April</option>
+							<option>May</option>
+							<option>June</option>
+							<option>July</option>
+							<option>August</option>
+							<option>September</option>
+							<option>October</option>
+							<option>November</option>
+							<option>December</option>
+						</select><br>
+					</div>
+				</form>
+			</div>
+		<button class="rButtonStyle" type="button" onclick="window.location='amd.html'">Get selected results</button>
+		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='amd.html'">Get all results</button>
+	</body>
+</html>
