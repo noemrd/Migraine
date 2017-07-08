@@ -87,12 +87,13 @@
 
 					<label class="labelStyle" for="text">Water Intake:</label>
 					<select class="selectpicker" data-width="fit" name="WaterIntakeTriggerValue" required="">
-						<option>Had below 0.5 liters  of water</option>
-						<option>Had between  0.5 - 1 liters of water</option>
-						<option>Had between  1 - 1.5 liters of water</option>
-						<option>Had between  1.5 - 2 liters of water</option>
-						<option>Had between  2 - 2.5 liters of water</option>
-						<option>Had between  2.5  - 3 liters of water</option>
+						<option>Had below 0.5 liters of water</option>
+						<option>Had between 0.5 and 1 liters of water</option>
+						<option>Had between 1 and 1.5 liters of water</option>
+						<option>Had between 1.5 and 2 liters of water</option>
+						<option>Had between 2 and 2.5 liters of water</option>
+						<option>Had between 2.5 and 3 liters of water</option>
+						<option>Had beyond 3 liters of water</option>
 					</select><br>
 
 					<label class="labelStyle" for="text">Stress:</label>
@@ -115,19 +116,20 @@
 					<label class="labelStyle" for="text">Sleep:</label>
 					<select name="SleepTriggerValue" required="">
 						<option>Did not sleep</option>
-						<option>Between 1 - 3  hours of sleep</option>
-						<option>Between 4 - 6 hours  hours of sleep</option>
-						<option>Between 7 - 9  hours  hours of sleep</option>
+						<option>Between 1 and 3 hours of sleep</option>
+						<option>Between 4 and 6 hours of sleep</option>
+						<option>Between 7 and 9 hours of sleep</option>
 						<option>Above 10 hours of sleep</option>
 					</select><br>
 
 					<label class="labelStyle" for="text">Hormone:</label>
 					<select name="HormoneTriggerValue" required="">
 						<option>Menstruation</option>
-						<option>Follicular Phase (0 - 14 days from menstruation)</option>
-						<option>Luteal phase (14 - 28 days from menstruation</option>
+						<option>Follicular Phase: 0 to 14 days from menstruation</option>
+						<option>Luteal phase: 14 to 28 days from menstruation</option>
 						<option>None of these</option>
 					</select><br>
+
 
 						
 				</div>
