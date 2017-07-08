@@ -76,7 +76,9 @@
 	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
 	$sleepVal		= $_POST['SleepTriggerValue'];
 	$hormoneVal		= $_POST['HormoneTriggerValue'];
-	echo $startVar . " " . $endVar . " " . $screenName . " " . $migraineVal . " " . $waterVal . " " . #stressVal . " " . $phyVal . " " . $sleepVal . " " . $hormoneVal;
+
+	echo $startVar . " " . $endVar . " " . $screenName . " " . $migraineVal . " " . $waterVal . " " . $stressVal . " " . $phyVal . " " . $sleepVal . " " . $hormoneVal;
+
 	/******************************************
 	 * 			Migraine Table Input		  *
 	 *****************************************/
