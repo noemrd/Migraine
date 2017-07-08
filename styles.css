@@ -30,6 +30,7 @@ h3{
 	border: 3px solid black;
 	border-radius: 5px;
 	background-color: #deeaee;
+	padding:5px;
 }
 .buttonStyle{
 	border-radius: 5px; 
@@ -100,3 +101,28 @@ th, td{
 	width:60%;
 	height:200px;
 }
+
+/*Signup page*/
+.signUpBox{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:40%;
+	height:200px;
+	background-color: #deeaee;
+
+}
+.signUpStyle{
+	width: 170px;
+    text-align: right;
+}
+
+#fnID{
+	padding-top:40px;
+}
+
+.buttonCenter{
+	text-align:center;
+	padding-top:4px;
+}
+

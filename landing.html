@@ -5,79 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Migraine Tracker</title>
-    <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Bootstrap -->
+  <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Personal CSS-->
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+</style>
   </head>
 
   <body>
-  	<nav class="navbar navbar-inverse" role="navigation">
-  		<div class="navbar-header">
-  			<a href="#" class="navbar-brand">Home</a>
-  		</div>
+    <!--Navigation menu bar-->
+    <!--Citation: https://getbootstrap.com/components/#navbar-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="landing.html">Home</a></li>
+        </ul>
 
-  		<div>
-  			<ul class="nav navbar-nav pull-right">
-				<li><a href="#about-us">About Us</a></li>
-  				<li><a href="userSignUp.php">User Sign Up</a></li>
-  				<li><a href="userLogin.php">Login</a></li>
-  			</ul>
-  		</div>
-  	</nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="navbar-brand" href="#">About Us</a></li>
+          <li><a class="navbar-brand" href="userSignUp.php">Sign Up</a></li>
+          <li><a class="navbar-brand" href="userLogin.php">Login</a></li>
+        </ul>
+      </div>
+    </nav>
 
-	<div class="jumbotron">
 		<div class="text-center">
-			<h1 class="jumbotron_title" style="color:#003366">Migraine Tracker</h1>
-			<img src="img/migraine.jpg">
+			<h1 class="jumbotron_title" style="font-size:60px; color:#003366">Migraine Tracker</h1>
+        <blockquote>
+          Our goal is to eliminate migraines by tracking certain triggers by logging daily activities, etc.
+        </blockquote>
+			<img src="img/migraineCombo.jpg" style="width:1100px">
 		</div>
-	</div>
 
-    <div class="container">
+
+    <div class="container" style="margin-top:-525px; margin-left:245px">
         <div class="row">
-            <div class="col-md-6">
-            	<a name="about-us"></a>
-                <h3 class="header-text">About Us</h3>
-                <blockquote>
-                    Our goal is to eliminate migraines by tracking certain triggers by logging daily activities, etc.
-                </blockquote>
-            </div>
-
-            <div class="container col-md-6">
-                <form action="userLogin.php" method="post" class="form-style img-rounded col-md-12" role="form">
-                  <div>
-                    <h3 class="header-text" style="color:#003366">Migraine Login</h3>
-                  </div>
-                  <hr>
-                    <a name="login"></a>
-                    <p></p>
-
-                    <div class="row">
-                        <label class="col-md-2 control-label" for="UserScreenName">Screen Name:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="text" id="UserScreenName" name="UserScreenName" placeholder="">
-                        </div>
-					</div>
-					
-					<div class="row">	
-						<label class="col-md-2 control-label pull-left" for="UserPassword">Password:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" type="password" id="UserPassword" name="UserPassword" placeholder="">
-                        </div>
-						
+              <div class="container col-md-7">
+                  <form action="userLogin.php" method="post" class="form-style img-rounded col-md-12" role="form">
+                    <div>
+                      <h3 class="header-text" style="color:#003366">Migraine Login</h3>
                     </div>
-                    
-					<p></p>
-                    
-					<div class="row">
-                      <small class="col-md-offset-2 col-md-10 text-muted">Enter your Screen Name and Password to login</small>
-                    </div>
-                    <p></p>
+                    <hr>
+                      <a name="login"></a>
+                      <p></p>
 
-					<div class="row">
-						<div class="col-md-offset-2">
-							<input type="submit" class="btn btn-primary button-style" value="Login">
-							<a href="userSignUp.php">Sign Up</a>
-						</div>
-					</div>
-				</form>
+                      <div class="row">
+                          <label class="col-md-2 control-label" for="UserScreenName">Screen Name:</label>
+                          <div class="col-md-8">
+                              <input class="form-control" type="text" id="UserScreenName" name="UserScreenName" placeholder="">
+                          </div>
+  					         </div>
+  					
+          					<div class="row">	
+          						<label class="col-md-2 control-label pull-left" for="UserPassword">Password:</label>
+                          <div class="col-md-8">
+                               <input class="form-control" type="password" id="UserPassword" name="UserPassword" placeholder="">
+                          </div>
+                    </div>
+                              
+          					<p></p>
+                              
+          					<div class="row">
+                                <small class="col-md-offset-2 col-md-10 text-muted">Enter your Screen Name and Password to login</small>
+                              </div>
+
+          					<div class="row">
+          						<div class="col-md-offset-2">
+          							<input type="submit" class="btn btn-primary button-style" value="Login">
+          							<strong style="margin-top:100px;"><a href="userSignUp.php">Sign Up</a></strong>
+          					 </div>
+          					</div>
+  				      </form>
             </div>
         </div>
     </div>
