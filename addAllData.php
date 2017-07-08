@@ -70,7 +70,7 @@
 	$startVar 		= $_POST['MigraineStartTimestamp'];
 	$endVar 		= $_POST['MigraineEndTimestamp'];
 	//$screenName 	= $_POST['UserScreenName'];
-	$screenName = "jgg";
+	$screenName 	= 'jgg';
 	$migraineVal 	= $_POST['MigraineIntensityValue'];
 	$waterVal 		= $_POST['WaterIntakeTriggerValue'];
 	$stressVal		= $_POST['StressTriggerValue'];
@@ -87,37 +87,37 @@
 									UserID = {
 										SELECT UserID
 										FROM Users
-										WHERE Users.UserScreenName = '$screenName'
+										WHERE (Users.UserScreenName = '$screenName')
 										),
 									MigraineIntensityID = {
 										SELECT MigraineIntensityID
 										FROM MigraineIntensity
-										WHERE MigraineIntensity.MigraineIntensityValue = '$migraineVal'
+										WHERE (MigraineIntensity.MigraineIntensityValue = '$migraineVal')
 										),
 									WaterIntakeTriggerID = {
 										SELECT WaterIntakeTriggerID
 										FROM WaterIntakeTrigger
-										WHERE WaterIntakeTrigger.WaterIntakeTriggerValue = '$waterVal'
+										WHERE (WaterIntakeTrigger.WaterIntakeTriggerValue = '$waterVal')
 										),
 									StressTriggerID = {
 										SELECT StressTriggerID
 										FROM StressTrigger
-										WHERE StressTrigger.StressTriggerValue = '$stressVal'
+										WHERE (StressTrigger.StressTriggerValue = '$stressVal')
 										),
 									PhysicalActivityTriggerID = (
 										SELECT PhysicalActivityTriggerID
 										FROM PhysicalActivityTrigger
-										WHERE PhysicalActivityTrigger.PhysicalActivityTriggerValue = '$phyVal'
+										WHERE (PhysicalActivityTrigger.PhysicalActivityTriggerValue = '$phyVal')
 										),
 									SleepTriggerID = (
 										SELECT SleepTriggerID
 										FROM SleepTrigger
-										WHERE SleepTrigger.SleepTriggerValue = '$sleepVal'
+										WHERE (SleepTrigger.SleepTriggerValue = '$sleepVal')
 										),
 									HormoneTriggerID = {
 										SELECT HormoneTriggerID
 										FROM HormoneTrigger
-										WHERE HormoneTrigger.HormoneTriggerValue = '$hormoneVal'
+										WHERE (HormoneTrigger.HormoneTriggerValue = '$hormoneVal')
 										)																				
 									")))
 									{
