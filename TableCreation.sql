@@ -268,8 +268,8 @@ INSERT INTO HormoneTrigger (HormoneTriggerValue) VALUES
 
 # Insert values into Migraine
 INSERT INTO Migraine 
-	SET MigraineStartTImestamp =  "2017-07-02 14::35:10",
-	MigraineEndTImestamp ="2017-07-03 00:35:10", 
+	SET MigraineStartTimestamp =  "2017-07-02 14::35:10",
+	MigraineEndTimestamp ="2017-07-03 00:35:10", 
 	UserID = (
 		SELECT UserID
 		FROM Users
@@ -281,7 +281,7 @@ MigraineIntensityID = (
 WaterIntakeTriggerID = (
 		SELECT WaterIntakeTriggerID
 		FROM WaterIntakeTrigger
-		WHERE WaterIntakeTriggerValue = "Had between  1 - 1.5 liters of water"),
+		WHERE WaterIntakeTriggerValue = "Had between 1 - 1.5 liters of water"),
 StressTriggerID = (
 		SELECT StressTriggerID
 		FROM StressTrigger
@@ -305,7 +305,7 @@ INSERT INTO HasFoodTriggers
 	SET MigraineID = (
 		SELECT table1.MigraineID 
                  	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10")
+(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTimestamp = "2017-07-02 14:35:10")
 AS table1
 JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
 AS  table2 ON table1.UserID = table2.UserID),
@@ -319,7 +319,7 @@ INSERT INTO HasSensoryTriggers
 	SET MigraineID = (
 		SELECT table1.MigraineID 
                  	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10" )
+(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTimestamp = "2017-07-02 14:35:10" )
 AS table1
 JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
 AS  table2 ON table1.UserID = table2.UserID),
