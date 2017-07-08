@@ -72,7 +72,7 @@
 	 * 			Migraine Table Input		  *
 	 *****************************************/
 	if( !($stmtMigraine = $mysqli->prepare(
-									"INSERT INTO migraines 
+									"INSERT INTO Migraine
 									(MigraineID,
 									MigraineStartTimestamp,
 									MigraineEndTimestamp,
