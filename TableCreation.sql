@@ -1,4 +1,4 @@
- -- DROP TABLE IF  EXIST
+-- DROP TABLE IF  EXIST
 DROP TABLE IF EXISTS `HasFoodTriggers`;
 DROP TABLE IF EXISTS `HasSensoryTriggers`;
 DROP TABLE IF EXISTS `Migraine`;
@@ -93,8 +93,8 @@ CREATE TABLE HormoneTrigger(
 # Create Migraine Table
 CREATE TABLE Migraine (
 MigraineID int(11) NOT NULL AUTO_INCREMENT,
-MigraineStartTimestamp timestamp NOT NULL ,
-MigraineEndTimestamp timestamp ,
+MigraineStartTImestamp timestamp,
+MigraineEndTImestamp timestamp ,
 UserID int(11),
 MigraineIntensityID int(11),
 WaterIntakeTriggerID int(11),
@@ -202,17 +202,17 @@ INSERT INTO SensoryTrigger (SensoryTriggerValue) VALUES
 
 # Insert values into WaterIntakeTrigger
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had below 0.5 liters  of watert");
+	("Had below 0.5 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had between  0.5 - 1 liters of water");
+	("Had between 0.5 and 1 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had between  1 - 1.5 liters of water");
+	("Had between 1 and 1.5 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had between  1.5 - 2 liters of water");
+	("Had between 1.5 and 2 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had between  2 - 2.5 liters of water");
+	("Had between 2 and 2.5 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
-	("Had between  2.5  - 3 liters of water");
+	("Had between 2.5 and 3 liters of water");
 INSERT INTO WaterIntakeTrigger (WaterIntakeTriggerValue) VALUES
 	("Had beyond 3 liters of water");
 
@@ -247,11 +247,11 @@ INSERT INTO PhysicalActivityTrigger (PhysicalActivityTriggerValue) VALUES
 INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
 	("Did not sleep");
 INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
-	("Between 1 - 3  hours of sleep");
+	("Between 1 and 3 hours of sleep");
 INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
-	("Between 4 - 6 hours  hours of sleep");
+	("Between 4 and 6 hours of sleep");
 INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
-	("Between 7 - 9  hours  hours of sleep");
+	("Between 7 and 9 hours of sleep");
 INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
 	("Above 10 hours of sleep");
 
@@ -260,16 +260,16 @@ INSERT INTO SleepTrigger (SleepTriggerValue) VALUES
 INSERT INTO HormoneTrigger (HormoneTriggerValue) VALUES
 	("Menstruation");
 INSERT INTO HormoneTrigger (HormoneTriggerValue) VALUES
-	("Follicular Phase (0 - 14 days from menstruation)");
+	("Follicular Phase: 0 to 14 days from menstruation");
 INSERT INTO HormoneTrigger (HormoneTriggerValue) VALUES
-	("Luteal phase (14 - 28 days from menstruation");
+	("Luteal phase: 14 to 28 days from menstruation");
 INSERT INTO HormoneTrigger (HormoneTriggerValue) VALUES
 	("None of these");
 
 # Insert values into Migraine
 INSERT INTO Migraine 
-	SET MigraineStartTimestamp =  "2017-07-02 14::35:10",
-	MigraineEndTimestamp ="2017-07-03 00:35:10", 
+	SET MigraineStartTImestamp =  "2017-07-02 14::35:10",
+	MigraineEndTImestamp ="2017-07-03 00:35:10", 
 	UserID = (
 		SELECT UserID
 		FROM Users
@@ -281,7 +281,7 @@ MigraineIntensityID = (
 WaterIntakeTriggerID = (
 		SELECT WaterIntakeTriggerID
 		FROM WaterIntakeTrigger
-		WHERE WaterIntakeTriggerValue = "Had between 1 - 1.5 liters of water"),
+		WHERE WaterIntakeTriggerValue = "Had between 1 and 1.5 liters of water"),
 StressTriggerID = (
 		SELECT StressTriggerID
 		FROM StressTrigger
@@ -293,7 +293,7 @@ PhysicalActivityTriggerID = (
 SleepTriggerID = (
 		SELECT SleepTriggerID
 		FROM SleepTrigger
-		WHERE SleepTriggerValue = "Between 4 - 6 hours  hours of sleep"),
+		WHERE SleepTriggerValue = "Between 7 and 9 hours of sleep"),
 HormoneTriggerID = (
 		SELECT HormoneTriggerID
 		FROM HormoneTrigger
@@ -305,7 +305,7 @@ INSERT INTO HasFoodTriggers
 	SET MigraineID = (
 		SELECT table1.MigraineID 
                  	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTimestamp = "2017-07-02 14:35:10")
+(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10")
 AS table1
 JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
 AS  table2 ON table1.UserID = table2.UserID),
@@ -319,7 +319,7 @@ INSERT INTO HasSensoryTriggers
 	SET MigraineID = (
 		SELECT table1.MigraineID 
                  	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTimestamp = "2017-07-02 14:35:10" )
+(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10" )
 AS table1
 JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
 AS  table2 ON table1.UserID = table2.UserID),
