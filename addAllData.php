@@ -81,7 +81,7 @@
 	 *****************************************/
 	if( !($stmtMigraine = $mysqli->prepare("
 									INSERT INTO Migraine
-									SET 
+									(SET 
 									MigraineStartTImestamp = '$startVar',
 									MigraineEndTImestamp = '$endVar',
 									UserID = {
@@ -118,7 +118,8 @@
 										SELECT HormoneTriggerID
 										FROM HormoneTrigger
 										WHERE (HormoneTrigger.HormoneTriggerValue = '$hormoneVal')
-										)																				
+										)			
+									)
 									")))
 									{
 										
