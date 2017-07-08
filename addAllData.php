@@ -81,7 +81,7 @@
 
 	/******************************************
 	 * 			Migraine Table Input		  *
-	 *****************************************/
+	 *****************************************
 	if( !($stmtMigraine = $mysqli->prepare("
 									INSERT INTO Migraine
 									SET 
@@ -151,7 +151,7 @@
 	
 	/**********************************************
 	 * Execute mySLQi commands for each table data		
-	 **********************************************/
+	 **********************************************
 	
 	if ( !$stmtMigraine->execute() ){		
 		echo "Execute failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
