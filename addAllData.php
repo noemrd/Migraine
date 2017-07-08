@@ -80,10 +80,10 @@
 	/******************************************
 	 * 			Migraine Table Input		  *
 	 *****************************************/
-	if( !($stmtMigraine = $mysqli->prepare(
-									"INSERT INTO Migraine
-									SET MigraineStartTimestamp = '$startVar',
-									MigraineEndTimestamp = '$endVar',
+	if( !($stmtMigraine = $mysqli->prepare("
+									INSERT INTO Migraine
+									SET Migraine.MigraineStartTimestamp = '$startVar',
+									Migraine.MigraineEndTimestamp = '$endVar',
 									UserID = {
 										SELECT UserID
 										FROM Users
