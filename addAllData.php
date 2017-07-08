@@ -81,9 +81,9 @@
 	 *****************************************/
 	if( !($stmtMigraine = $mysqli->prepare("
 									INSERT INTO Migraine
-									(SET 
-									MigraineStartTImestamp = '$startVar',
-									MigraineEndTImestamp = '$endVar',
+									SET 
+									MigraineStartTimestamp = '$startVar',
+									MigraineEndTimestamp = '$endVar',
 									UserID = {
 										SELECT UserID
 										FROM Users

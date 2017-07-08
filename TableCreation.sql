@@ -93,8 +93,8 @@ CREATE TABLE HormoneTrigger(
 # Create Migraine Table
 CREATE TABLE Migraine (
 MigraineID int(11) NOT NULL AUTO_INCREMENT,
-MigraineStartTImestamp timestamp NOT NULL ,
-MigraineEndTImestamp timestamp ,
+MigraineStartTimestamp timestamp NOT NULL ,
+MigraineEndTimestamp timestamp ,
 UserID int(11),
 MigraineIntensityID int(11),
 WaterIntakeTriggerID int(11),
