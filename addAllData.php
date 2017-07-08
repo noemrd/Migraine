@@ -1,5 +1,5 @@
 /************************************************
-* 	This code snippet updates all tables in 	*
+* 	This code snippet updates certain tables in *
 * 	the data base individually from a single	*
 * 	web form.									*
 *************************************************/
@@ -25,9 +25,9 @@
 	 * 			Food and Drink Input
 	 ******************************************/
 	if( !($stmtFAD = $mysqli->prepare(
-									"INSERT INTO FoodDrinkTrigger 
-									(FoodTriggerID,
-									FoodTriggerItem) 
+									"INSERT INTO HasFoodTriggers 
+									(MigraineID
+									FoodTriggerID) 
 									VALUES (?, ?)")))
 									{
 										
@@ -36,8 +36,8 @@
 
 	if( !($stmtFAD->bind_param(
 							"ss", 
-							$_POST['FoodTriggerID'], 
-							$_POST['FoodTriggerItem'])))
+							$_POST['MigraineID'], 
+							$_POST['FoodTriggerID'])))
 							{
 								
 		echo "Bind failed: "  . $stmtFAD->errno . " " . $stmtFAD->error;
@@ -48,9 +48,9 @@
 	 * 				Sensory Input
 	 ******************************************/
 	if( !($stmtSensor = $mysqli->prepare(
-									"INSERT INTO SensoryTrigger 
-									(SensoryTriggerID,
-									SensoryTriggerValue) 
+									"INSERT INTO HasSensoryTriggers
+									(MigraineID,
+									SensoryTriggerID) 
 									VALUES (?, ?)")))
 									{
 										
@@ -59,8 +59,8 @@
 
 	if( !($stmtSensor->bind_param(
 							"ss", 
-							$_POST['SensoryTriggerID'], 
-							$_POST['SensoryTriggerValue'])))
+							$_POST['MigraineID'], 
+							$_POST['SensoryTriggerID'])))
 							{
 								
 		echo "Bind failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
@@ -108,125 +108,6 @@
 	}
 	
 	
-	/******************************************
-	 * 				Water Input
-	 ******************************************
-	if( !($stmtWater = $mysqli->prepare(
-									"INSERT INTO WaterIntakeTrigger
-									(WaterIntakeTriggerID,
-									WaterIntakeTriggerValue) 
-									VALUES (?, ?)")))
-									{
-										
-		echo "Prepare failed: "  . $stmtWater->errno . " " . $stmtWater->error;
-	}
-
-	if( !($stmtWater->bind_param(
-							"ss", 
-							$_POST['WaterIntakeTriggerID'], 
-							$_POST['WaterIntakeTriggerValue'])))
-							{
-								
-		echo "Bind failed: "  . $stmtWater->errno . " " . $stmtWater->error;
-	}
-
-	
-	/******************************************
-	 * 				Hormone Input
-	 ******************************************
-	if( !($stmtHormone = $mysqli->prepare(
-									"INSERT INTO HormoneTrigger
-									(HormoneTriggerID,
-									HormoneTriggerValue) 
-									VALUES (?, ?)")))
-									{
-										
-		echo "Prepare failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-	}
-
-	if( !($stmtHormone->bind_param(
-							"ss", 
-							$_POST['HormoneTriggerID'], 
-							$_POST['HormoneTriggerValue'])))
-							{
-								
-		echo "Bind failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-	}
-
-	
-	/******************************************
-	 * 		Physical Activity Input
-	 ******************************************
-	if( !($stmtPhy = $mysqli->prepare(
-									"INSERT INTO PhysicalActivityTrigger
-									(PhysicalActivityTriggerID,
-									PhysicalActivityTriggerValue) 
-									VALUES (?, ?)")))
-									{
-										
-		echo "Prepare failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	}
-
-	if( !($stmtPhy->bind_param(
-							"ss", 
-							$_POST['PhysicalActivityTriggerID'], 
-							$_POST['PhysicalActivityTriggerValue'])))
-							{
-								
-		echo "Bind failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	}
-
-	
-	/******************************************
-	 * 				Stress Input
-	 ******************************************
-	if( !($stmtStress = $mysqli->prepare(
-									"INSERT INTO StressTrigger
-									(StressTriggerID,
-									StressTriggerValue) 
-									VALUES (?, ?)")))
-									{
-										
-		echo "Prepare failed: "  . $stmtStress->errno . " " . $stmtStress->error;
-	}
-
-	if( !($stmtStress->bind_param(
-							"ss", 
-							$_POST['StressTriggerID'], 
-							$_POST['StressTriggerValue'])))
-							{
-								
-		echo "Bind failed: "  . $stmtStress->errno . " " . $stmtStress->error;
-	}
-
-
-	
-	
-	/******************************************
-	 * 				Sleep Input
-	 ******************************************
-	if( !($stmtSleep = $mysqli->prepare(
-									"INSERT INTO SleepTrigger
-									(SleepTriggerID,
-									SleepTriggerValue) 
-									VALUES (?, ?)")))
-									{
-										
-		echo "Prepare failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;
-	}
-
-	if( !($stmtSleep->bind_param(
-							"ss", 
-							$_POST['SleepTriggerID'], 
-							$_POST['SleepTriggerValue'])))
-							{
-								
-		echo "Bind failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;
-	}
-	*/
-	
-
-	
 	
 	/**********************************************
 	 * Execute mySLQi commands for each table data		
@@ -242,23 +123,7 @@
 	if ( !$stmtSensor->execute() ){
 		echo "Execute failed: "  . $stmtSensor->errno . " " . $stmtSensor->error;
 	}
-	/*
-	if( !$stmtWater->execute() ){
-		echo "Execute failed: "  . $stmtWater->errno . " " . $stmtWater->error;		
-	}
-	if ( !$stmtHormone->execute() ){
-		echo "Execute failed: "  . $stmtHormone->errno . " " . $stmtHormone->error;
-	}
-	if ( !$stmtPhy->execute() ){
-		echo "Execute failed: "  . $stmtPhy->errno . " " . $stmtPhy->error;
-	}
-	if ( !$stmtStress->execute() ){
-		echo "Execute failed: "  . $stmtStress->errno . " " . $stmtStress->error;
-	}	
-	if ( !$stmtSleep->execute() ){
-		echo "Execute failed: "  . $stmtSleep->errno . " " . $stmtSleep->error;		
-	} 
-	*/
+	
 	
 	// No ERRORS, proceed to landing page with all summary data
 	echo "No Errors from DB";
