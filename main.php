@@ -60,7 +60,7 @@
 				<label class="labelStyle" for="text">Migraine End Date and Time:</label>
 				<input type="date"> <input type="time" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
 				<br>
-				<input type="text" name="screenName" placeHolder="jgg">
+				<input type="text" name="UserScreenName" placeHolder="jgg">
 				<br>
 				Please enter what triggers you were exposed to in the 24 hours prior to your migraine onset.
 				<br>

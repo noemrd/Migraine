@@ -131,13 +131,13 @@
 							"sssssssss", 	
 							$_POST['MigraineStartTimestamp'],
 							$_POST['MigraineEndTimestamp'],
-							$_POST['screenName'],
+							$_POST['UserScreenName'],
 							$_POST['MigraineIntensityValue'],
 							$_POST['WaterIntakeTriggerValue'],
 							$_POST['StressTriggerValue'],
 							$_POST['PhysicalActivityTriggerValue'],
 							$_POST['SleepTriggerValue'],
-							$_POST['HormoneTriggerValue']
+							$_POST['HormoneTriggerValue'])))
 							{
 								
 		echo "Bind failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
