@@ -22,16 +22,19 @@
 
 	<body>
 		<!--Navigation menu bar-->
+		<!--Citation: https://getbootstrap.com/components/#navbar-->
 		<nav class="navbar navbar-default navbar-custom">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php">Migraine Form</a></li>
 					<li><a href="results.html">Results</a></li>
-					<li><a href="landing.html">Login</a></li>
-					<li><a href="addFood.html">Add Food Triggers</a></li>
-					
+					<li><a href="addFood.html">Add Food Triggers</a></li>	
 				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+           			<li><a href="landing.html">Logout</a></li>
+       			</ul>
 			</div>
 		</nav>
 
