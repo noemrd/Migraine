@@ -134,7 +134,7 @@
 
 			<div class="buttonAlign">
 				<button type="button" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-				<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='results.html'">Submit</button>
+				<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='addAllData.php'">Submit</button>
 			</div>
 		</form>		
 	</body>
