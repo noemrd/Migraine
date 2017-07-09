@@ -70,7 +70,7 @@
 	$startVar 		= $_POST['MigraineStartTimestamp'];
 	$endVar 		= $_POST['MigraineEndTimestamp'];
 	$screenName 	= $_POST['UserScreenName'];
-	$migraineVal 	= $_POST['MigraineIntensity'];
+	$migraineVal 	= intval($_POST['MigraineIntensity']);
 	$waterVal 		= $_POST['WaterIntakeTriggerValue'];
 	$stressVal		= $_POST['StressTriggerValue'];
 	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
