@@ -24,15 +24,18 @@
 
 	<body>
 		<!--Navigation menu bar-->
+		<!--Citation: https://getbootstrap.com/components/#navbar-->
 		<nav class="navbar navbar-default navbar-custom">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php">Migraine Form</a></li>
-					<li><a href="results.html">Results</a></li>
-					<li><a href="landing.html">Login</a></li>
-										
+					<li><a href="results.html">Results</a></li>							
 				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+           			<li><a href="landing.html">Logout</a></li>
+       			</ul>
 			</div>
 		</nav>
 
@@ -73,6 +76,7 @@
 						<option>9</option>
 						<option>10</option>
 					</select><br>
+					<img src="img/painlevel.jpg" alt="migraine intensity picture" style="margin-left:205px">
 					<br>
 					Please enter what triggers you were exposed to in the 24 hours prior to your migraine onset.
 					<br>
