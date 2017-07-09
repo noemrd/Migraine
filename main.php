@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 
 	<!-- Bootstrap -->
 	<link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
@@ -29,8 +31,7 @@
 					<li><a href="main.php">Migraine Form</a></li>
 					<li><a href="results.html">Results</a></li>
 					<li><a href="landing.html">Login</a></li>
-					<li><a href="addFood.html">Add Food Triggers</a></li>
-					
+										
 				</ul>
 			</div>
 		</nav>
@@ -39,6 +40,26 @@
 			<h3>Migraine Data Form</h3>
 			<form role="form" name="migraineForm" method="post" action="addAllData.php">
 				<div class="formStyle">
+
+					<label class="labelStyle" for="text">UserScreenName:</label>					
+					<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+					<br>
+			
+					Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+					<br>
+
+
+					<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+					<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+					<br>
+
+					<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+					 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+					<br>
+					<br>
+					Please enter the highest migraine intensity you felt during this migraine attack 
+					<br>
+
 					<label class="labelStyle" for="text">Migraine Intensity:</label>
 					<select class="selectpicker" data-width="fit" name="MigraineIntensity" required="">
 						<option>1</option>
@@ -52,38 +73,10 @@
 						<option>9</option>
 						<option>10</option>
 					</select><br>
-
-					<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
-					<input type="date"> <input type="time" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
-					<br>
-
-					<label class="labelStyle" for="text">Migraine End Date and Time:</label>
-					<input type="date"> <input type="time" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
-					<br>
 					<br>
 					Please enter what triggers you were exposed to in the 24 hours prior to your migraine onset.
 					<br>
 
-					<label class="labelStyle" for="text">Food and Drink:</label>
-						<div class="checkboxAlign">
-							<input type="checkbox" name="FoodTriggerItem" value="Chocolate" required="">Chocolate<br>
-							<input type="checkbox" name="FoodTriggerItem" value="Alcohol" required="">Alcohol<br>
-							<input type="checkbox" name="FoodTriggerItem" value="Cheese" required="">Cheese<br>
-							<input type="checkbox" name="FoodTriggerItem" value="Citrus Fruit" required="">Citrus Fruit<br>
-							<input type="checkbox" name="FoodTriggerItem" value="Caffeine" required="">Caffeine<br>
-							<input type="checkbox" name="FoodTriggerItem" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)" required="">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
-							<input type="checkbox" name="FoodTriggerItem" value="MSG containing food" required="">MSG containing food<br>
-							<input type="checkbox" name="FoodTriggerItem" value="None" required="">None<br>
-						</div>
-					<label class="labelStyle" for="text">Sensory:</label>
-						<div class="checkboxAlign">
-							<input type="checkbox" name="SensoryTriggerValue" value="Exposed to bright light" required="">Exposed to bright light<br>
-							<input type="checkbox" name="SensoryTriggerValue" value="Exposed to loud sounds" required="">Exposed to loud sounds<br>
-							<input type="checkbox" name="SensoryTriggerValue" value="Exposed to strong smells" required="">Exposed to strong smells<br>
-							<input type="checkbox" name="SensoryTriggerValue" value="Exposed to temperature change" required="">Exposed to temperature change<br>
-							<input type="checkbox" name="SensoryTriggerValue" value="Exposed to pressure change" required="">Exposed to pressure change<br>
-							<input type="checkbox" name="SensoryTriggerValue" value="None" required="">None<br>
-													</div>
 
 					<label class="labelStyle" for="text">Water Intake:</label>
 					<select class="selectpicker" data-width="fit" name="WaterIntakeTriggerValue" required="">
@@ -130,7 +123,30 @@
 						<option>None of these</option>
 					</select><br>
 
+				
 
+					<label class="labelStyle" for="text">Food and Drink:</label>
+						<div class="checkboxAlign">
+							<input type="checkbox" name="FoodTriggerItem[]" value="Chocolate">Chocolate<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="Alcohol">Alcohol<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="Cheese">Cheese<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="Citrus Fruit">Citrus Fruit<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="Caffeine">Caffeine<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="MSG containing food">MSG containing food<br>
+							<input type="checkbox" name="FoodTriggerItem[]" value="None">None<br>
+						</div>
+
+					<label class="labelStyle" for="text">Sensory:</label>
+						<div class="checkboxAlign">
+							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to bright light">Exposed to bright light<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to loud sounds">Exposed to loud sounds<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to strong smells">Exposed to strong smells<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to temperature change">Exposed to temperature change<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to pressure change">Exposed to pressure change<br>						
+							<input type="checkbox" name="SensoryTriggerValue[]" value="None">None<br>					</div>
+
+                                     
 						
 				</div>
 
@@ -138,6 +154,7 @@
 					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
 					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='home.html'">Submit</button>
 				</div>
+
 			</form>
 		</div>
 	</body>
