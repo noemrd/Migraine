@@ -90,42 +90,40 @@
 									UserID = {
 										SELECT UserID
 										FROM Users
-										WHERE (Users.UserScreenName = '$screenName')
+										WHERE (UserScreenName = '$screenName')
 										),
 									MigraineIntensityID = {
 										SELECT MigraineIntensityID
 										FROM MigraineIntensity
-										WHERE (MigraineIntensity.MigraineIntensityValue = '$migraineVal')
+										WHERE (MigraineIntensityValue = '$migraineVal')
 										),
 									WaterIntakeTriggerID = {
 										SELECT WaterIntakeTriggerID
 										FROM WaterIntakeTrigger
-										WHERE (WaterIntakeTrigger.WaterIntakeTriggerValue = '$waterVal')
+										WHERE (WaterIntakeTriggerValue = '$waterVal')
 										),
 									StressTriggerID = {
 										SELECT StressTriggerID
 										FROM StressTrigger
-										WHERE (StressTrigger.StressTriggerValue = '$stressVal')
+										WHERE (StressTriggerValue = '$stressVal')
 										),
 									PhysicalActivityTriggerID = (
 										SELECT PhysicalActivityTriggerID
 										FROM PhysicalActivityTrigger
-										WHERE (PhysicalActivityTrigger.PhysicalActivityTriggerValue = '$phyVal')
+										WHERE (PhysicalActivityTriggerValue = '$phyVal')
 										),
 									SleepTriggerID = (
 										SELECT SleepTriggerID
 										FROM SleepTrigger
-										WHERE (SleepTrigger.SleepTriggerValue = '$sleepVal')
+										WHERE (SleepTriggerValue = '$sleepVal')
 										),
 									HormoneTriggerID = {
 										SELECT HormoneTriggerID
 										FROM HormoneTrigger
-										WHERE (HormoneTrigger.HormoneTriggerValue = '$hormoneVal')
+										WHERE (HormoneTriggerValue = '$hormoneVal')
 										)			
 									)
-									")))
-									{
-										
+									"))) {										
 		echo "Prepare failed: "  . $stmtMigraine->errno . " " . $stmtMigraine->error;
 	}
 
