@@ -70,14 +70,14 @@
 	$startVar 		= $_POST['MigraineStartTimestamp'];
 	$endVar 		= $_POST['MigraineEndTimestamp'];
 	$screenName 	= $_POST['UserScreenName'];
-	$migraineVal 	= $_POST['MigraineIntensityValue'];
+	$migraineVal 	= $_POST['MigraineIntensity'];
 	$waterVal 		= $_POST['WaterIntakeTriggerValue'];
 	$stressVal		= $_POST['StressTriggerValue'];
 	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
 	$sleepVal		= $_POST['SleepTriggerValue'];
 	$hormoneVal		= $_POST['HormoneTriggerValue'];
 
-	echo $startVar . " " . $endVar . " " . $screenName . " " . $migraineVal . " " . $waterVal . " " . $stressVal . " " . $phyVal . " " . $sleepVal . " " . $hormoneVal;
+	echo "Values from form: " . $startVar . " " . $endVar . " " . $screenName . " " . $migraineVal . " " . $waterVal . " " . $stressVal . " " . $phyVal . " " . $sleepVal . " " . $hormoneVal;
 
 	/******************************************
 	 * 			Migraine Table Input		  *
