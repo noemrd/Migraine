@@ -126,3 +126,8 @@ th, td{
 	padding-top:4px;
 }
 
+.submitCompMsg{
+	font-size:200%; 
+	color:blue;
+	padding-top:200px;
+}
