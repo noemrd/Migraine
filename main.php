@@ -132,24 +132,24 @@
 
 					<label class="labelStyle" for="text">Food and Drink:</label>
 						<div class="checkboxAlign">
-							<input type="checkbox" name="FoodTriggerItem[]" value="Chocolate">Chocolate<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Alcohol">Alcohol<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Cheese">Cheese<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Citrus Fruit">Citrus Fruit<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Caffeine">Caffeine<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="MSG containing food">MSG containing food<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="None">None<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Chocolate">Chocolate<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Alcohol">Alcohol<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Cheese">Cheese<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Citrus Fruit">Citrus Fruit<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Caffeine">Caffeine<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="MSG containing food">MSG containing food<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="None">None<br>
 						</div>
 
 					<label class="labelStyle" for="text">Sensory:</label>
 						<div class="checkboxAlign">
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to bright light">Exposed to bright light<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to loud sounds">Exposed to loud sounds<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to strong smells">Exposed to strong smells<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to temperature change">Exposed to temperature change<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to pressure change">Exposed to pressure change<br>						
-							<input type="checkbox" name="SensoryTriggerValue[]" value="None">None<br>					</div>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to bright light">Exposed to bright light<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to loud sounds">Exposed to loud sounds<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to strong smells">Exposed to strong smells<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to temperature change">Exposed to temperature change<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to pressure change">Exposed to pressure change<br>						
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="None">None<br>					</div>
 
                                      
 						
