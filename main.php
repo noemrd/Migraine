@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,8 +84,8 @@
 
 					<label class="labelStyle" for="text">Water Intake:</label>
 					<select class="selectpicker" data-width="fit" name="WaterIntakeTriggerValue" required="">
-						<option>Had below 0.5 liters of water</option>
-						<option>Had between 0.5 and 1 liters of water</option>
+						<option value="Had below 0.5 liters of water">Had below 0.5 liters of water</option>
+						<option value="Had between 0.5 and 1 liters of water">Had between 0.5 and 1 liters of water</option>
 						<option>Had between 1 and 1.5 liters of water</option>
 						<option>Had between 1.5 and 2 liters of water</option>
 						<option>Had between 2 and 2.5 liters of water</option>
@@ -157,11 +156,9 @@
 
 				<div class="buttonAlign">
 					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-					<!--<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='submitCompMsg.html'">Submit</button>-->
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="submitCompMsg.html" formaction="submitCompMsg.html">Submit</button>
+					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='home.html'">Submit</button>
 				</div>
 
 			</form>
 		</div>
 	</body>
-</html>
