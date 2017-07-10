@@ -78,6 +78,7 @@
 					</select><br>
 					<img src="img/painlevel.jpg" alt="migraine intensity picture" style="margin-left:205px">
 					<br>
+					<br>
 					Please enter what triggers you were exposed to in the 24 hours prior to your migraine onset.
 					<br>
 
