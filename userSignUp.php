@@ -5,62 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Migraine Tracker</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 
+    <!-- Personal CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
+
   <body>
-	<nav class="navbar navbar-inverse" role="navigation">
-  		<div class="navbar-header">
-		<a href="landing.html" class="navbar-brand">Home</a>
-  		</div>
+    <!--Navigation menu bar-->
+    <!--Citation: https://getbootstrap.com/components/#navbar-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="landing.html" >Home</a></li>
+        </ul>
 
-  		<div>
-  			<ul class="nav navbar-nav pull-right">
-  				<li><a href="landing.html">Login</a></li>
-  			</ul>
-  		</div>
-  	</nav>	
-	
+        <ul class="nav navbar-nav navbar-right">
+           <li><a class="navbar-brand" href="landing.html">Login</a></li>
+        </ul>
+      <div>
+    </nav>
+
 	<!--Form to submit to: addUser.php and add a volunteer to the database-->
+        <h3 align="center">New User Profile</h3>
+          <form class="" role="form" name="userForm" method="post" action="addUser.php">
+            <div class="signUpBox">
+              <!-- FIRST NAME & LAST NAME -->
+                  <label id="fnID" class="signUpStyle" for="text">First Name:</label>
+                      <input type="text" name="UserFirstName" id="UserFirstName" required="" placeholder="First Name"><br>
+                  <label class="signUpStyle" for="text">Last Name:</label>
+                      <input type="text" name="UserLastName" id="UserLastName" required="" placeholder="Last Name"><br>
 
-    <div class="col-md-12">
-        <h3 class="header-text">New User Profile</h3>
-        <form class="form-group form-style img-rounded" role="form" name="userForm" method="post" action="addUser.php">
-
-            <!-- FIRST NAME & LAST NAME -->
-            <div class="form-group row">
-                <label class="col-md-1" for="text">First Name:</label>
-                <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" name="UserFirstName" id="UserFirstName" required="" placeholder="First name">
-                </div>
-
-                <label class="col-md-1" for="text">Last Name:</label>
-                <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" name="UserLastName" id="UserLastName" required="" placeholder="Last name">
-                </div>
-            </div>
-
-            <!-- SCREEN NAME-->
-            <div class="form-group row">
-                <label class="col-md-1" for="text">Screen Name:</label>
-                <div class="col-md-3">
-                    <input class="form-control col-md-6" type="text" id="UserScreenName" name="UserScreenName" placeholder="screenName">
-                </div>				
+              <!-- SCREEN NAME-->
+                  <label class="signUpStyle" for="text">Screen Name:</label>
+                      <input type="text" id="UserScreenName" name="UserScreenName" placeholder="Screen Name"><br>		
             
-			<!-- PASSWORD -->
-				<label class="col-md-1" for="text">Password:</label>
-				<div class="col-md-3">
-					<input class="form-control col-md-6" type="password" id="UserPassword" name="UserPassword" placeholder="password">
-				</div>								
-			
-			</div>
-
-			
-            <button type="button" class="btn btn-default" onclick="window.location='landing.html'">Cancel</button>
-            <button type="submit" id="userSubmit" value="Add User" class="btn btn-primary"onclick="window.location='home.html'">Submit</button>
-        </form>
-    </div>
-
+        			<!-- PASSWORD-->
+        				<label class="signUpStyle" for="text">Password:</label>
+        					<input type="password" id="UserPassword" name="UserPassword" placeholder="Password"><br>							
+            </div>
+            <div class="buttonCenter">
+              <button type="button" class="btn btn-danger" onclick="window.location='landing.html'">Cancel</button>
+              <button type="submit" value="Add User" class="btn btn-primary" onclick="window.location='home.html'">Submit</button>
+            </div>
+          </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
