@@ -6,6 +6,9 @@
 	*************************************************/
 
 	ini_set('display_errors', 'On');
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
 	$mysqli = new mysqli("oniddb.cws.oregonstate.edu","ghiraldj-db","v1bptepGowZ4t1OE","ghiraldj-db");
 	
 	
@@ -28,7 +31,6 @@
 	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
 	$sleepVal		= $_POST['SleepTriggerValue'];
 	$hormoneVal		= $_POST['HormoneTriggerValue'];
-
 	echo "<br> Values from form: <br>" . $startVar . "<br> " . $endVar . "<br> " . $screenName . "<br> " . $migraineVal . "<br> " . $waterVal . "<br> " . $stressVal . "<br> " . $phyVal . "<br> " . $sleepVal . "<br> " . $hormoneVal . "<br>";
 	
 	/******************************************
@@ -50,8 +52,8 @@
 	}
 	$userResult->fetch();	
 	$userResult->store_result();
+	$userResult->close();
 	//$mysqli->close();
-	
 	
 	
 	$migraineIntensitySql = "SELECT MigraineIntensityID 
@@ -59,8 +61,10 @@
 							 WHERE (MigraineIntensity.MigraineIntensityValue = '$migraineVal')";
 			
 	if( !($migraineIntResult = $mysqli->prepare( $migraineIntensitySql) )){
+		var_dump($migraineIntResult);
 		echo "Prepare fails: " . $migraineIntResult->errno . " " . $migraineIntResult->error;
 	}
+	
 	if(!$migraineIntResult->execute()){
 		echo "Execute failed: "  . $migraineIntResult->errno . " " . $migraineIntResult->error;
 	}
@@ -69,7 +73,7 @@
 	}
 	$migraineIntResult->fetch();	
 	$migraineIntResult->store_result();
-	//$mysqli->close();
+	$migraineIntResult->close();
 	
 
 	
@@ -87,7 +91,7 @@
 	}
 	$waterResult->fetch();	
 	$waterResult->store_result();	
-	//$mysqli->close();
+	$waterResult->close();
 	
 
 	
@@ -105,7 +109,7 @@
 	}
 	$stressResult->fetch();	
 	$stressResult->store_result();
-	//$mysqli->close();
+	$stressResult->close();
 	
 	
 	
@@ -123,7 +127,7 @@
 	}
 	$phyResult->fetch();
 	$phyResult->store_result();	
-	//$mysqli->close();
+	$phyResult->close();
 	
 	
 	
@@ -139,7 +143,7 @@
 	}
 	$sleepResult->fetch();	
 	$sleepResult->store_result();
-	//$mysqli->close();
+	$sleepResult->close();
 	
 		
 	
@@ -155,7 +159,7 @@
 	}
 	$hormoneResult->fetch();	
 	$hormoneResult->store_result();
-	//$mysqli->close();
+	$hormoneResult->close();
 	
 	// IDs fetched from DB
 	echo "<br><br>";
@@ -208,7 +212,7 @@
 		echo "Execute failed: "  . $migraineResult->errno . " " . $migraineResult->error;		
 	}
 	$migraineResult->store_result();
-	//$migraineResult->close();
+	$migraineResult->close();
 	
 	
 	
@@ -271,7 +275,7 @@
 	}
 	
 	$foodResult->store_result();
-	//$foodResult->close();
+	$foodResult->close();
 	
 
 
@@ -331,7 +335,7 @@
 		echo "You did not choose a Sensory Trigger.";
 	}
 	$sensoryResult->store_result();
-							
+	$sensoryResult->close();
 							
 							
 ?>
