@@ -28,6 +28,8 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+            <li><a class="navbar-brand" href="aboutUs.html">About Us</a></li>
+            <li><a class="navbar-brand" href="userSignUp.php">Sign Up</a></li>
            <li><a class="navbar-brand" href="landing.html">Login</a></li>
         </ul>
       <div>
