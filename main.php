@@ -1,4 +1,51 @@
 
+<script>
+     function compareDates() {       
+         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
+         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
+         console.log(startDate);
+         if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+	       		(endDate.getDay() > startDate.getDay() || endDate.getDay() < startDate.getDay() &&
+		        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+		        (endDate.getDay() == startDate.getDay() && endDate.getTime() > startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            	endDate.getDay() > startDate.getDay() &&
+			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            endDate.getDay() == startDate.getDay() && 
+		            endDate.getTime() > startDate.getTime()     
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() == startDate.getFullYear() &&
+            endDate.getMonth() == startDate.getMonth() &&
+            endDate.getDay() == startDate.getDay() &&
+            endDate.getTime() == startDate.getTime() ) 
+            { 
+             alert ("End Date is same as Start Date");
+             return false;
+        }
+        else {
+             alert ("End Date is before Start Date");
+             return false;
+        }
+     }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +87,9 @@
 
 		<!--Form-->
 			<h3>Migraine Data Form</h3>
-			<form role="form" name="migraineForm" method="post" action="addAllData.php">
+			<!--<form role="form" name="migraineForm" method="post" action="addAllData.php">-->
+			<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+
 				<div class="formStyle">
 
 					<label class="labelStyle" for="text">UserScreenName:</label>					
@@ -155,6 +204,7 @@
 				</div>
 
 				<div class="buttonAlign">
+
 					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
 					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='home.html'">Submit</button>
 				</div>
