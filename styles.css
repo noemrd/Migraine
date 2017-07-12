@@ -131,3 +131,19 @@ th, td{
 	color:blue;
 	padding-top:200px;
 }
+
+#aboutUsMessageBox{
+	border: 3px solid black;
+	height: 380px;
+	width: 1100px;
+	border-radius: 5px;
+	background-color: #c6bcb6;
+}
+
+.aboutUsMessage{
+	font-size:17px;
+	padding-top:8px;
+	padding-right:10px;
+	padding-left:10px;
+	text-indent:30px;
+}
