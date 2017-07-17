@@ -5,23 +5,35 @@
 	* 	web form.									*
 	*************************************************/
 
+	// Turn on Error reporting
 	ini_set('display_errors', 'On');
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
+	
+	// Allow for echo statements - Set to False to allow redirection and change of headers
+	$DEBUG = False;
+	
+	// Var if Error has occured
+	$error = False;
+	$errorStatement = "";
+	
+	// Instance of DB
 	$mysqli = new mysqli("oniddb.cws.oregonstate.edu","ghiraldj-db","v1bptepGowZ4t1OE","ghiraldj-db");
+	
 	
 	
 	/******************************************
 	 * 		Connect to data base
 	 ******************************************/
 	if(!$mysqli || $mysqli->connect_errno){
-		echo "Connection error " . $mysqli->connect_errno . " " . 
-		 $mysqli->connect_error;
+		$errorStatement = $mysqli->connect_error;
 	}
 		
 		
-	// Get Form Data
+	/******************************************
+	 * 		Get Form Data
+	 ******************************************/
 	$startVar 		= $_POST['MigraineStartTimestamp'];
 	$endVar 		= $_POST['MigraineEndTimestamp'];
 	$screenName 	= $_POST['UserScreenName'];
@@ -31,45 +43,49 @@
 	$phyVal			= $_POST['PhysicalActivityTriggerValue'];
 	$sleepVal		= $_POST['SleepTriggerValue'];
 	$hormoneVal		= $_POST['HormoneTriggerValue'];
-	echo "<br> Values from form: <br>" . $startVar . "<br> " . $endVar . "<br> " . $screenName . "<br> " . $migraineVal . "<br> " . $waterVal . "<br> " . $stressVal . "<br> " . $phyVal . "<br> " . $sleepVal . "<br> " . $hormoneVal . "<br>";
+	
+	// Verify each form data was read correctly
+	if($DEBUG){
+		echo "<br> Values from form: <br>" . $startVar . "<br> " . $endVar . "<br> " . $screenName . "<br> " . $migraineVal . "<br> " . $waterVal . "<br> " . $stressVal . "<br> " . $phyVal . "<br> " . $sleepVal . "<br> " . $hormoneVal . "<br>";
+	}
 	
 	/******************************************
-	 * 		Queries for IDs
+	 * 		Queries to fetch IDs
 	 ******************************************/	 
 	$userSql = "SELECT UserID
 				FROM Users
 				WHERE (Users.UserScreenName = '$screenName')";
-			
 	if( !($userResult = $mysqli->prepare( $userSql ))){
-		echo "Prepare fails: " . $userResult->errno . " " . $userResult->error;
+		$error = True;
+		$errorStatement = $userResult->error;
 	}
-	
 	if(!$userResult->execute()){
-		echo "Execute failed: "  . $userResult->errno . " " . $userResult->error;
+		$error = True;
+		$errorStatement = $userResult->error;
 	}
 	if(!$userResult->bind_result($UserID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $userResult->error;
 	}
 	$userResult->fetch();	
 	$userResult->store_result();
 	$userResult->close();
-	//$mysqli->close();
 	
 	
 	$migraineIntensitySql = "SELECT MigraineIntensityID 
 							 FROM MigraineIntensity
 							 WHERE (MigraineIntensity.MigraineIntensityValue = '$migraineVal')";
-			
 	if( !($migraineIntResult = $mysqli->prepare( $migraineIntensitySql) )){
-		var_dump($migraineIntResult);
-		echo "Prepare fails: " . $migraineIntResult->errno . " " . $migraineIntResult->error;
-	}
-	
+		$error = True;
+		$errorStatement = $migraineIntResult->error;
+	}	
 	if(!$migraineIntResult->execute()){
-		echo "Execute failed: "  . $migraineIntResult->errno . " " . $migraineIntResult->error;
+		$error = True;
+		$errorStatement = $migraineIntResult->error;
 	}
 	if(!$migraineIntResult->bind_result($MigraineIntensityID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $migraineIntResult->error;
 	}
 	$migraineIntResult->fetch();	
 	$migraineIntResult->store_result();
@@ -80,14 +96,17 @@
 	$waterSql = "SELECT WaterIntakeTriggerID
 			FROM WaterIntakeTrigger
 			WHERE (WaterIntakeTrigger.WaterIntakeTriggerValue = '$waterVal')";
-			
-	$waterResult = $mysqli->prepare( $waterSql );
-	
+	if( !$waterResult = $mysqli->prepare( $waterSql ) ){
+		$error = True;
+		$errorStatement = $waterResult->error;
+	}
 	if(!$waterResult->execute()){
-		echo "Execute failed: "  . $waterResult->errno . " " . $waterResult->error;
+		$error = True;
+		$errorStatement = $waterResult->error;
 	}
 	if(!$waterResult->bind_result( $WaterIntakeTriggerID )){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $waterResult->error;
 	}
 	$waterResult->fetch();	
 	$waterResult->store_result();	
@@ -98,14 +117,17 @@
 	$stressSql = "SELECT StressTriggerID
 			FROM StressTrigger
 			WHERE (StressTrigger.StressTriggerValue = '$stressVal')";
-	
-	$stressResult = $mysqli->prepare( $stressSql );
-	
+	if( !$stressResult = $mysqli->prepare( $stressSql ) ){
+		$error = True;
+		$errorStatement = $stressResult->error;
+	}
 	if(!$stressResult->execute()){
-		echo "Execute failed: "  . $stressResult->errno . " " . $stressResult->error;
+		$error = True;
+		$errorStatement = $stressResult->error;
 	}
 	if(!$stressResult->bind_result($StressTriggerID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $stressResult->error;
 	}
 	$stressResult->fetch();	
 	$stressResult->store_result();
@@ -116,14 +138,17 @@
 	$phySql = "SELECT PhysicalActivityTriggerID
 			FROM PhysicalActivityTrigger
 			WHERE (PhysicalActivityTrigger.PhysicalActivityTriggerValue = '$phyVal')";
-			
-	$phyResult = $mysqli->prepare( $phySql );
-	
+	if( !$phyResult = $mysqli->prepare( $phySql )){
+		$error = True;
+		$errorStatement = $phyResult->error;
+	}
 	if(!$phyResult->execute()){
-		echo "Execute failed: "  . $phyResult->errno . " " . $phyResult->error;
+		$error = True;
+		$errorStatement = $phyResult->error;
 	}
 	if(!$phyResult->bind_result( $PhysicalActivityTriggerID )){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $phyResult->error;
 	}
 	$phyResult->fetch();
 	$phyResult->store_result();	
@@ -134,12 +159,17 @@
 	$sleepSql = "SELECT SleepTriggerID
 			FROM SleepTrigger
 			WHERE (SleepTrigger.SleepTriggerValue = '$sleepVal')";
-	$sleepResult = $mysqli->prepare($sleepSql);
+	if( !$sleepResult = $mysqli->prepare($sleepSql) ){
+		$error = True;
+		$errorStatement = $sleepResult->error;
+	}
 	if(!$sleepResult->execute()){
-		echo "Execute failed: "  . $sleepResult->errno . " " . $sleepResult->error;
+		$error = True;
+		$errorStatement = $sleepResult->error;
 	}
 	if(!$sleepResult->bind_result($SleepTriggerID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $sleepResult->error;
 	}
 	$sleepResult->fetch();	
 	$sleepResult->store_result();
@@ -150,28 +180,42 @@
 	$hormoneSql = "SELECT HormoneTriggerID
 			FROM HormoneTrigger
 			WHERE (HormoneTrigger.HormoneTriggerValue = '$hormoneVal')";		
-	$hormoneResult = $mysqli->prepare($hormoneSql);
+	if( !$hormoneResult = $mysqli->prepare($hormoneSql) ){
+		$error = True;
+		$errorStatement = $hormoneResult->error; 
+	}
 	if(!$hormoneResult->execute()){
-		echo "Execute failed: "  . $hormoneResult->errno . " " . $hormoneResult->error;
+		$error = True;
+		$errorStatement = $hormoneResult->error; 
 	}
 	if(!$hormoneResult->bind_result($HormoneTriggerID)){
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $hormoneResult->error; 
 	}
 	$hormoneResult->fetch();	
 	$hormoneResult->store_result();
 	$hormoneResult->close();
 	
-	// IDs fetched from DB
-	echo "<br><br>";
-	echo "UserID: " . $UserID . "<br>";
-	echo "MigraineIntensityID: " . $MigraineIntensityID . "<br>";
-	echo "WaterIntakeTriggerID: " . $WaterIntakeTriggerID . "<br>";
-	echo "StressTriggerID: " . $StressTriggerID . "<br>";
-	echo "PhysicalActivityTriggerID: " . $PhysicalActivityTriggerID . "<br>";
-	echo "SleepTriggerID: " . $SleepTriggerID . "<br>";
-	echo "HormoneTriggerID: " . $HormoneTriggerID . "<br>";
 	
-	// Prepare statement for MySQLi injection
+	
+	/******************************************
+	 * 		IDs fetched from DB
+	 ******************************************/
+	if($DEBUG){
+		echo "<br><br>";
+		echo "UserID: " . $UserID . "<br>";
+		echo "MigraineIntensityID: " . $MigraineIntensityID . "<br>";
+		echo "WaterIntakeTriggerID: " . $WaterIntakeTriggerID . "<br>";
+		echo "StressTriggerID: " . $StressTriggerID . "<br>";
+		echo "PhysicalActivityTriggerID: " . $PhysicalActivityTriggerID . "<br>";
+		echo "SleepTriggerID: " . $SleepTriggerID . "<br>";
+		echo "HormoneTriggerID: " . $HormoneTriggerID . "<br>";
+	}
+	
+	
+	/******************************************
+	 * 		Migraine Table
+	 ******************************************/
 	$migraineSql = "
 					INSERT INTO Migraine 
 					(
@@ -187,11 +231,12 @@
 					)
 					VALUES (?,?,?,?,?,?,?,?,?)
 					";		
-	
+					
 	if( !($migraineResult = $mysqli->prepare( $migraineSql ))){
-		echo "Prepare Failed" . "<br>";
+		$error = True;
+		$errorStatement = $migraineResult->error;		
 	}
-	
+
 	// Bind parameters to Fetched IDs
 	if( !($migraineResult->bind_param(
 							"ssiiiiiii", 	
@@ -205,11 +250,12 @@
 							$SleepTriggerID,
 							$HormoneTriggerID)))
 							{								
-		echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+		$error = True;
+		$errorStatement = $migraineResult->error;
 	}
-	
 	if( !($migraineResult->execute() )){
-		echo "Execute failed: "  . $migraineResult->errno . " " . $migraineResult->error;		
+		$error = True;		
+		$errorStatement = $migraineResult->error;
 	}
 	$migraineResult->store_result();
 	$migraineResult->close();
@@ -218,8 +264,9 @@
 	
 	
 	
-	
-	// Has Food Triggers
+	/******************************************
+	 * 		Has Food Triggers Table
+	 ******************************************/
 	$foodSql = "
 				INSERT INTO HasFoodTriggers 
 				SET 
@@ -245,33 +292,43 @@
 				";
 
 	if( !($foodResult = $mysqli->prepare( $foodSql ) )){
-		echo "Prepare Failed" . "<br>";
+		$error = True;
+		$errorStatement = $foodResult->error;
 	}
 	
-	$foodTrigger = $_POST['FoodTriggerItem'];
-
+	/******************************************
+	 * 	Loop over each Trigger for Food and
+	 *	push each one to DB with the same
+	 *  MigraineID.
+	 ******************************************/	
 	if(isset($_POST['FoodTriggerItem'])) {
-		echo "You chose the following FoodTrigger(s): <br>";
-		echo "<ul>";
+		$foodTrigger = $_POST['FoodTriggerItem'];
+		
+		if($DEBUG){
+			echo "You chose the following FoodTrigger(s): <br>";
+			echo "<ul>";
+		}
 		foreach ($foodTrigger as $food){
-			echo "<li>" .$food."</li>";
+			if($DEBUG){ echo "<li>" .$food."</li>"; }
 			if( !($foodResult->bind_param(
 							"sss", 	
 							$_POST['MigraineStartTimestamp'],
 							$_POST['UserScreenName'],
 							$food )))
-							{								
-				echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+							{		
+				$error = True;							
+				$errorStatement = $foodResult->error;
 			}
 			
 			if( !($foodResult->execute() )){
-				echo "Execute failed: "  . $foodResult->errno . " " . $foodResult->error;		
+				$error = True;
+				$errorStatement = $foodResult->error;
 			}
 		}
 		
-		echo "</ul>";
+		if($DEBUG){ echo "</ul>"; }
 	} else {
-		echo "You did not choose a Food Trigger.";
+		if($DEBUG){ echo "You did not choose a Food Trigger."; }
 	}
 	
 	$foodResult->store_result();
@@ -279,8 +336,9 @@
 	
 
 
-		
-	// Has Sensory Triggers
+	/******************************************
+	 *	Has Sensory Triggers
+	 ******************************************/
 	$sensorySql = "
 					INSERT INTO HasSensoryTriggers 
 					SET 
@@ -306,36 +364,61 @@
 							";
 
 	if( !($sensoryResult = $mysqli->prepare( $sensorySql ) )){
-		echo "Prepare Failed" . "<br>";
+		$error = True;
+		$errorStatement = $sensoryResult->error;
 	}	
 
-	$sensoryTrigger = $_POST['SensoryTriggerValue'];
-				
+	
+	/******************************************
+	 * 	Loop over each Trigger for Sensory and
+	 *	push each one to DB with the same
+	 *  MigraineID.
+	 ******************************************/	
 	if(isset($_POST['SensoryTriggerValue'])) {
-		echo "You chose the following SensoryTrigger(s): <br>";
-		echo "<ul>";
+		$sensoryTrigger = $_POST['SensoryTriggerValue'];
+		
+		if($DEBUG){
+			echo "You chose the following SensoryTrigger(s): <br>";
+			echo "<ul>";
+		}
 		foreach ($sensoryTrigger as $sensor){
-			echo "<li>" .$sensor."</li>";
+			if($DEBUG){ echo "<li>" .$sensor."</li>"; }
 			if( !($sensoryResult->bind_param(
 							"sss", 	
 							$_POST['MigraineStartTimestamp'],
 							$_POST['UserScreenName'],
 							$sensor )))
 							{								
-				echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+				$error = True;
+				$errorStatement = $sensoryResult->error;
 			}
 			
 			if( !($sensoryResult->execute() )){
-				echo "Execute failed: "  . $sensoryResult->errno . " " . $sensoryResult->error;		
+				$error = True;
+				$errorStatement = $sensoryResult->error;
 			}
 		}
 		
-		echo "</ul>";
+		if($DEBUG){ echo "</ul>"; }
 	} else {
-		echo "You did not choose a Sensory Trigger.";
+		if($DEBUG){ echo "You did not choose a Sensory Trigger."; }
 	}
 	$sensoryResult->store_result();
 	$sensoryResult->close();
-							
-							
+	
+	
+	/******************************************
+	 * 	If there was an error, push error 
+	 *	statement to next page.
+	 *	If successfully pushed form, proceed 
+	 *	to next html page.
+	 ******************************************/
+	if( $error ){
+		echo "ERROR: " . $errorStatement;
+		//header("Refresh: 0, url=MigraineSubmitError.html");
+	} else {
+		header("Refresh: 0, url=submitCompMsg.html");
+	}
+	
+	
 ?>
