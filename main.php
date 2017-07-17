@@ -1,4 +1,50 @@
 
+<script>
+     function compareDates() {       
+         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
+         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
+         console.log(startDate);
+         if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+	       		(endDate.getDay() > startDate.getDay() || endDate.getDay() < startDate.getDay() &&
+		        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+		        (endDate.getDay() == startDate.getDay() && endDate.getTime() > startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            	endDate.getDay() > startDate.getDay() &&
+			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            endDate.getDay() == startDate.getDay() && 
+		            endDate.getTime() > startDate.getTime()     
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() == startDate.getFullYear() &&
+            endDate.getMonth() == startDate.getMonth() &&
+            endDate.getDay() == startDate.getDay() &&
+            endDate.getTime() == startDate.getTime() ) 
+            { 
+             alert ("End Date is same as Start Date");
+             return false;
+        }
+        else {
+             alert ("End Date is before Start Date");
+             return false;
+        }
+     }
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +87,9 @@
 
 		<!--Form-->
 			<h3>Migraine Data Form</h3>
-			<form role="form" name="migraineForm" method="post" action="addAllData.php">
+			<!--<form role="form" name="migraineForm" method="post" action="addAllData.php">-->
+			<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+
 				<div class="formStyle">
 
 					<label class="labelStyle" for="text">UserScreenName:</label>					
@@ -85,8 +133,8 @@
 
 					<label class="labelStyle" for="text">Water Intake:</label>
 					<select class="selectpicker" data-width="fit" name="WaterIntakeTriggerValue" required="">
-						<option>Had below 0.5 liters of water</option>
-						<option>Had between 0.5 and 1 liters of water</option>
+						<option value="Had below 0.5 liters of water">Had below 0.5 liters of water</option>
+						<option value="Had between 0.5 and 1 liters of water">Had between 0.5 and 1 liters of water</option>
 						<option>Had between 1 and 1.5 liters of water</option>
 						<option>Had between 1.5 and 2 liters of water</option>
 						<option>Had between 2 and 2.5 liters of water</option>
@@ -132,35 +180,35 @@
 
 					<label class="labelStyle" for="text">Food and Drink:</label>
 						<div class="checkboxAlign">
-							<input type="checkbox" name="FoodTriggerItem[]" value="Chocolate">Chocolate<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Alcohol">Alcohol<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Cheese">Cheese<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Citrus Fruit">Citrus Fruit<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Caffeine">Caffeine<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="MSG containing food">MSG containing food<br>
-							<input type="checkbox" name="FoodTriggerItem[]" value="None">None<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Chocolate">Chocolate<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Alcohol">Alcohol<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Cheese">Cheese<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Citrus Fruit">Citrus Fruit<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Caffeine">Caffeine<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)">Nitrates/ Nitrites containing food (hot dog, deli meat, jerky, canned food)<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="MSG containing food">MSG containing food<br>
+							<input type="checkbox" name="FoodTriggerItem[]" id="FoodTriggerItem" value="None">None<br>
 						</div>
 
 					<label class="labelStyle" for="text">Sensory:</label>
 						<div class="checkboxAlign">
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to bright light">Exposed to bright light<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to loud sounds">Exposed to loud sounds<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to strong smells">Exposed to strong smells<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to temperature change">Exposed to temperature change<br>
-							<input type="checkbox" name="SensoryTriggerValue[]" value="Exposed to pressure change">Exposed to pressure change<br>						
-							<input type="checkbox" name="SensoryTriggerValue[]" value="None">None<br>					</div>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to bright light">Exposed to bright light<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to loud sounds">Exposed to loud sounds<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to strong smells">Exposed to strong smells<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to temperature change">Exposed to temperature change<br>
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to pressure change">Exposed to pressure change<br>						
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="None">None<br>					</div>
 
                                      
 						
 				</div>
 
 				<div class="buttonAlign">
+
 					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='home.html'">Submit</button>
+					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
 				</div>
 
 			</form>
 		</div>
 	</body>
-</html>
