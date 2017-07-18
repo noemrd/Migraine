@@ -83,78 +83,79 @@
 			</div>
 		</nav>
 
-		<h2>Most Common Triggers</h2>
-			<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
-				<div class="formStyle">
-
-					<label class="labelStyle" for="text">UserScreenName:</label>					
-					<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
-					<br>
+		<div class="formStyle">
+			<h2>Most Common Triggers</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
 			
-					Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
-					<br>
+
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
 
 
-					<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
-					<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
-					<br>
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
 
-					<label class="labelStyle" for="text">Migraine End Date and Time:</label>
-					 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
-					<br>
-				<div class="buttonAlign">
-					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
-				</div>
-			</form>
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+					</div>
+				</form>
 
-		<h2>Average Migraine Attack</h2>
-			<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+			<h2>Average Migraine Attack</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
 
-					<label class="labelStyle" for="text">UserScreenName:</label>					
-					<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
-					<br>
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
+
+
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
+
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+					</div>
+				</form>
+
 			
-					Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
-					<br>
+			<h2>Average Migraine Duration</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
 
 
-					<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
-					<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
-					<br>
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
 
-					<label class="labelStyle" for="text">Migraine End Date and Time:</label>
-					 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
-					<br>
-				<div class="buttonAlign">
-					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
-				</div>
-			</form>
-
-		
-		<h2>Average Migraine Duration</h2>
-			<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
-					<label class="labelStyle" for="text">UserScreenName:</label>					
-					<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
-					<br>
-			
-					Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
-					<br>
-
-
-					<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
-					<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
-					<br>
-
-					<label class="labelStyle" for="text">Migraine End Date and Time:</label>
-					 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
-					<br>
-				<div class="buttonAlign">
-					<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
-				</div>
-			</form>
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+					</div>
+				</form>
 		</div>
 	</body>
 </html>
