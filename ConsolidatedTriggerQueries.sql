@@ -664,3 +664,6 @@ FROM
 LEFT JOIN 
 (select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
 ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '2016-07-0214:35:10' AND MigraineStartTImestamp <= '2018-08-06 14:35:10') as tablle3) as tablle4
+
+ORDER BY PERCENTAGE DESC
+
