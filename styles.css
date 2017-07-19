@@ -127,7 +127,6 @@ th, td{
 }
 
 .submitCompMsg{
-	font-size:200%; 
 	color:blue;
 	padding-top:200px;
 }
@@ -146,4 +145,40 @@ th, td{
 	padding-right:10px;
 	padding-left:10px;
 	text-indent:30px;
+}
+
+/*Signup page Error*/
+#loginError{
+	color:red;
+}
+
+/*Landing page*/
+.jumbotron_title{
+	font-size:60px; 
+	color:#003366;
+}
+
+#logInBox{
+	margin-top:-525px; 
+	margin-left:245px
+}
+
+.header-text{
+	color:#003366;
+}
+
+#signUpTag{
+	margin-top:8px;
+}
+
+#hrLineAlign{
+	margin-top:300px;
+}
+
+#hrFooter{
+	border-color:grey;
+}
+
+#copyRight{
+	margin-top:-10px;
 }

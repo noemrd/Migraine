@@ -1,3 +1,50 @@
+<script>
+     function compareDates() {       
+         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
+         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
+         console.log(startDate);
+         if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+	       		(endDate.getDay() > startDate.getDay() || endDate.getDay() < startDate.getDay() &&
+		        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+	            endDate.getMonth() > startDate.getMonth() &&
+		        (endDate.getDay() == startDate.getDay() && endDate.getTime() > startDate.getTime())
+		    ){
+		 			return true;
+         }
+         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            	endDate.getDay() > startDate.getDay() &&
+			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() == startDate.getMonth() &&
+		            endDate.getDay() == startDate.getDay() && 
+		            endDate.getTime() > startDate.getTime()     
+		        ){
+		        	return true;	
+        } 
+        else if ( endDate.getFullYear() == startDate.getFullYear() &&
+            endDate.getMonth() == startDate.getMonth() &&
+            endDate.getDay() == startDate.getDay() &&
+            endDate.getTime() == startDate.getTime() ) 
+            { 
+             alert ("End Date is same as Start Date");
+             return false;
+        }
+        else {
+             alert ("End Date is before Start Date");
+             return false;
+        }
+     }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,164 +83,79 @@
 			</div>
 		</nav>
 
-		<h2>Most Common Triggers</h2>
-			<div class="resultBoxesStyle">
-				<form>
-					<div class="WeeklyStyle">
-						<label class="resultsNameStyle">Weekly result:</label>
-						<select name="MCTWeekValue" required="">
-							<option>Week 1</option>
-							<option>Week 2</option>
-							<option>Week 3</option>
-							<option>Week 4</option>
-						</select>
+		<div class="formStyle">
+			<h2>Most Common Triggers</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
 			
-						<select name="MCTMonthValue1" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
+
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
+
+
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
+
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
 					</div>
 				</form>
 
-				<form>
-					<div class="MonthylStyle">
-						<label class="resultsNameStyle">Monthly result:</label>
-						<select name="MCTMonthValue2" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
-					</div>
-				</form>
-			</div>
-		<button class="rButtonStyle" type="button" onclick="window.location='mct.html'" value="">Get selected results</button>
-		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='mct.html'">Get all results</button>
-		
+			<h2>Average Migraine Attack</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
 
-		<h2>Average Migraine Attack</h2>
-			<div class="resultBoxesStyle">	
-				<form>
-					<div class="WeeklyStyle">
-						<label class="resultsNameStyle">Weekly result:</label>
-						<select name="MCTWeekValue" required="">
-							<option>Week 1</option>
-							<option>Week 2</option>
-							<option>Week 3</option>
-							<option>Week 4</option>
-						</select>
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
 
-					
-						<select name="MCTMonthValue1" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
+
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
+
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
 					</div>
 				</form>
 
-				<form>
-					<div class="MonthylStyle">
-						<label class="resultsNameStyle">Monthly result:</label>
-						<select name="MCTMonthValue2" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
-					</div>
-				<form>
-			</div>
-		<button class="rButtonStyle" type="button" onclick="window.location='ama.html'" value="">Get selected results</button>
-		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='ama.html'">Get all results</button>
+			
+			<h2>Average Migraine Duration</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
 
-		
-		<h2>Average Migraine Duration</h2>
-			<div class="resultBoxesStyle">
-				<form>
-					<div class="WeeklyStyle">
-						<label class="resultsNameStyle">Weekly result:</label>
-						<select name="MCTWeekValue" required="">
-							<option>Week 1</option>
-							<option>Week 2</option>
-							<option>Week 3</option>
-							<option>Week 4</option>
-						</select>
 
-					
-						<select name="MCTMonthValue1" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
+
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
 					</div>
 				</form>
-
-				<form>
-					<div class="MonthylStyle">
-						<label class="resultsNameStyle">Monthly result:</label>
-						<select name="MCTMonthValue2" required="">
-							<option>January</option>
-							<option>February</option>
-							<option>March</option>
-							<option>April</option>
-							<option>May</option>
-							<option>June</option>
-							<option>July</option>
-							<option>August</option>
-							<option>September</option>
-							<option>October</option>
-							<option>November</option>
-							<option>December</option>
-						</select><br>
-					</div>
-				</form>
-			</div>
-		<button class="rButtonStyle" type="button" onclick="window.location='amd.html'">Get selected results</button>
-		<button class="rButtonStyle" id="garButtonStyle" type="button" onclick="window.location='amd.html'">Get all results</button>
+		</div>
 	</body>
 </html>
