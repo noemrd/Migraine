@@ -126,11 +126,24 @@ th, td{
 	padding-top:4px;
 }
 
+/*submit Comp Msg*/
 .submitCompMsg{
 	color:blue;
-	padding-top:200px;
+	padding-top:85px;
+	padding-left:20px;
 }
 
+#submitCompMsgBox{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:800px;
+	height:300px;
+	background-color: #f9ccac;
+	margin-top:200px;
+}
+
+/*About Us*/
 #aboutUsMessageBox{
 	border: 3px solid black;
 	height: 380px;
