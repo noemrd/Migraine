@@ -1,49 +1,98 @@
 <script>
+	//Checks if there is at least 1 week gap between two dates.
      function compareDates() {       
          var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
          var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-         console.log(startDate);
-         if ( endDate.getFullYear() >= startDate.getFullYear() &&
-	            endDate.getMonth() > startDate.getMonth() &&
-	       		(endDate.getDay() > startDate.getDay() || endDate.getDay() < startDate.getDay() &&
-		        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
-		    ){
-		 			return true;
-         }
-         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-	            endDate.getMonth() > startDate.getMonth() &&
-		        (endDate.getDay() == startDate.getDay() && endDate.getTime() > startDate.getTime())
-		    ){
-		 			return true;
-         }
-         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() == startDate.getMonth() &&
-		            	endDate.getDay() > startDate.getDay() &&
-			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
-		        ){
-		        	return true;	
-        } 
-        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() == startDate.getMonth() &&
-		            endDate.getDay() == startDate.getDay() && 
-		            endDate.getTime() > startDate.getTime()     
-		        ){
-		        	return true;	
-        } 
-        else if ( endDate.getFullYear() == startDate.getFullYear() &&
-            endDate.getMonth() == startDate.getMonth() &&
-            endDate.getDay() == startDate.getDay() &&
-            endDate.getTime() == startDate.getTime() ) 
-            { 
-             alert ("End Date is same as Start Date");
-             return false;
-        }
-        else {
-             alert ("End Date is before Start Date");
-             return false;
-        }
-     }
+
+         var sm = startDate.getMonth()+1;
+
+		if(sm==4 || sm==6 || sm==9 || sm==11){
+	        //End day number lower than start day number, and 1 month apart.
+	        if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() == 1 &&
+		        		endDate.getDate() < startDate.getDate() && endDate.getDate()-startDate.getDate() >= -23 &&
+					        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    )
+	        {
+			 			return true;
+	        }
+	        //End day number lower than start day number, and NOT 1 month apart.
+	        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            	endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() != 1 &&
+		            		endDate.getDate() < startDate.getDate() &&
+			        				endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    	)
+			{
+			 			return true;
+	        }
+	        //End day number higher than start day number or the same, any months.
+	  		else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+			            endDate.getMonth() > startDate.getMonth() &&
+			       			endDate.getDate() > startDate.getDate() || endDate.getDate() == startDate.getDate() &&
+				        		endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    	)
+	  		{
+			 			return true;
+	        }
+	        //Months are the same
+	       	else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+			            endDate.getMonth() == startDate.getMonth() &&
+			            	endDate.getDate() > startDate.getDate() && endDate.getDate()-startDate.getDate() > 6 &&
+				            	endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			        )
+	       	{
+			        	return true;	
+	        } 
+	        else {
+	             alert ("Difference between End Date and Start Date has to be at least one week. Please try again.");
+	             return false;
+	        }
+	    }
+
+	    if(sm!=4 || sm!=6 || sm!=9 || sm!=11){
+	        if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() == 1 &&
+		        		endDate.getDate() < startDate.getDate() && endDate.getDate()-startDate.getDate() >= -24 &&
+					        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    )
+	        {
+			 			return true;
+	        }
+	        //End day number lower than start day number, and NOT 1 month apart.
+	        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+		            	endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() != 1 &&
+		            		endDate.getDate() < startDate.getDate() &&
+			        				endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    	)
+			{
+			 			return true;
+	        }
+	        //End day number higher than start day number or the same, any months.
+	  		else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+			            endDate.getMonth() > startDate.getMonth() &&
+			       			endDate.getDate() > startDate.getDate() || endDate.getDate() == startDate.getDate() &&
+				        		endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			    	)
+	  		{
+			 			return true;
+	        }
+	        //Months are the same
+	       	else if ( endDate.getFullYear() >= startDate.getFullYear() &&
+			            endDate.getMonth() == startDate.getMonth() &&
+			            	endDate.getDate() > startDate.getDate() && endDate.getDate()-startDate.getDate() > 6 &&
+				            	endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
+			        )
+	       	{
+			        	return true;	
+	        } 
+	        else {
+	             alert ("Difference between End Date and Start Date has to be at least one week. Please try again.");
+	             return false;
+	        }
+    	}
+    }
 </script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -135,6 +184,29 @@
 
 			
 			<h2>Average Migraine Duration</h2>
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+						<label class="labelStyle" for="text">UserScreenName:</label>					
+						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
+						<br>
+				
+						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						<br>
+
+
+						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
+						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
+						<br>
+
+						<label class="labelStyle" for="text">Migraine End Date and Time:</label>
+						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
+						<br>
+					<div class="buttonAlign">
+						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+					</div>
+				</form>
+
+			<h2>Average Migraine Intensity</h2>
 				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
 						<label class="labelStyle" for="text">UserScreenName:</label>					
 						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
