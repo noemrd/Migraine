@@ -147,7 +147,7 @@
 
 		<div class="formStyle">
 			<h2>Most Common Triggers</h2>
-				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 			
 
 						<label class="labelStyle" for="text">UserScreenName:</label>					
@@ -172,7 +172,7 @@
 				</form>
 
 			<h2>Average Migraine Attack</h2>
-				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 
 						<label class="labelStyle" for="text">UserScreenName:</label>					
 						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
@@ -197,7 +197,7 @@
 
 			
 			<h2>Average Migraine Duration</h2>
-				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 						<label class="labelStyle" for="text">UserScreenName:</label>					
 						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
 						<br>
@@ -220,7 +220,7 @@
 				</form>
 
 			<h2>Average Migraine Intensity</h2>
-				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()" action="addAllData.php">
+				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 						<label class="labelStyle" for="text">UserScreenName:</label>					
 						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
 						<br>
