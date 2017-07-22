@@ -732,56 +732,20 @@
 					if(!$stmt->execute()){
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
-				  
-					if(!$stmt->bind_result($Triggers, $NumberofTriggers, $NumberOfMigraines, $Percentage,
-											$StressTrigger, $NumberofStressTriggerValue, $NumberOfMigraines, $Percentage,
-											$PhysicalActivityTrigger, $NumberofPhysicalActivityTriggerValue, $NumberOfMigraines, $Percentage,
-											$HormoneTrigger, $NumberofHormoneTriggerValue, $NumberOfMigraines, $Percentage,
-											$SleepTrigger, $NumberofSleepTriggerValue, $NumberOfMigraines, $Percentage
+					
+					if(!$stmt->bind_result($Triggers, $NumberofTriggers, $NumberOfMigraines, $Percentage
 						)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $Triggers . "\n</td>\n<td>\n" . $NumberofTriggers . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n" .
-							 "<tr>\n<td>\n" . $StressTrigger . "\n</td>\n<td>\n" . $NumberofStressTriggerValue . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n" .
-							 "<tr>\n<td>\n" . $PhysicalActivityTrigger . "\n</td>\n<td>\n" . $PhysicalActivityTriggerValue . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n" .
-							 "<tr>\n<td>\n" . $HormoneTrigger . "\n</td>\n<td>\n" . $NumberHormoneTriggerValue . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n" .
-							 "<tr>\n<td>\n" . $SleepTrigger . "\n</td>\n<td>\n" . $NumberofSleepTriggerValue . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $Triggers . "\n</td>\n<td>\n" . $NumberofTriggers . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();
 				}
 			?>
 			</table>
-		</div>
-
-						<!--
-						Triggers, 
-						NumberofTriggers, 
-						NumberOfMigraines,  <-- Array?
-						Percentage			<-- Array?
-		
-						StressTrigger, 
-						NumberofStressTriggerValue, 
-						NumberOfMigraines,  
-						Percentage
-		
-						PhysicalActivityTrigger, 
-						NumberofPhysicalActivityTriggerValue, 
-						NumberOfMigraines,  
-						Percentage
-		
-						HormoneTrigger, 
-						NumberofHormoneTriggerValue, 
-						NumberOfMigraines,  
-						Percentage
-		
-						SleepTrigger, 
-						NumberofSleepTriggerValue, 
-						NumberOfMigraines,  
-						Percentage
-						-->
-		
+		</div>		
 	</body>
 </html>
