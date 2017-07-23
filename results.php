@@ -1,96 +1,23 @@
 <script>
+	//Citation: https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript(trisweb answer)
 	//Checks if there is at least 1 week gap between two dates.
      function compareDates() {       
          var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
          var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
 
-         var sm = startDate.getMonth()+1;
+         var difference = endDate - startDate;
+         var numberOfDays = Math.floor((difference)/(1000*60*60*24));
 
-		if(sm==4 || sm==6 || sm==9 || sm==11){
-	        //End day number lower than start day number, and 1 month apart.
-	        if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() == 1 &&
-		        		endDate.getDate() < startDate.getDate() && endDate.getDate()-startDate.getDate() >= -23 &&
-					        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    )
-	        {
-			 			return true;
-	        }
-	        //End day number lower than start day number, and NOT 1 month apart.
-	        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            	endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() != 1 &&
-		            		endDate.getDate() < startDate.getDate() &&
-			        				endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    	)
-			{
-			 			return true;
-	        }
-	        //End day number higher than start day number or the same, any months.
-	  		else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-			            endDate.getMonth() > startDate.getMonth() &&
-			       			endDate.getDate() > startDate.getDate() || endDate.getDate() == startDate.getDate() &&
-				        		endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    	)
-	  		{
-			 			return true;
-	        }
-	        //Months are the same
-	       	else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-			            endDate.getMonth() == startDate.getMonth() &&
-			            	endDate.getDate() > startDate.getDate() && endDate.getDate()-startDate.getDate() > 6 &&
-				            	endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			        )
-	       	{
-			        	return true;	
-	        } 
-	        else {
-	             alert ("Difference between End Date and Start Date has to be at least one week. Please try again.");
-	             return false;
-	        }
-	    }
+         if(numberOfDays>=7){
+         	return true;
 
-	    if(sm!=4 || sm!=6 || sm!=9 || sm!=11){
-	        if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() == 1 &&
-		        		endDate.getDate() < startDate.getDate() && endDate.getDate()-startDate.getDate() >= -24 &&
-					        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    )
-	        {
-			 			return true;
-	        }
-	        //End day number lower than start day number, and NOT 1 month apart.
-	        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            	endDate.getMonth() > startDate.getMonth() && endDate.getMonth() - startDate.getMonth() != 1 &&
-		            		endDate.getDate() < startDate.getDate() &&
-			        				endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    	)
-			{
-			 			return true;
-	        }
-	        //End day number higher than start day number or the same, any months.
-	  		else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-			            endDate.getMonth() > startDate.getMonth() &&
-			       			endDate.getDate() > startDate.getDate() || endDate.getDate() == startDate.getDate() &&
-				        		endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			    	)
-	  		{
-			 			return true;
-	        }
-	        //Months are the same
-	       	else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-			            endDate.getMonth() == startDate.getMonth() &&
-			            	endDate.getDate() > startDate.getDate() && endDate.getDate()-startDate.getDate() > 6 &&
-				            	endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime()
-			        )
-	       	{
-			        	return true;	
-	        } 
-	        else {
-	             alert ("Difference between End Date and Start Date has to be at least one week. Please try again.");
-	             return false;
-	        }
-    	}
-    }
+         }
+         else{
+         	alert("Please make sure the difference from Starting to Ending date is at least a week.")
+         	return false;
+         }       
+}
+   
 </script>
 
 
@@ -136,7 +63,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php">Migraine Form</a></li>
-					<li><a href="results.html">Results</a></li>
+					<li><a href="results.php">Results</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -167,7 +94,7 @@
 						<br>
 					<div class="buttonAlign">
 						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='results.php'">Submit</button>
 					</div>
 				</form>
 
@@ -191,7 +118,7 @@
 						<br>
 					<div class="buttonAlign">
 						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='results.php'">Submit</button>
 					</div>
 				</form>
 
@@ -215,7 +142,7 @@
 						<br>
 					<div class="buttonAlign">
 						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='results.php'">Submit</button>
 					</div>
 				</form>
 
@@ -238,25 +165,22 @@
 						<br>
 					<div class="buttonAlign">
 						<button type="button"" class="buttonStyle" id="migraineDataCancel" onclick="window.location='landing.html'">Cancel</button>
-						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='results.php'">Submit</button>
 					</div>
 				</form>
 		</div>
-		
-		
-		
-			
+
 		<div class="container-fluid text-center" id="triggerDiv">
 			<table class="table" id="triggersTable" align="center">
 				<div class="container-fluid text-center">
-					<h2> Triggers</h2>
+					<h2 id="triggerName">Most Common Triggers</h2>
 				</div>
 
 			<tr>
-				<th>Trigger</th>
-				<th>Number of Triggers</th>
-				<th>Number of Migraines</th>
-				<th>Percentage</th>
+				<th class="thStyle">Trigger</th>
+				<th class="thStyle">Number of Triggers</th>
+				<th class="thStyle">Number of Migraines</th>
+				<th class="thStyle">Percentage</th>
 			</tr>
 			
 			<!-- MySqli statements for filling table -->

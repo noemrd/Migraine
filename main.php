@@ -1,39 +1,41 @@
 
 <script>
-     function compareDates() {       
+     function compareDates() {     
          var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
          var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-         console.log(startDate);
+         console.log(endDate.getMonth);
+         console.log(startDate.getMonth);
          if ( endDate.getFullYear() >= startDate.getFullYear() &&
 	            endDate.getMonth() > startDate.getMonth() &&
-	       		(endDate.getDay() > startDate.getDay() || endDate.getDay() < startDate.getDay() &&
-		        endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
+	       		(endDate.getDate() > startDate.getDate() || endDate.getDate() < startDate.getDate()) &&
+		        (endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
 		    ){
 		 			return true;
          }
          else if ( endDate.getFullYear() >= startDate.getFullYear() &&
 	            endDate.getMonth() > startDate.getMonth() &&
-		        (endDate.getDay() == startDate.getDay() && endDate.getTime() > startDate.getTime())
+		        endDate.getDate() == startDate.getDate() && 
+		        endDate.getTime() > startDate.getTime()
 		    ){
 		 			return true;
          }
          else if ( endDate.getFullYear() >= startDate.getFullYear() &&
 		            endDate.getMonth() == startDate.getMonth() &&
-		            	endDate.getDay() > startDate.getDay() &&
+		            	endDate.getDate() > startDate.getDate() &&
 			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
 		        ){
 		        	return true;	
         } 
         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
 		            endDate.getMonth() == startDate.getMonth() &&
-		            endDate.getDay() == startDate.getDay() && 
+		            endDate.getDate() == startDate.getDate() && 
 		            endDate.getTime() > startDate.getTime()     
 		        ){
 		        	return true;	
         } 
         else if ( endDate.getFullYear() == startDate.getFullYear() &&
             endDate.getMonth() == startDate.getMonth() &&
-            endDate.getDay() == startDate.getDay() &&
+            endDate.getDate() == startDate.getDate() &&
             endDate.getTime() == startDate.getTime() ) 
             { 
              alert ("End Date is same as Start Date");
@@ -76,7 +78,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php">Migraine Form</a></li>
-					<li><a href="results.html">Results</a></li>							
+					<li><a href="results.php">Results</a></li>							
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
