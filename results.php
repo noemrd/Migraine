@@ -48,11 +48,13 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-	<!-- Bootstrap -->
-	<link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- Personal CSS -->
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
+
 </head>
 
 	<body>
@@ -63,7 +65,15 @@
 				<ul class="nav navbar-nav">
 					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php">Migraine Form</a></li>
-					<li><a href="results.php">Results</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li class="dropColor"><a href="mostCommonTriggers.php">Most Common Triggers</a></li>
+							<li class="dropColor"><a href="averageMigraineAttack.php">Average Migraine Attack</a></li>
+							<li class="dropColor"><a href="averageMigraineDuration.php">Average Migraine Duration</a></li>
+							<li class="dropColor"><a href="averageMigraineIntensity.php">Average Migraine Intensity</a></li>
+						</ul>
+					</li>							
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

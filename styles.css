@@ -12,6 +12,27 @@ body{
 	border: green;
 }
 
+/*Citation: https://stackoverflow.com/questions/21854138/changing-the-background-for-bootstrap-dropdown-a-on-hover*/
+.navbar .navbar-nav > li > a:hover,
+.dropdown-menu> li > a:hover,
+.dropdown-menu{
+  background-color: #d5f4e6;
+  background-image:none;
+}
+
+.dropColor{
+	background-color:#90EE90;
+}
+
+.dropdown-menu{
+	background-color:#90EE90;
+}
+
+/*Citation: https://stackoverflow.com/questions/11288998/how-to-change-color-of-opened-bootstrap-dropdown-toggle (Bimal Das's answer)*/
+.dropdown-toggle:active, .open .dropdown-toggle {
+        background:#d5f4e6 !important; 
+    }
+
 h3{
 	color: #86af49;
 	font-weight: bold;
@@ -30,7 +51,7 @@ h3{
 	border: 3px solid black;
 	border-radius: 5px;
 	background-color: #deeaee;
-	padding:5px;
+	padding:15px;
 }
 .buttonStyle{
 	border-radius: 5px; 
@@ -53,7 +74,7 @@ h3{
 
 /*Results page*/
 h2{
-	color: #92a8d1;
+	color: #b8a9c9;
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -85,21 +106,25 @@ h2{
     padding-top:22px;
 }
 
-/*Average migraine duration, average migraine attack, most common triggers*/
-
-table{
-	width:60%;
-	border:3px solid #e4d1d1;
+/*Results table*/
+#triggerDiv{
+	margin-top: 10px;
+	border: 3px solid black;
+	height: 600px;
+	width: 1100px;
+	border-radius: 5px;
+	background-color: #fbefcc;
 }
 
-th, td{
-	border:3px solid #e4d1d1;
+#triggersTable, table, th, td{
+	background-color: #cfe0e8;
+	border: 3px solid #96897f;
 }
 
-.amdTable, .amaTable{
-	border:3px solid #e4d1d1;
-	width:60%;
-	height:200px;
+.thStyle{
+	font-weight:bold;
+	font-size:24px;
+	color:#f18973;
 }
 
 /*Signup page*/
@@ -138,11 +163,14 @@ th, td{
 	border: 3px solid black;
 	border-radius: 5px;
 	width:800px;
-	height:300px;
+	height:600px;
 	background-color: #f9ccac;
 	margin-top:200px;
 }
 
+.nameStyle{
+	margin-left:22px;
+}
 /*About Us*/
 #aboutUsMessageBox{
 	border: 3px solid black;
@@ -196,14 +224,3 @@ th, td{
 	margin-top:-10px;
 }
 
-/*Results table*/
-#triggersTable, table, th, td{
-	background-color: #b7d7e8;
-	border: 3px solid #96897f;
-}
-
-.thStyle{
-	font-weight:bold;
-	font-size:32px;
-	color:#b9936c;
-}
