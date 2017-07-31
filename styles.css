@@ -81,29 +81,24 @@ h2{
 
 .resultBoxesStyle{
 	border: 3px solid black;
-	height: 150px;
-	width: 600px;
 	border-radius: 5px;
 	background-color: #d5f4e6;
+	padding:12px;
 }
 
 .rButtonStyle{
 	border-radius: 5px; 
 	height: 50px; 
-	width: 150px;
+	width: 100px;
 	font-weight: bold;
+}
+
+#rDataCancel{
+	background-color: #c94c4c;
+}
+
+#rDataSubmit{
 	background-color: #b7d7e8;
-}
-
-#garButtonStyle{
-	background-color: #b8a9c9;
-}
-
-.resultsNameStyle{
-	width: 150px;
-    text-align: right;
-    vertical-align:center;
-    padding-top:22px;
 }
 
 /*Results table*/
@@ -126,6 +121,19 @@ h2{
 	font-size:24px;
 	color:#f18973;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*Signup page*/
 .signUpBox{

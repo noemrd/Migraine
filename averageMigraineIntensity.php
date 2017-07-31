@@ -82,7 +82,7 @@
 			</div>
 		</nav>
 
-		<div class="formStyle">
+		<div class="resultBoxesStyle">
 			<h2>Average Migraine Intensity Form</h2>
 				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 						<label class="labelStyle" for="text">UserScreenName:</label>					
@@ -101,8 +101,8 @@
 						 <input type="datetime" name="MigraineEndTimestamp" id="MigraineEndTimestamp">
 						<br>
 					<div class="buttonAlign">
-						<input type="reset" class="buttonStyle" id="migraineDataCancel" value="Cancel">
-						<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='averageMigraineIntensity.php'">Submit</button>
+						<input type="reset" class="rButtonStyle" id="rDataCancel" value="Cancel">
+						<button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data" onclick="window.location='averageMigraineIntensity.php'">Submit</button>
 					</div>
 				</form>
 		</div>
