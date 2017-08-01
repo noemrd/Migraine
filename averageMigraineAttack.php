@@ -161,7 +161,7 @@
 						ON table1.UserID = table2.UserID 
 						WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3) as tabllle1
 						JOIN
-						(SELECT  ABS(DATEDIFF( '$start', '$end' )) AS days) as tabllle2
+						(SELECT  ABS(DATEDIFF( '2017-07-01 10:00:00', '2017-07-10 10:00:00' )) AS days) as tabllle2
 						" 
 						))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
