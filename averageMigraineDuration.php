@@ -68,10 +68,10 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li class="dropColor"><a href="mostCommonTriggers.php">Most Common Triggers</a></li>
-							<li class="dropColor"><a href="averageMigraineAttack.php">Average Migraine Attack</a></li>
-							<li class="dropColor"><a href="averageMigraineDuration.php">Average Migraine Duration</a></li>
-							<li class="dropColor"><a href="averageMigraineIntensity.php">Average Migraine Intensity</a></li>
+							<li class="dropColor"><a href="mostCommonTriggers.php?user=<?php echo $_GET['user'] ?>">Most Common Triggers</a></li>
+							<li class="dropColor"><a href="averageMigraineAttack.php?user=<?php echo $_GET['user'] ?>">Average Migraine Attack</a></li>
+							<li class="dropColor"><a href="averageMigraineDuration.php?user=<?php echo $_GET['user'] ?>">Average Migraine Duration</a></li>
+							<li class="dropColor"><a href="averageMigraineIntensity.php?user=<?php echo $_GET['user'] ?>">Average Migraine Intensity</a></li>
 						</ul>
 					</li>							
 				</ul>
