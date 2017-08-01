@@ -120,10 +120,7 @@
 				</div>
 
 			<tr>
-				<th class="thStyle">Trigger</th>
-				<th class="thStyle">Number of Triggers</th>
-				<th class="thStyle">Number of Migraines</th>
-				<th class="thStyle">Percentage</th>
+				<th class="thStyle">Average Migraine Per Week</th>
 			</tr>
 			
 			<!-- MySqli statements for filling table -->
