@@ -174,8 +174,7 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result($AverageMigrainePerWeek
-						)){
+					if(!$stmt->bind_result( $AverageMigrainePerWeek )){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
