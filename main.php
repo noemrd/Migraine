@@ -102,9 +102,12 @@
 
 				<div class="formStyle">
 
-					<label class="labelStyle" for="text">UserScreenName:</label>					
-					<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
-					<br>
+					
+					<h3 id="user"> Welcome <?php echo $_GET['user'] ?>! </h3>
+					
+					<label hidden class="labelStyle" for="text">UserScreenName:</label>					
+					<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
+					<!-- <br> -->
 			
 					Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
 					<br>

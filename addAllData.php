@@ -417,7 +417,7 @@
 		echo "ERROR: " . $errorStatement;
 		//header("Refresh: 0, url=MigraineSubmitError.html");
 	} else {
-		header("Refresh: 0, url=submitCompMsg.html");
+		header("Refresh: 0, url=submitCompMsg.php?user=$screenName");
 	}
 	
 	

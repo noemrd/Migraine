@@ -9,6 +9,8 @@
 	}
 
 	$passwordVar = $_POST['UserPassword'];
+	$user = $_POST['UserScreenName'];
+
 
 	if(!($stmt = $mysqli->prepare("
 		SELECT UserFirstName, UserLastName, UserScreenName, UserPassword
@@ -30,7 +32,7 @@
 	if ($UserPassword == "" || $UserScreenName == ""){
 		header("Refresh: 0, url=userLoginError.html");
 	} else {
-		header("Refresh: 0, url=main.php"); // User is Logged in proceed to next page
+		header("Refresh: 0, url=main.php?user=$user"); // User is Logged in proceed to next page
 	}
 	
 	//while($stmt->fetch()){
