@@ -85,10 +85,15 @@
 		<div class="resultBoxesStyle">
 			<h2>Average Migraine Duration Form</h2>
 				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
-						<label class="labelStyle" for="text">UserScreenName:</label>					
-						<input type="text" name="UserScreenName" id="UserScreenName" ><br>	
-						<br>
-				
+
+						<h3 id="user"> Welcome <?php echo $_GET['user'] ?>! </h3>			
+						<!-- 
+								Set UserScreenName to value from GET (in url) and hide form, 
+								we should do this for the rest of the result pages 
+						--> 
+						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
+						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
+
 						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
 						<br>
 

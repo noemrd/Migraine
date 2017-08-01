@@ -24,10 +24,10 @@
 	<body>
 		<div id="submitCompMsgBox">
 			<h1 class="submitCompMsg">Thank you for submitting the form, <?php echo $_GET['user'] ?>. To view the results, please click down below.<h1>
-			<p class="nameStyle"><a href="mostCommonTriggers.php">Most Common Triggers</a></p>
-			<p class="nameStyle"><a href="averageMigraineAttack.php">Average Migraine Attack</a></p>
-			<p class="nameStyle"><a href="averageMigraineDuration.php">Average Migraine Duration</a></p>
-			<p class="nameStyle"><a href="averageMigraineIntensity.php">Average Migraine Intensity</a></p>
+			<p class="nameStyle"><a href="mostCommonTriggers.php?=user<?php echo $_GET['user'] ?>">Most Common Triggers</a></p>
+			<p class="nameStyle"><a href="averageMigraineAttack.php?=user<?php echo $_GET['user'] ?>">Average Migraine Attack</a></p>
+			<p class="nameStyle"><a href="averageMigraineDuration.php?=user<?php echo $_GET['user'] ?>">Average Migraine Duration</a></p>
+			<p class="nameStyle"><a href="averageMigraineIntensity.php?=user<?php echo $_GET['user'] ?>">Average Migraine Intensity</a></p>
 		</div>
 	</body>
 </html>
