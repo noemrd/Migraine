@@ -129,7 +129,7 @@
 			<!-- MySqli statements for filling table -->
 		
 			<?php
-				if( isset($_POST['UserScreenName']) ){
+				if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
 					
 					$user = $_POST['UserScreenName'];	  
 					$start = $_POST['MigraineStartTimestamp'];

@@ -128,17 +128,43 @@
 			
 			<!-- MySqli statements for filling table -->
 					<?php
-				if( isset($_POST['UserScreenName']) ){
+				if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
 					
 					$user = $_POST['UserScreenName'];	  
 					$start = $_POST['MigraineStartTimestamp'];
 					$end = $_POST['MigraineEndTimestamp'];			  
 			  
 					if(!($stmt = $mysqli->prepare(
-						"
-						
-						
+						"						
+						SELECT ROUND( (tabllle1.NumberOfMigraines)/ ROUND((tabllle2.days/7), 0) , 0) as AverageMigrainePerWeek
+						FROM (SELECT count(distinct(MigraineID)) as NumberOfMigraines
+						FROM (SELECT table1.UserID as UserID, 
+												table2.MigraineID as MigraineID, 
+												table2.MigraineIntensityID as MigraineIntensityID, 
+												table2.WaterIntakeTriggerID as WaterIntakeTriggerID, 
+												table2.StressTriggerID as StressTriggerID, 
+												table2.PhysicalActivityTriggerID as PhysicalActivityTriggerID, 
+												table2.SleepTriggerID as SleepTriggerID, 
+												table2.HormoneTriggerID as HormoneTriggerID 
 
+						FROM 
+						(SELECT UserID FROM Users where UserScreenName = '$user' ) as table1
+
+						LEFT JOIN 
+						(SLECT MigraineID, 
+									UserID, 
+									MigraineStartTImestamp, 
+									MigraineEndTImestamp, 
+									MigraineIntensityID, 
+									WaterIntakeTriggerID, 
+									StressTriggerID, 
+									PhysicalActivityTriggerID, 
+									SleepTriggerID, 
+									HormoneTriggerID from Migraine ) as table2 
+						ON table1.UserID = table2.UserID 
+						WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3) as tabllle1
+						JOIN
+						(SELECT  ABS(DATEDIFF( '$start', '$end' )) AS days) as tabllle2
 						" 
 						))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
@@ -148,13 +174,13 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result($Triggers, $NumberofTriggers, $NumberOfMigraines, $Percentage
+					if(!$stmt->bind_result($AverageMigrainePerWeek, $NumberofTriggers
 						)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $Triggers . "\n</td>\n<td>\n" . $NumberofTriggers . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $AverageMigrainePerWeek . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();
