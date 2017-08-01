@@ -33,7 +33,6 @@
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,12 +124,12 @@
 			
 			<!-- MySqli statements for filling table -->
 					<?php
-				if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
+				if( isset($_POST['MigraineStartTimestamp']) && isset($_POST['MigraineEndTimestamp']) ){
 					
 					$user = $_POST['UserScreenName'];	  
 					$start = $_POST['MigraineStartTimestamp'];
 					$end = $_POST['MigraineEndTimestamp'];			  
-			  
+
 					if(!($stmt = $mysqli->prepare(
 						"						
 						SELECT ROUND( (tabllle1.NumberOfMigraines)/ ROUND((tabllle2.days/7), 0) , 0) as AverageMigrainePerWeek
@@ -148,7 +147,7 @@
 						(SELECT UserID FROM Users where UserScreenName = '$user' ) as table1
 
 						LEFT JOIN 
-						(SLECT MigraineID, 
+						(SELECT MigraineID, 
 									UserID, 
 									MigraineStartTImestamp, 
 									MigraineEndTImestamp, 
@@ -161,8 +160,8 @@
 						ON table1.UserID = table2.UserID 
 						WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3) as tabllle1
 						JOIN
-						(SELECT  ABS(DATEDIFF( '2017-07-01 10:00:00', '2017-07-10 10:00:00' )) AS days) as tabllle2
-						" 
+						(SELECT  ABS(DATEDIFF( '$start', '$end' )) AS days) as tabllle2
+						"
 						))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 					}
