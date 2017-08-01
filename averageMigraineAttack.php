@@ -174,13 +174,13 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result($AverageMigrainePerWeek, $NumberofTriggers
+					if(!$stmt->bind_result($AverageMigrainePerWeek
 						)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $AverageMigrainePerWeek . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $AverageMigrainePerWeek . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();
