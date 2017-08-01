@@ -300,35 +300,3 @@ HormoneTriggerID = (
 		WHERE HormoneTriggerValue = "None of these");
 
 
-# Insert values into HasFoodTriggers
-INSERT INTO HasFoodTriggers 
-	SET MigraineID = (
-		SELECT table1.MigraineID 
-                 	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10")
-AS table1
-JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
-AS  table2 ON table1.UserID = table2.UserID),
-FoodTriggerID = (
-		SELECT FoodTriggerID
-		FROM FoodDrinkTrigger
-		WHERE FoodTriggerItem = "Chocolate");
-
-# Insert values into HasSensoryTriggers
-INSERT INTO HasSensoryTriggers 
-	SET MigraineID = (
-		SELECT table1.MigraineID 
-                 	FROM 
-(SELECT MigraineID, UserID FROM Migraine WHERE MigraineStartTImestamp = "2017-07-02 14:35:10" )
-AS table1
-JOIN (SELECT UserID FROM Users WHERE UserScreenName = "jhiggins") 
-AS  table2 ON table1.UserID = table2.UserID),
-SensoryTriggerID = (
-		SELECT SensoryTriggerID
-		FROM SensoryTrigger
-		WHERE SensoryTriggerValue = "Exposed to bright light");
-
-
-
-
-
