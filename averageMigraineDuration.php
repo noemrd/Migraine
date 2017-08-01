@@ -119,10 +119,7 @@
 				</div>
 
 			<tr>
-				<th class="thStyle">Trigger</th>
-				<th class="thStyle">Number of Triggers</th>
-				<th class="thStyle">Number of Migraines</th>
-				<th class="thStyle">Percentage</th>
+				<th class="thStyle">Average Migraine Duration</th>
 			</tr>
 			
 			<!-- MySqli statements for filling table -->
@@ -136,8 +133,32 @@
 			  
 					if(!($stmt = $mysqli->prepare(
 						"
-						
+						SELECT ROUND(SUM(totalTime) / count(totalTime), 0)  as AverageMigraineDurationInHours
+						FROM
+						(SELECT table1.UserID as UserID, 
+										table2.MigraineID as MigraineID, 
+										table2.MigraineStartTImestamp as start,
+										table2.MigraineEndTImestamp as end, 
+										ROUND ((time_to_sec(timediff(table2.MigraineEndTImestamp, table2.MigraineStartTImestamp )) / 3600),0)as totalTime
 
+
+						-- GIVEN USER 
+						FROM 
+						(SELECT UserID FROM Users where UserScreenName = '$user' ) as table1
+
+						-- GIVEN DATES 
+						LEFT JOIN 
+						(SELECT MigraineID, 
+									UserID, 
+									MigraineStartTImestamp, 
+									MigraineEndTImestamp, 
+									MigraineIntensityID, 
+									WaterIntakeTriggerID, 
+									StressTriggerID, 
+									PhysicalActivityTriggerID, 
+									SleepTriggerID, 
+									HormoneTriggerID from Migraine ) as table2 
+									ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3
 						" 
 						))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
@@ -147,13 +168,12 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result($Triggers, $NumberofTriggers, $NumberOfMigraines, $Percentage
-						)){
+					if(!$stmt->bind_result($AverageMigraineDurationInHours)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $Triggers . "\n</td>\n<td>\n" . $NumberofTriggers . "\n</td>\n<td>\n" . $NumberOfMigraines . "\n</td>\n<td>\n" . $Percentage . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $AverageMigraineDurationInHours . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();
