@@ -18,7 +18,7 @@
          }
          else{
          	alert("Please make sure the difference from Starting to Ending date is at least a week.")
-         	highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
+            highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
          	return false;
          }       
 }
@@ -89,7 +89,7 @@
 		</nav>
 
 		<div class="resultBoxesStyle">
-			<h2>Average Migraine Duration Form</h2>
+			<h2>All Migraine Records Form</h2>
 				<form class="form-horizontal" role="form" name="migraineForm" method="post" onsubmit="return compareDates()">
 
 						<h3 id="user"> Welcome <?php echo $_GET['user'] ?>! </h3>			
@@ -99,7 +99,7 @@
 						--> 
 						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
 						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
-
+				
 						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
 						<br>
 
@@ -121,11 +121,11 @@
 		<div class="container-fluid text-center" id="triggerDiv">
 			<table class="table" id="triggersTable" align="center">
 				<div class="container-fluid text-center">
-					<h2 id="triggerName">Average Migraine Duration (per hour) Result</h2>
+					<h2 id="triggerName">All Migraine Records</h2>
 				</div>
 
 			<tr>
-				<th class="thStyle">Average Migraine Duration (per hour)</th>
+				<th class="thStyle">All Migraine Records</th>
 			</tr>
 			
 			<!-- MySqli statements for filling table -->
@@ -139,14 +139,16 @@
 			  
 					if(!($stmt = $mysqli->prepare(
 						"
-						SELECT ROUND(SUM(totalTime) / count(totalTime), 0)  as AverageMigraineDurationInHours
+						SELECT ROUND( ( SUM(MigraineIntensityID )) / (count(distinct(MigraineID))) , 0)  as averageMigraineIntensity
 						FROM
 						(SELECT table1.UserID as UserID, 
 										table2.MigraineID as MigraineID, 
-										table2.MigraineStartTImestamp as start,
-										table2.MigraineEndTImestamp as end, 
-										ROUND ((time_to_sec(timediff(table2.MigraineEndTImestamp, table2.MigraineStartTImestamp )) / 3600),0)as totalTime
-
+										table2.MigraineIntensityID as MigraineIntensityID,
+										table2.WaterIntakeTriggerID as WaterIntakeTriggerID, 
+										table2.StressTriggerID as StressTriggerID,
+										table2.PhysicalActivityTriggerID as PhysicalActivityTriggerID, 
+										table2.SleepTriggerID as SleepTriggerID, 
+										table2.HormoneTriggerID as HormoneTriggerID 
 
 						-- GIVEN USER 
 						FROM 
@@ -155,16 +157,18 @@
 						-- GIVEN DATES 
 						LEFT JOIN 
 						(SELECT MigraineID, 
-									UserID, 
+									UserID,
 									MigraineStartTImestamp, 
 									MigraineEndTImestamp, 
 									MigraineIntensityID, 
 									WaterIntakeTriggerID, 
 									StressTriggerID, 
-									PhysicalActivityTriggerID, 
+									PhysicalActivityTriggerID,
 									SleepTriggerID, 
 									HormoneTriggerID from Migraine ) as table2 
-									ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3
+						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3
+
+
 						" 
 						))){
 						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
@@ -174,12 +178,12 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result($AverageMigraineDurationInHours)){
+					if(!$stmt->bind_result($averageMigraineIntensity)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $AverageMigraineDurationInHours . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $averageMigraineIntensity . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();

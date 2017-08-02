@@ -1,4 +1,8 @@
 <script>
+     function highlight(id1, id2){
+     		$(id1).css("background-color", "yellow");
+     		$(id2).css("background-color", "yellow");
+     }
 	//Citation: https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript(trisweb answer)
 	//Checks if there is at least 1 week gap between two dates.
      function compareDates() {       
@@ -14,6 +18,7 @@
          }
          else{
          	alert("Please make sure the difference from Starting to Ending date is at least a week.")
+            highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
          	return false;
          }       
 }
@@ -72,6 +77,7 @@
 							<li class="dropColor"><a href="averageMigraineAttack.php?user=<?php echo $_GET['user'] ?>">Average Migraine Attack</a></li>
 							<li class="dropColor"><a href="averageMigraineDuration.php?user=<?php echo $_GET['user'] ?>">Average Migraine Duration</a></li>
 							<li class="dropColor"><a href="averageMigraineIntensity.php?user=<?php echo $_GET['user'] ?>">Average Migraine Intensity</a></li>
+							<li class="dropColor"><a href="allMigraineRecords.php?user=<?php echo $_GET['user'] ?>">All Migraine Records</a></li>							
 						</ul>
 					</li>							
 				</ul>
@@ -107,7 +113,7 @@
 						<br>
 					<div class="buttonAlign">
 						<input type="reset" class="rButtonStyle" id="rDataCancel" value="Cancel">
-						<button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data" onclick="window.location='averageMigraineIntensity.php'">Submit</button>
+						<button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data">Submit</button>
 					</div>
 				</form>
 		</div>
