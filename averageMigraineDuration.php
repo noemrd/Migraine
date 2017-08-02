@@ -115,11 +115,11 @@
 		<div class="container-fluid text-center" id="triggerDiv">
 			<table class="table" id="triggersTable" align="center">
 				<div class="container-fluid text-center">
-					<h2 id="triggerName">Average Migraine Duration Result</h2>
+					<h2 id="triggerName">Average Migraine Duration (per hour) Result</h2>
 				</div>
 
 			<tr>
-				<th class="thStyle">Average Migraine Duration</th>
+				<th class="thStyle">Average Migraine Duration (per hour)</th>
 			</tr>
 			
 			<!-- MySqli statements for filling table -->
