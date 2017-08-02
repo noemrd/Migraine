@@ -140,14 +140,13 @@
 					$user = $_POST['UserScreenName'];	  
 					$start = $_POST['MigraineStartTimestamp'];
 					$end = $_POST['MigraineEndTimestamp'];			  
+					$none = "None";
 			  
 					if(!($stmt = $mysqli->prepare(
 						"
-						SELECT CONCAT('Low Water Intake Related Trigger (below 1.5 liters)' ) as Triggers, 
-						SUM(tablle2.NumberWaterIntakeTriggerValue ) as NumberofTriggers, 
-						tablle4.NumberOfMigraines as NumberOfMigraines,  
-						ROUND(((SUM(tablle2.NumberWaterIntakeTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
-						
+						SELECT Triggers, NumberofTriggers, NumberOfMigraines, Percentage
+						FROM
+						(SELECT CONCAT('Low Water Intake Related Trigger (below 1.5 liters)' ) as Triggers, SUM(tablle2.NumberWaterIntakeTriggerValue ) as NumberofTriggers, tablle4.NumberOfMigraines as NumberOfMigraines,  ROUND(((SUM(tablle2.NumberWaterIntakeTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
 						FROM
 						(SELECT WaterIntakeTriggerValue, count(WaterIntakeTriggerValue) AS NumberWaterIntakeTriggerValue, MigraineID
 						FROM
@@ -163,6 +162,7 @@
 						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as table10
 
+
 						LEFT JOIN
 						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger where HormoneTriggerID = 1 ) as table11
 						ON table10.HormoneTriggerID = table11.HormoneTriggerID 
@@ -219,11 +219,9 @@
 						FROM
 						(SELECT table1.UserID as UserID, table2.MigraineID as MigraineID, table2.MigraineIntensityID as MigraineIntensityID, table2.WaterIntakeTriggerID as WaterIntakeTriggerID, table2.StressTriggerID as StressTriggerID, table2.PhysicalActivityTriggerID as PhysicalActivityTriggerID, table2.SleepTriggerID as SleepTriggerID, table2.HormoneTriggerID as HormoneTriggerID 
 
-						-- GIVEN USER 
 						FROM 
 						(select UserID FROM Users where UserScreenName = '$user' ) as table1
 
-						-- GIVEN DATES 
 						LEFT JOIN 
 						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3) as tablle4
@@ -236,11 +234,7 @@
 
 						UNION ALL
 
-						SELECT CONCAT('Stress Related Trigger (moderate or extreme)' ) as StressTrigger, 
-						SUM(tablle2.NumberStressTriggerValue ) as NumberofStressTriggerValue, 
-						tablle4.NumberOfMigraines as NumberOfMigraines,  
-						ROUND(((SUM(tablle2.NumberStressTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
-						
+						SELECT CONCAT('Stress Related Trigger (moderate or extreme)' ) as StressTrigger, SUM(tablle2.NumberStressTriggerValue ) as NumberofStressTriggerValue, tablle4.NumberOfMigraines as NumberOfMigraines,  ROUND(((SUM(tablle2.NumberStressTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
 						FROM
 						(SELECT StressTriggerValue, count(StressTriggerValue) AS NumberStressTriggerValue, MigraineID
 						FROM
@@ -256,6 +250,7 @@
 						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as table10
 
+
 						LEFT JOIN
 						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger where HormoneTriggerID = 1 ) as table11
 						ON table10.HormoneTriggerID = table11.HormoneTriggerID 
@@ -324,12 +319,7 @@
 
 						UNION ALL
 
-						SELECT CONCAT('Exertion Related Trigger (moderate or extreme)' ) as PhysicalActivityTrigger, 
-						SUM(tablle2.NumberPhysicalActivityTriggerValue ) as NumberofPhysicalActivityTriggerValue, 
-						tablle4.NumberOfMigraines as NumberOfMigraines,  
-						ROUND(((SUM(tablle2.NumberPhysicalActivityTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
-						
-						
+						SELECT CONCAT('Exertion Related Trigger (moderate or extreme)' ) as PhysicalActivityTrigger, SUM(tablle2.NumberPhysicalActivityTriggerValue ) as NumberofPhysicalActivityTriggerValue, tablle4.NumberOfMigraines as NumberOfMigraines,  ROUND(((SUM(tablle2.NumberPhysicalActivityTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
 						FROM
 						(SELECT PhysicalActivityTriggerValue, count(PhysicalActivityTriggerValue) AS NumberPhysicalActivityTriggerValue, MigraineID
 						FROM
@@ -346,7 +336,7 @@
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as table10
 
 
-
+						
 						LEFT JOIN
 						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger where HormoneTriggerID = 1 ) as table11
 						ON table10.HormoneTriggerID = table11.HormoneTriggerID 
@@ -416,13 +406,7 @@
 
 
 						UNION ALL
-
-						SELECT CONCAT('Hormone Related Trigger (menstruation)' ) as HormoneTrigger, 
-						SUM(tablle2.NumberHormoneTriggerValue ) as NumberofHormoneTriggerValue, 
-						tablle4.NumberOfMigraines as NumberOfMigraines,  
-						ROUND(((SUM(tablle2.NumberHormoneTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
-						
-						
+						SELECT CONCAT('Hormone Related Trigger (menstruation)' ) as HormoneTrigger, SUM(tablle2.NumberHormoneTriggerValue ) as NumberofHormoneTriggerValue, tablle4.NumberOfMigraines as NumberOfMigraines,  ROUND(((SUM(tablle2.NumberHormoneTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
 						FROM
 						(SELECT HormoneTriggerValue, count(HormoneTriggerValue) AS NumberHormoneTriggerValue, MigraineID
 						FROM
@@ -439,7 +423,7 @@
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as table10
 
 
-
+						
 						LEFT JOIN
 						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger where HormoneTriggerID = 1 ) as table11
 						ON table10.HormoneTriggerID = table11.HormoneTriggerID 
@@ -510,12 +494,7 @@
 
 						UNION ALL
 
-						SELECT CONCAT('Sleep Related Trigger (less than 6 hours)' ) as SleepTrigger, 
-						SUM(tablle2.NumberSleepTriggerValue ) as NumberofSleepTriggerValue, 
-						tablle4.NumberOfMigraines as NumberOfMigraines,  
-						ROUND(((SUM(tablle2.NumberSleepTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
-						
-						
+						SELECT CONCAT('Sleep Related Trigger (less than 6 hours)' ) as SleepTrigger, SUM(tablle2.NumberSleepTriggerValue ) as NumberofSleepTriggerValue, tablle4.NumberOfMigraines as NumberOfMigraines,  ROUND(((SUM(tablle2.NumberSleepTriggerValue ) / tablle4.NumberOfMigraines) * 100),0) as Percentage
 						FROM
 						(SELECT SleepTriggerValue, count(SleepTriggerValue) AS NumberSleepTriggerValue, MigraineID
 						FROM
@@ -532,6 +511,7 @@
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as table10
 
 
+						
 						LEFT JOIN
 						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger where HormoneTriggerID = 1 ) as table11
 						ON table10.HormoneTriggerID = table11.HormoneTriggerID 
@@ -595,7 +575,109 @@
 						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
 						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3) as tablle4
 
-						ORDER BY PERCENTAGE DESC
+
+
+
+						UNION ALL
+						(SELECT Triggers, NumberofTriggers, NumberOfMigraines, ROUND(((SUM(NumberofTriggers) / NumberOfMigraines) * 100),0) as Percentage
+
+						FROM
+
+						(SELECT table20.SensoryTriggerValue as Triggers, table20.NumberSensoryTriggerValue as NumberofTriggers, table21.NumberOfMigraines as NumberOfMigraines 
+						FROM
+						(SELECT table3.SensoryTriggerValue as SensoryTriggerValue, count(table3.SensoryTriggerValue) as NumberSensoryTriggerValue
+
+						FROM 
+						(select UserID, UserScreenName FROM Users where UserScreenName = '$user' ) as table1
+
+						LEFT JOIN
+						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp  from Migraine ) as table2 ON table1.UserID = table2.UserID 
+
+						JOIN
+						(SELECT tab5.MigraineID as MigraineID, SensoryTriggerValue as SensoryTriggerValue 
+						FROM 
+						(select tab6.MigraineID as MigraineID, tab7.SensoryTriggerValue as SensoryTriggerValue FROM
+						(select SensoryTriggerID, MigraineID FROM HasSensoryTriggers) as tab6
+						LEFT JOIN 
+						(select SensoryTriggerID as SensoryTriggerID, SensoryTriggerValue as SensoryTriggerValue from SensoryTrigger) as tab7
+						ON tab6.SensoryTriggerID = tab7.SensoryTriggerID) as tab5) as table3 ON table2.MigraineID = table3.MigraineID 
+						WHERE table2.MigraineStartTImestamp >= '$start'  
+						AND table2.MigraineStartTImestamp <=  '$end' 
+						AND table1.UserScreenName = '$user' 
+						AND SensoryTriggerValue != 'None'
+						GROUP BY SensoryTriggerValue) as table20
+
+
+
+
+
+						JOIN
+						(SELECT count(distinct(MigraineID)) as NumberOfMigraines
+						FROM
+						(SELECT table1.UserID as UserID, table2.MigraineID as MigraineID, table2.MigraineIntensityID as MigraineIntensityID
+
+						FROM 
+						(select UserID FROM Users where UserScreenName = '$user' ) as table1
+
+						LEFT JOIN 
+						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
+						ON table1.UserID = table2.UserID WHERE  MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3
+						) as table21) as table22 WHERE NumberofTriggers > 0 GROUP BY Triggers ORDER BY Percentage DESC
+
+						)
+
+
+
+						UNION ALL
+						(SELECT Triggers, NumberofTriggers, NumberOfMigraines, ROUND(((SUM(NumberofTriggers) / NumberOfMigraines) * 100),0) as Percentage
+
+						FROM
+
+						(SELECT table20.FoodTriggerItem as Triggers, table20.NumberFoodTriggerItem as NumberofTriggers, table21.NumberOfMigraines as NumberOfMigraines 
+						FROM
+						(SELECT table3.FoodTriggerItem as FoodTriggerItem, count(table3.FoodTriggerItem) as NumberFoodTriggerItem
+
+						FROM 
+						(select UserID, UserScreenName FROM Users where UserScreenName = '$user' ) as table1
+
+						LEFT JOIN
+						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp  from Migraine ) as table2 ON table1.UserID = table2.UserID 
+
+						JOIN
+						(SELECT tab5.MigraineID as MigraineID, FoodTriggerItem as FoodTriggerItem 
+						FROM 
+						(select tab6.MigraineID as MigraineID, tab7.FoodTriggerItem as FoodTriggerItem FROM
+						(select FoodTriggerID, MigraineID FROM HasFoodTriggers) as tab6
+						LEFT JOIN 
+						(select FoodTriggerID as FoodTriggerID, FoodTriggerItem as FoodTriggerItem from FoodDrinkTrigger) as tab7
+						ON tab6.FoodTriggerID = tab7.FoodTriggerID) as tab5) as table3 
+						ON table2.MigraineID = table3.MigraineID
+						WHERE table2.MigraineStartTImestamp >= '$start'  
+						AND table2.MigraineStartTImestamp <=  '$end' 
+						AND table1.UserScreenName = '$user' 
+						AND FoodTriggerItem != 'None'
+						GROUP BY FoodTriggerItem) as table20
+
+
+
+
+
+						JOIN
+						(SELECT count(distinct(MigraineID)) as NumberOfMigraines
+						FROM
+						(SELECT table1.UserID as UserID, table2.MigraineID as MigraineID, table2.MigraineIntensityID as MigraineIntensityID
+
+						FROM 
+						(select UserID FROM Users where UserScreenName = '$user' ) as table1
+
+						LEFT JOIN 
+						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
+						ON table1.UserID = table2.UserID WHERE  MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end') as tablle3
+						) as table21) as table22 WHERE NumberofTriggers > 0 GROUP BY Triggers ORDER BY Percentage DESC
+						)
+						ORDER BY PERCENTAGE DESC)  as TriggerTable
+
+						WHERE PERCENTAGE > 0 ORDER BY PERCENTAGE DESC
 
 						" 
 						))){
