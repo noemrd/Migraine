@@ -185,6 +185,14 @@ h2{
 
 /*Signup page Error*/
 #loginError{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:800px;
+	height:100px;
+	background-color: #F5F5DC;
+	margin-top:200px;
+	padding-left:20px;
 	color:red;
 }
 
