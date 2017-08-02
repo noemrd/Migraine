@@ -117,6 +117,42 @@
 					</div>
 				</form>
 		</div>
+		<br>
+		<div class="resultBoxesStyle2">
+					<h2>Delete Migraine Record</h2>
+					<form>
+						<label class="labelStyle" for="text">Please select an ID number</label>
+						<input type="number"><br>
+
+						<label class="labelStyle" for="text">Please select an ID number</label>
+						<select name="deleteID" style="width:50px">
+
+						<!--example from previous database course-->
+						<?php
+						if(!($stmt = $mysqli->prepare("SELECT Team_ID, Team_Name FROM Team"))){
+							echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+						}
+
+						if(!$stmt->execute()){
+							echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+						}
+						if(!$stmt->bind_result($Team_ID, $Team_Name)){
+							echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+						}
+						while($stmt->fetch()){
+							echo '<option value=" '. $Team_ID . ' "> ' . $Team_Name . '</option>\n';
+						}
+						$stmt->close();
+						?>
+
+						</select>
+
+						<div class="buttonAlign">
+							<input type="reset" class="rButtonStyle" id="rDataCancel" value="Cancel">
+							<button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data">Submit</button>
+						</div>
+					</form>
+		</div>
 
 		<div class="container-fluid text-center" id="triggerDiv">
 			<table class="table" id="triggersTable" align="center">
