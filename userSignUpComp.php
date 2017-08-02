@@ -23,7 +23,7 @@
 	?>
 	<body>
 		<div id="submitCompMsgBox2">
-			<h1 class="submitCompMsg">Thank you for signing up. To login please click <a href="landing.html">here</a><?php echo $_GET['user'] ?>.
+			<h1 class="submitCompMsg">Thank you for signing up! To login please click <a href="landing.html">here</a><?php echo $_GET['user'] ?>.
 		</div>
 	</body>
 </html>
