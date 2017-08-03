@@ -86,6 +86,13 @@ h2{
 	padding:12px;
 }
 
+.resultBoxesStyle2{
+	border: 3px solid black;
+	border-radius: 5px;
+	background-color: #F0E68C;
+	padding:12px;
+}
+
 .rButtonStyle{
 	border-radius: 5px; 
 	height: 50px; 
@@ -236,4 +243,59 @@ h2{
 	height:300px;
 	background-color: #F5F5DC;
 	margin-top:200px;
+}
+
+/*Home page after log in*/
+.smallBoxNewsTop{
+	height:95px;
+	width:45.455%;
+	float:left;
+	background-color:#FFFAFA;
+	border: 1px solid #e0e2e4;
+	margin-bottom:10px;
+}
+
+#marginFix{
+	margin-right:100px;
+}
+.smallBoxNewsBottom{
+	height:95px;
+	width:45.455%;
+	float:left;
+	background-color:#FFFAFA;
+	border: 1px solid #e0e2e4;
+	margin-bottom:10px;
+}
+
+.capImgSize{
+	height:93px;
+	width:40%;
+}
+
+#caption1{
+	float:right;
+	padding-right:60px;
+	padding-top:5px;
+}
+
+#caption2{
+	float:right;
+	padding-right:50px;
+	padding-top:5px;
+}
+
+#caption3{
+	float:right;
+	padding-right:28px;
+	padding-top:5px;
+}
+
+#caption4{
+	float:right;
+	padding-right:35px;
+	padding-top:5px;
+}
+
+#homeHR{
+	border-color:grey;
 }
