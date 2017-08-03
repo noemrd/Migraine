@@ -21,6 +21,8 @@
 		echo "Prepare failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	}
 
+	$user = $_POST['UserScreenName'];
+	
 	if( !($stmtUser->bind_param(
 							"sssss", 
 							$_POST['UserID'], 
@@ -35,6 +37,6 @@
 	if(!$stmtUser->execute()){
 		echo "Execute failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	} else {		
-		header("Refresh: 0, url=landing.html");
+		header("Refresh: 0, url=userSignUpComp.php?user=$user");
 	}
 ?>
