@@ -22,7 +22,7 @@
 	<body>
 		<div id="submitCompMsgBox">
 			<h1 class="submitCompMsg">Oops! An error has occured: <br><?php echo $_GET['error'] ?>. 
-			<br><br>Please go <a href="main.php?user=<?php echo $Get['user']?>">back</a> and fix errors, thanks.</h1>
+			<br><br>Please go <a href="main.php?user=<?php echo $_GET['user']?>">back</a> and fix errors, thanks.</h1>
 		</div>
 	</body>
 </html>
