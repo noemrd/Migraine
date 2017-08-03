@@ -1,21 +1,10 @@
-/******************************************
- * User Input
- *	ID
- *	First Name
- *  Last Name
- *	Screen Name
- *	Password
- ******************************************/
-
- 
  <?php
 
 	ini_set('display_errors', 'On');
 	$mysqli = new mysqli("oniddb.cws.oregonstate.edu","ghiraldj-db","v1bptepGowZ4t1OE","ghiraldj-db");
 
 	if(!$mysqli || $mysqli->connect_errno){
-		echo "Connection error " . $mysqli->connect_errno . " " . 
-		 $mysqli->connect_error;
+		echo "Connection error " . $mysqli->connect_errno . " " .  $mysqli->connect_error;
 	}
 
 	// Add user data to User Table
@@ -39,17 +28,13 @@
 							$_POST['UserLastName'], 
 							$_POST['UserScreenName'], 
 							$_POST['UserPassword'])))
-							{
-								
+							{								
 		echo "Bind failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	}
 
 	if(!$stmtUser->execute()){
 		echo "Execute failed: "  . $stmtUser->errno . " " . $stmtUser->error;
-
-	} else {
-		
+	} else {		
 		header("Refresh: 0, url=landing.html");
-		//echo "NO Errors when adding user.";
 	}
 ?>
