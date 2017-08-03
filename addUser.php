@@ -35,7 +35,7 @@
 	}
 
 	if(!$stmtUser->execute()){
-		echo "Execute failed: "  . $stmtUser->errno . " " . $stmtUser->error;
+		//echo "Execute failed: "  . $stmtUser->errno . " " . $stmtUser->error;
 	} else {		
 		header("Refresh: 0, url=userSignUpComp.php?user=$user");
 	}
