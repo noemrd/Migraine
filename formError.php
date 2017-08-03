@@ -21,7 +21,7 @@
 	
 	<body>
 		<div id="submitCompMsgBox">
-			<h1 class="submitCompMsg">Oops! An Error occured, <?php echo $_GET['errorStatement'] ?>. Please go back and fix errors, thanks.<h1>>
+			<h1 class="submitCompMsg">Oops! An Error occured, <?php echo $_GET['error'] ?>. <br>Please go back and fix errors, thanks.</h1>
 		</div>
 	</body>
 </html>
