@@ -255,18 +255,20 @@
 						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 					
-					if(!$stmt->bind_result( $MigraineID, $MigraineStartTImestamp, $MigraineEndTImestamp, 
+					if(!$stmt->bind_result( 
+														$MigraineID, $MigraineStartTImestamp, $MigraineEndTImestamp, 
 														$MigraineIntensityID, $HormoneTriggerValue, $WaterIntakeTriggerValue, 
 														$StressTriggerValue, $PhysicalActivityTriggerValue, $SleepTriggerValue, 
-														$FoodTriggerItem, $SensoryTriggerValue)){
+														$FoodTriggerItem, $SensoryTriggerValue 
+														)){
 						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 					}
 				  
 					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $MigraineID . "<tr>\n<td>\n" . $MigraineStartTImestamp . "<tr>\n<td>\n" . $MigraineEndTImestamp . 
-								"<tr>\n<td>\n" . $MigraineIntensityID . "<tr>\n<td>\n" . $HormoneTriggerValue . "<tr>\n<td>\n" . $WaterIntakeTriggerValue .
-								"<tr>\n<td>\n" . $StressTriggerValue . "<tr>\n<td>\n" . $PhysicalActivityTriggerValue . "<tr>\n<td>\n" . $SleepTriggerValue .
-								"<tr>\n<td>\n" . $FoodTriggerItem . "<tr>\n<td>\n" . $SensoryTriggerValue . "\n</td>\n<tr>\n";
+						echo "<tr>\n<td>\n" . $MigraineID . "<tr>\n<td>\n" . $MigraineStartTImestamp . "<tr>\n<td>\n" . $MigraineEndTImestamp . "<tr>\n<td>\n" .
+								 $MigraineIntensityID . "<tr>\n<td>\n" . $HormoneTriggerValue . "<tr>\n<td>\n" . $WaterIntakeTriggerValue . "<tr>\n<td>\n" .
+								 $StressTriggerValue . "<tr>\n<td>\n" . $PhysicalActivityTriggerValue . "<tr>\n<td>\n" . $SleepTriggerValue . "<tr>\n<td>\n" .
+								 $FoodTriggerItem . "<tr>\n<td>\n" . $SensoryTriggerValue . "\n</td>\n<tr>\n";
 					}
 
 					$stmt->close();
