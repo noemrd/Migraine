@@ -414,7 +414,7 @@
 	 *	to next html page.
 	 ******************************************/
 	if( $error ){
-		header("Refresh: 0, url=formError.html?error=$errorStatement");
+		header("Refresh: 0, url=formError.php?error=$errorStatement");
 	} else {
 		header("Refresh: 0, url=submitCompMsg.php?user=$screenName");
 	}
