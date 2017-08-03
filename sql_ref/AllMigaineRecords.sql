@@ -3,7 +3,7 @@
 -- ALL MIGRAINE RECORDS
 -- XXXXXXXXXXXXXXXXXXXXXXXXXX
 
-SELECT  tabl1.MigraineStartTImestamp, tabl1.MigraineEndTImestamp, tabl1.MigraineIntensityID, table11.HormoneTriggerValue, table12.WaterIntakeTriggerValue, table13.StressTriggerValue, table14.PhysicalActivityTriggerValue, table15.SleepTriggerValue, table16.FoodTriggerItem, table17.SensoryTriggerValue
+SELECT  tabl1.MigraineID, tabl1.MigraineStartTImestamp, tabl1.MigraineEndTImestamp, tabl1.MigraineIntensityID, table11.HormoneTriggerValue, table12.WaterIntakeTriggerValue, table13.StressTriggerValue, table14.PhysicalActivityTriggerValue, table15.SleepTriggerValue, table16.FoodTriggerItem, table17.SensoryTriggerValue
 FROM
 (
 

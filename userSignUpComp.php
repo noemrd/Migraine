@@ -22,12 +22,8 @@
 		$user = $_GET['user'];
 	?>
 	<body>
-		<div id="submitCompMsgBox">
-			<h1 class="submitCompMsg">Thank you for submitting the form, <?php echo $_GET['user'] ?>. To view the results, please click down below.<h1>
-			<p class="nameStyle"><a href="mostCommonTriggers.php">Most Common Triggers</a></p>
-			<p class="nameStyle"><a href="averageMigraineAttack.php">Average Migraine Attack</a></p>
-			<p class="nameStyle"><a href="averageMigraineDuration.php">Average Migraine Duration</a></p>
-			<p class="nameStyle"><a href="averageMigraineIntensity.php">Average Migraine Intensity</a></p>
+		<div id="submitCompMsgBox2">
+			<h1 class="submitCompMsg">Thank you for signing up! To login please click <a href="landing.html">here </a><?php echo $_GET['user'] ?>.
 		</div>
 	</body>
 </html>

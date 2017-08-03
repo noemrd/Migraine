@@ -1,5 +1,10 @@
 
 <script>
+     function highlight(id1, id2){
+     		$(id1).css("background-color", "yellow");
+     		$(id2).css("background-color", "yellow");
+     }
+
      function compareDates() {     
          var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
          var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
@@ -39,13 +44,17 @@
             endDate.getTime() == startDate.getTime() ) 
             { 
              alert ("End Date is same as Start Date");
+             highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
              return false;
         }
         else {
              alert ("End Date is before Start Date");
+             highlight("#MigraineEndTimestamp","#MigraineEndTimestamp");
              return false;
         }
      }
+
+
 </script>
 
 <!DOCTYPE html>
@@ -63,6 +72,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -85,6 +95,7 @@
 							<li class="dropColor"><a href="averageMigraineAttack.php?user=<?php echo $_GET['user'] ?>">Average Migraine Attack</a></li>
 							<li class="dropColor"><a href="averageMigraineDuration.php?user=<?php echo $_GET['user'] ?>">Average Migraine Duration</a></li>
 							<li class="dropColor"><a href="averageMigraineIntensity.php?user=<?php echo $_GET['user'] ?>">Average Migraine Intensity</a></li>
+							<li class="dropColor"><a href="allMigraineRecords.php?user=<?php echo $_GET['user'] ?>">All Migraine Records</a></li>
 						</ul>
 					</li>							
 				</ul>
@@ -210,16 +221,15 @@
 							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to strong smells">Exposed to strong smells<br>
 							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to temperature change">Exposed to temperature change<br>
 							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="Exposed to pressure change">Exposed to pressure change<br>						
-							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="None">None<br>					</div>
-
-                                     
+							<input type="checkbox" name="SensoryTriggerValue[]" id="SensoryTriggerValue" value="None">None<br>					
+						</div>                   
 						
 				</div>
 
 				<div class="buttonAlign">
 
 					<input type="reset" class="buttonStyle" id="migraineDataCancel" value="Cancel">
-					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data" onclick="window.location='main.php'">Submit</button>
+					<button type="submit" class="buttonStyle" id="migraineDataSubmit" value="Add Migraine Data">Submit</button>
 				</div>
 
 			</form>
