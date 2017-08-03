@@ -120,36 +120,45 @@
 		<br>
 		<div class="resultBoxesStyle2">
 					<h2>Delete Migraine Record</h2>
-					<form>
+					<form class="form-horizontal" role="form" name="migraineForm" method="post">
 						<label class="labelStyle" for="text">Please select an ID number</label>
-						<input type="number"><br>
+						<input type="number" id="deleteID"><br>
 
+						<!--
 						<label class="labelStyle" for="text">Please select an ID number</label>
 						<select name="deleteID" style="width:50px">
+						-->
 
-						<!--example from previous database course-->
 						<?php
-						if(!($stmt = $mysqli->prepare("SELECT Team_ID, Team_Name FROM Team"))){
-							echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
-						}
+							
+							if( isset($_POST['deleteID']) ){															
+								$id = intval($_POST['deleteID']);
+								
+								if(!($stmt = $mysqli->prepare("
+																				DELETE FROM Migraine Where MigraineID = '$id';
+																				DELETE FROM HasFoodTriggers Where MigraineID = '$id';
+																				DELETE FROM HasSensoryTriggers Where MigraineID = '$id';
+																				DELETE FROM HasFoodTriggers Where MigraineID IS NULL;
+																				DELETE FROM HasSensoryTriggers Where MigraineID IS NULL;
+																				"
+																			))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
 
-						if(!$stmt->execute()){
-							echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-						}
-						if(!$stmt->bind_result($Team_ID, $Team_Name)){
-							echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-						}
-						while($stmt->fetch()){
-							echo '<option value=" '. $Team_ID . ' "> ' . $Team_Name . '</option>\n';
-						}
-						$stmt->close();
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}								
+								$stmt->close();															
+							}
+							
 						?>
 
 						</select>
 
 						<div class="buttonAlign">
 							<input type="reset" class="rButtonStyle" id="rDataCancel" value="Cancel">
-							<button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data">Submit</button>
+							<!-- <button type="submit" class="rButtonStyle" id="rDataSubmit" value="Add Migraine Data">Submit</button> -->
+							<button type="submit" class="rButtonStyle" id="rDataDelete" value="Remove Migraine Data">Delete</button>
 						</div>
 					</form>
 		</div>
@@ -160,120 +169,120 @@
 					<h2 id="triggerName">All Migraine Records</h2>
 				</div>
 
-			<tr>
-				<th class="thStyle">Migraine ID</th>
-				<th class="thStyle">Start Timestamp</th>
-				<th class="thStyle">End Timestamp</th>
-				<th class="thStyle">Migraine Intensity ID</th>
-				<th class="thStyle">Hormone Trigger Value</th>
-				<th class="thStyle">Water Intake Trigger Value</th>
-				<th class="thStyle">Stress Trigger Value</th>
-				<th class="thStyle">Physical Activity Trigger Value</th>
-				<th class="thStyle">Sleep Trigger Value</th>
-				<th class="thStyle">Food Trigger Value</th>
-				<th class="thStyle">Sensory Trigger Value</th>
-			</tr>
-			
-			<!-- MySqli statements for filling table -->
-		
-			<?php
-				if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
-					
-					$user = $_POST['UserScreenName'];	  
-					$start = $_POST['MigraineStartTimestamp'];
-					$end = $_POST['MigraineEndTimestamp'];			  
-			  
-					if(!($stmt = $mysqli->prepare(
-						"						
-						SELECT  tabl1.MigraineID, tabl1.MigraineStartTImestamp, tabl1.MigraineEndTImestamp, tabl1.MigraineIntensityID, table11.HormoneTriggerValue, table12.WaterIntakeTriggerValue, table13.StressTriggerValue, table14.PhysicalActivityTriggerValue, table15.SleepTriggerValue, table16.FoodTriggerItem, table17.SensoryTriggerValue
-						FROM
-						(
+				<tr>
+					<th class="thStyle">Migraine ID</th>
+					<th class="thStyle">Start Timestamp</th>
+					<th class="thStyle">End Timestamp</th>
+					<th class="thStyle">Migraine Intensity ID</th>
+					<th class="thStyle">Hormone Trigger Value</th>
+					<th class="thStyle">Water Intake Trigger Value</th>
+					<th class="thStyle">Stress Trigger Value</th>
+					<th class="thStyle">Physical Activity Trigger Value</th>
+					<th class="thStyle">Sleep Trigger Value</th>
+					<th class="thStyle">Food Trigger Value</th>
+					<th class="thStyle">Sensory Trigger Value</th>
+				</tr>
+				
+					<!-- MySqli statements for filling table -->
+				
+					<?php
+						if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
+							
+							$user = $_POST['UserScreenName'];	  
+							$start = $_POST['MigraineStartTimestamp'];
+							$end = $_POST['MigraineEndTimestamp'];			  
+					  
+							if(!($stmt = $mysqli->prepare(
+								"						
+								SELECT  tabl1.MigraineID, tabl1.MigraineStartTImestamp, tabl1.MigraineEndTImestamp, tabl1.MigraineIntensityID, table11.HormoneTriggerValue, table12.WaterIntakeTriggerValue, table13.StressTriggerValue, table14.PhysicalActivityTriggerValue, table15.SleepTriggerValue, table16.FoodTriggerItem, table17.SensoryTriggerValue
+								FROM
+								(
 
-						 SELECT MigraineID, MigraineStartTImestamp, MigraineEndTImestamp, MigraineIntensityID, SleepTriggerID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID,HormoneTriggerID  FROM
+								 SELECT MigraineID, MigraineStartTImestamp, MigraineEndTImestamp, MigraineIntensityID, SleepTriggerID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID,HormoneTriggerID  FROM
 
-						(SELECT table1.UserID as UserID, table2.MigraineID as MigraineID,  table2.MigraineStartTImestamp as MigraineStartTImestamp, table2.MigraineEndTImestamp as MigraineEndTImestamp,  table2.MigraineIntensityID as MigraineIntensityID, table2.WaterIntakeTriggerID as WaterIntakeTriggerID, table2.StressTriggerID as StressTriggerID, table2.PhysicalActivityTriggerID as PhysicalActivityTriggerID, table2.SleepTriggerID as SleepTriggerID, table2.HormoneTriggerID as HormoneTriggerID 
+								(SELECT table1.UserID as UserID, table2.MigraineID as MigraineID,  table2.MigraineStartTImestamp as MigraineStartTImestamp, table2.MigraineEndTImestamp as MigraineEndTImestamp,  table2.MigraineIntensityID as MigraineIntensityID, table2.WaterIntakeTriggerID as WaterIntakeTriggerID, table2.StressTriggerID as StressTriggerID, table2.PhysicalActivityTriggerID as PhysicalActivityTriggerID, table2.SleepTriggerID as SleepTriggerID, table2.HormoneTriggerID as HormoneTriggerID 
 
-						FROM 
-						(select UserID FROM Users where UserScreenName = '$user' ) as table1
+								FROM 
+								(select UserID FROM Users where UserScreenName = '$user' ) as table1
 
-						LEFT JOIN 
-						(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp, MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
-						ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end'
-						) as tablle3) as tabl1
+								LEFT JOIN 
+								(select MigraineID, UserID, MigraineStartTImestamp, MigraineEndTImestamp, MigraineIntensityID, WaterIntakeTriggerID, StressTriggerID, PhysicalActivityTriggerID, SleepTriggerID, HormoneTriggerID from Migraine ) as table2 
+								ON table1.UserID = table2.UserID WHERE MigraineStartTImestamp >= '$start' AND MigraineStartTImestamp <= '$end'
+								) as tablle3) as tabl1
 
-						LEFT JOIN
-						(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger ) as table11
-						ON tabl1.HormoneTriggerID = table11.HormoneTriggerID 
-
-
-						LEFT JOIN
-						(select WaterIntakeTriggerID as WaterIntakeTriggerID, WaterIntakeTriggerValue as WaterIntakeTriggerValue from WaterIntakeTrigger) as table12
-						ON tabl1.WaterIntakeTriggerID = table12.WaterIntakeTriggerID 
+								LEFT JOIN
+								(select HormoneTriggerID as HormoneTriggerID, HormoneTriggerValue as HormoneTriggerValue from HormoneTrigger ) as table11
+								ON tabl1.HormoneTriggerID = table11.HormoneTriggerID 
 
 
-						LEFT JOIN
-						(select StressTriggerID as StressTriggerID, StressTriggerValue as StressTriggerValue from StressTrigger ) as table13
-						ON tabl1.StressTriggerID = table13.StressTriggerID 
+								LEFT JOIN
+								(select WaterIntakeTriggerID as WaterIntakeTriggerID, WaterIntakeTriggerValue as WaterIntakeTriggerValue from WaterIntakeTrigger) as table12
+								ON tabl1.WaterIntakeTriggerID = table12.WaterIntakeTriggerID 
 
-						LEFT JOIN
-						(select PhysicalActivityTriggerID as PhysicalActivityTriggerID, PhysicalActivityTriggerValue as PhysicalActivityTriggerValue from PhysicalActivityTrigger) as table14
-						ON tabl1.PhysicalActivityTriggerID = table14.PhysicalActivityTriggerID 
 
-						LEFT JOIN
-						(select SleepTriggerID as SleepTriggerID, SleepTriggerValue as SleepTriggerValue from SleepTrigger) as table15
-						ON tabl1.SleepTriggerID = table15.SleepTriggerID 
+								LEFT JOIN
+								(select StressTriggerID as StressTriggerID, StressTriggerValue as StressTriggerValue from StressTrigger ) as table13
+								ON tabl1.StressTriggerID = table13.StressTriggerID 
 
-						LEFT JOIN
-						(select MigraineID, FoodTriggerItem
-						FROM
-						(SELECT tab2.MigraineID as MigraineID, GROUP_CONCAT(FoodTriggerItem SEPARATOR ' ,  ') as FoodTriggerItem  
-						FROM 
-						(select tab3.MigraineID as MigraineID, tab4.FoodTriggerItem as FoodTriggerItem FROM
-						(select FoodTriggerID, MigraineID FROM HasFoodTriggers) as tab3
-						LEFT JOIN 
-						(select FoodTriggerID as FoodTriggerID, FoodTriggerItem as FoodTriggerItem from FoodDrinkTrigger) as tab4
-						ON tab3.FoodTriggerID = tab4.FoodTriggerID) as tab2 GROUP BY MigraineID) as tab4 ) as table16
-						ON tabl1.MigraineID = table16.MigraineID 
+								LEFT JOIN
+								(select PhysicalActivityTriggerID as PhysicalActivityTriggerID, PhysicalActivityTriggerValue as PhysicalActivityTriggerValue from PhysicalActivityTrigger) as table14
+								ON tabl1.PhysicalActivityTriggerID = table14.PhysicalActivityTriggerID 
 
-						LEFT JOIN
-						(select MigraineID, SensoryTriggerValue
-						FROM
-						(SELECT tab5.MigraineID as MigraineID,  GROUP_CONCAT(SensoryTriggerValue SEPARATOR ' ,  ') as SensoryTriggerValue 
-						FROM 
-						(select tab6.MigraineID as MigraineID, tab7.SensoryTriggerValue as SensoryTriggerValue FROM
-						(select SensoryTriggerID, MigraineID FROM HasSensoryTriggers) as tab6
-						LEFT JOIN 
-						(select SensoryTriggerID as SensoryTriggerID, SensoryTriggerValue as SensoryTriggerValue from SensoryTrigger) as tab7
-						ON tab6.SensoryTriggerID = tab7.SensoryTriggerID) as tab5 GROUP BY MigraineID) as tab7 ) as table17
-						ON tabl1.MigraineID = table17.MigraineID
-						" 
-						))){
-						echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
-					}
-				  
-					if(!$stmt->execute()){
-						echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-					}
-					
-					if(!$stmt->bind_result( 
-														$MigraineID, $MigraineStartTImestamp, $MigraineEndTImestamp, 
-														$MigraineIntensityID, $HormoneTriggerValue, $WaterIntakeTriggerValue, 
-														$StressTriggerValue, $PhysicalActivityTriggerValue, $SleepTriggerValue, 
-														$FoodTriggerItem, $SensoryTriggerValue 
-														)){
-						echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-					}
-				  
-					while($stmt->fetch()){
-						echo "<tr>\n<td>\n" . $MigraineID . "<tr>\n<td>\n" . $MigraineStartTImestamp . "<tr>\n<td>\n" . $MigraineEndTImestamp . "<tr>\n<td>\n" .
-								 $MigraineIntensityID . "<tr>\n<td>\n" . $HormoneTriggerValue . "<tr>\n<td>\n" . $WaterIntakeTriggerValue . "<tr>\n<td>\n" .
-								 $StressTriggerValue . "<tr>\n<td>\n" . $PhysicalActivityTriggerValue . "<tr>\n<td>\n" . $SleepTriggerValue . "<tr>\n<td>\n" .
-								 $FoodTriggerItem . "<tr>\n<td>\n" . $SensoryTriggerValue . "\n</td>\n<tr>\n";
-					}
+								LEFT JOIN
+								(select SleepTriggerID as SleepTriggerID, SleepTriggerValue as SleepTriggerValue from SleepTrigger) as table15
+								ON tabl1.SleepTriggerID = table15.SleepTriggerID 
 
-					$stmt->close();
-				}
-			?>
+								LEFT JOIN
+								(select MigraineID, FoodTriggerItem
+								FROM
+								(SELECT tab2.MigraineID as MigraineID, GROUP_CONCAT(FoodTriggerItem SEPARATOR ' ,  ') as FoodTriggerItem  
+								FROM 
+								(select tab3.MigraineID as MigraineID, tab4.FoodTriggerItem as FoodTriggerItem FROM
+								(select FoodTriggerID, MigraineID FROM HasFoodTriggers) as tab3
+								LEFT JOIN 
+								(select FoodTriggerID as FoodTriggerID, FoodTriggerItem as FoodTriggerItem from FoodDrinkTrigger) as tab4
+								ON tab3.FoodTriggerID = tab4.FoodTriggerID) as tab2 GROUP BY MigraineID) as tab4 ) as table16
+								ON tabl1.MigraineID = table16.MigraineID 
+
+								LEFT JOIN
+								(select MigraineID, SensoryTriggerValue
+								FROM
+								(SELECT tab5.MigraineID as MigraineID,  GROUP_CONCAT(SensoryTriggerValue SEPARATOR ' ,  ') as SensoryTriggerValue 
+								FROM 
+								(select tab6.MigraineID as MigraineID, tab7.SensoryTriggerValue as SensoryTriggerValue FROM
+								(select SensoryTriggerID, MigraineID FROM HasSensoryTriggers) as tab6
+								LEFT JOIN 
+								(select SensoryTriggerID as SensoryTriggerID, SensoryTriggerValue as SensoryTriggerValue from SensoryTrigger) as tab7
+								ON tab6.SensoryTriggerID = tab7.SensoryTriggerID) as tab5 GROUP BY MigraineID) as tab7 ) as table17
+								ON tabl1.MigraineID = table17.MigraineID
+								" 
+								))){
+								echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+							}
+						  
+							if(!$stmt->execute()){
+								echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+							}
+							
+							if(!$stmt->bind_result( 
+																$MigraineID, $MigraineStartTImestamp, $MigraineEndTImestamp, 
+																$MigraineIntensityID, $HormoneTriggerValue, $WaterIntakeTriggerValue, 
+																$StressTriggerValue, $PhysicalActivityTriggerValue, $SleepTriggerValue, 
+																$FoodTriggerItem, $SensoryTriggerValue 
+																)){
+								echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+							}
+						  
+							while($stmt->fetch()){
+								echo "<tr>\n<td>\n" . $MigraineID . "\n</td>\n<td>\n" . $MigraineStartTImestamp . "\n</td>\n<td>\n" . $MigraineEndTImestamp . "\n</td>\n<td>\n" .
+										 $MigraineIntensityID . "\n</td>\n<td>\n" . $HormoneTriggerValue . "\n</td>\n<td>\n" . $WaterIntakeTriggerValue . "\n</td>\n<td>\n" .
+										 $StressTriggerValue . "\n</td>\n<td>\n" . $PhysicalActivityTriggerValue . "\n</td>\n<td>\n" . $SleepTriggerValue . "\n</td>\n<td>\n" .
+										 $FoodTriggerItem . "\n</td>\n<td>\n" . $SensoryTriggerValue . "\n</td>\n<tr>\n";
+							}
+
+							$stmt->close();
+						}
+					?>
 			</table>
 		</div>		
 	</body>
