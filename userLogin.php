@@ -34,13 +34,6 @@
 	} else {
 		header("Refresh: 0, url=main.php?user=$user"); // User is Logged in proceed to next page
 	}
-	
-	//while($stmt->fetch()){
-	//	echo "User First Name: " . $UserFirstName . PHP_EOL;
-	//	echo "User Last Name: " . $UserLastName . PHP_EOL;
-	//	echo "User Screen Name: " . $UserScreenName . PHP_EOL;
-	//	echo "User Password: " . $UserPassword . PHP_EOL;
-	//}
-	
+		
 	$stmt->close();
 ?>
