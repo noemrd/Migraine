@@ -24,7 +24,7 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand" href="landing.html" >Home</a></li>
+          <li><a class="navbar-brand" href="landing.html" >Migraine Tracker</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
