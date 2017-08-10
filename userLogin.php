@@ -15,7 +15,8 @@
 	if(!($stmt = $mysqli->prepare("
 		SELECT UserFirstName, UserLastName, UserScreenName, UserPassword
 		FROM Users
-		WHERE (Users.UserPassword = '$passwordVar')" ))){
+		WHERE (Users.UserPassword = '$passwordVar')
+		AND	WHERE (Users.UserScreenName = '$user'"))){
 		echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
