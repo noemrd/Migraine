@@ -1,16 +1,34 @@
 
 <script>
-     function highlight(id1, id2){
+	function checkLength(){		
+		if(document.getElementById("MigraineStartTimestamp").value.length !=20){
+			alert("Please enter start date in correct format YYYY-MM-DD HH::MM:SS");
+			return false;
+		}
+		else if(document.getElementById("MigraineStartTimestamp").value.length !=20){
+			alert("Please enter start date in correct format YYYY-MM-DD HH::MM:SS");
+			return false;
+		}
+		return true;
+	}
+
+    function highlight(id1, id2){
      		$(id1).css("background-color", "yellow");
      		$(id2).css("background-color", "yellow");
      }
 
-     function compareDates() {     
-         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
-         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-         console.log(endDate.getMonth);
-         console.log(startDate.getMonth);
-         if ( endDate.getFullYear() >= startDate.getFullYear() &&
+    function compareDates() {     
+    	console.log(document.getElementById("MigraineStartTimestamp").value.length);
+    	console.log(document.getElementById("MigraineEndTimestamp").value.length);
+
+    	if(!checkLength()){
+    		return false;
+    	}
+
+        var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
+        var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
+
+        if ( endDate.getFullYear() >= startDate.getFullYear() &&
 	            endDate.getMonth() > startDate.getMonth() &&
 	       		(endDate.getDate() > startDate.getDate() || endDate.getDate() < startDate.getDate()) &&
 		        (endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
@@ -53,7 +71,6 @@
              return false;
         }
      }
-
 
 </script>
 
