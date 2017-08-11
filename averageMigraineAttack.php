@@ -100,7 +100,7 @@
 						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
 						
 						
-						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
+						Please enter dates in the following format YYYY-MM-DD HH:MM:SS. For example, 2017-07-02 14:35:10
 						<br>
 
 
