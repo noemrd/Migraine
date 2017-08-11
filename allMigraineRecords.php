@@ -26,8 +26,8 @@
 </script>
 
 
-
 <?php
+
 	ini_set('display_errors', 'On');
 	//Connects to the database
 	$mysqli = new mysqli("oniddb.cws.oregonstate.edu","ghiraldj-db","v1bptepGowZ4t1OE","ghiraldj-db");
@@ -35,6 +35,7 @@
 	if($mysqli->connect_errno){
 	  echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}
+	
 ?>
 
 
@@ -122,35 +123,62 @@
 					<h2>Delete Migraine Record</h2>
 					<form class="form-horizontal" role="form" name="migraineForm" method="post">
 						<label class="labelStyle" for="text">Please select an ID number</label>
-						<input type="number" id="deleteID"><br>
+						<input type="number" id="deleteID" name="deleteID"><br>
 
 						<!--
 						<label class="labelStyle" for="text">Please select an ID number</label>
-						<select name="deleteID" style="width:50px">
+						<select name="deleteID" style="width:50px">						
 						-->
 
-						<?php
-							
+						<?php							
 							if( isset($_POST['deleteID']) ){															
-								$id = intval($_POST['deleteID']);
+								$id = ($_POST['deleteID']);
 								
-								if(!($stmt = $mysqli->prepare("
-																				DELETE FROM Migraine Where MigraineID = '$id';
-																				DELETE FROM HasFoodTriggers Where MigraineID = '$id';
-																				DELETE FROM HasSensoryTriggers Where MigraineID = '$id';
-																				DELETE FROM HasFoodTriggers Where MigraineID IS NULL;
-																				DELETE FROM HasSensoryTriggers Where MigraineID IS NULL;
-																				"
-																			))){
+								$del = "DELETE FROM Migraine WHERE MigraineID = '$id';";
+								if(!($stmt = $mysqli->prepare( $del ))){
 									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 								}
-
 								if(!$stmt->execute()){
 									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-								}								
-								$stmt->close();															
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasFoodTriggers Where MigraineID = '$id';";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasSensoryTriggers Where MigraineID = '$id';";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasFoodTriggers Where MigraineID = 'NULL';";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasSensoryTriggers Where MigraineID = 'NULL';";								
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();													
 							}
-							
 						?>
 
 						</select>
@@ -186,6 +214,7 @@
 					<!-- MySqli statements for filling table -->
 				
 					<?php
+					
 						if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
 							
 							$user = $_POST['UserScreenName'];	  
