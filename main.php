@@ -1,12 +1,12 @@
 
 <script>
 	function checkLength(){		
-		if(document.getElementById("MigraineStartTimestamp").value.length !=20){
-			alert("Please enter start date in correct format YYYY-MM-DD HH::MM:SS");
+		if(document.getElementById("MigraineStartTimestamp").value.length !=19){
+			alert("Please enter start date in correct format YYYY-MM-DD HH:MM:SS");
 			return false;
 		}
-		else if(document.getElementById("MigraineStartTimestamp").value.length !=20){
-			alert("Please enter start date in correct format YYYY-MM-DD HH::MM:SS");
+		else if(document.getElementById("MigraineStartTimestamp").value.length !=19){
+			alert("Please enter start date in correct format YYYY-MM-DD HH:MM:SS");
 			return false;
 		}
 		return true;
