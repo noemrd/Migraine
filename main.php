@@ -1,78 +1,4 @@
-
-<script>
-	function checkLength(){		
-		if(document.getElementById("MigraineStartTimestamp").value.length !=19){
-			alert("Please enter start date in correct format YYYY-MM-DD HH:MM:SS");
-			return false;
-		}
-		else if(document.getElementById("MigraineStartTimestamp").value.length !=19){
-			alert("Please enter start date in correct format YYYY-MM-DD HH:MM:SS");
-			return false;
-		}
-		return true;
-	}
-
-    function highlight(id1, id2){
-     		$(id1).css("background-color", "yellow");
-     		$(id2).css("background-color", "yellow");
-     }
-
-    function compareDates() {     
-    	console.log(document.getElementById("MigraineStartTimestamp").value.length);
-    	console.log(document.getElementById("MigraineEndTimestamp").value.length);
-
-    	if(!checkLength()){
-    		return false;
-    	}
-
-        var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
-        var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-
-        if ( endDate.getFullYear() >= startDate.getFullYear() &&
-	            endDate.getMonth() > startDate.getMonth() &&
-	       		(endDate.getDate() > startDate.getDate() || endDate.getDate() < startDate.getDate()) &&
-		        (endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
-		    ){
-		 			return true;
-         }
-         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-	            endDate.getMonth() > startDate.getMonth() &&
-		        endDate.getDate() == startDate.getDate() && 
-		        endDate.getTime() > startDate.getTime()
-		    ){
-		 			return true;
-         }
-         else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() == startDate.getMonth() &&
-		            	endDate.getDate() > startDate.getDate() &&
-			            	(endDate.getTime() > startDate.getTime() || endDate.getTime() < startDate.getTime() || endDate.getTime() == startDate.getTime())
-		        ){
-		        	return true;	
-        } 
-        else if ( endDate.getFullYear() >= startDate.getFullYear() &&
-		            endDate.getMonth() == startDate.getMonth() &&
-		            endDate.getDate() == startDate.getDate() && 
-		            endDate.getTime() > startDate.getTime()     
-		        ){
-		        	return true;	
-        } 
-        else if ( endDate.getFullYear() == startDate.getFullYear() &&
-            endDate.getMonth() == startDate.getMonth() &&
-            endDate.getDate() == startDate.getDate() &&
-            endDate.getTime() == startDate.getTime() ) 
-            { 
-             alert ("End Date is same as Start Date");
-             highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
-             return false;
-        }
-        else {
-             alert ("End Date is before Start Date");
-             highlight("#MigraineEndTimestamp","#MigraineEndTimestamp");
-             return false;
-        }
-     }
-
-</script>
+<script src="mainScript.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +29,6 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php?user=<?php echo $_GET['user'] ?>">Migraine Form</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results<span class="caret"></span></a>
