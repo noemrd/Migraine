@@ -101,7 +101,7 @@
 						<select name="deleteID" style="width:50px">						
 						-->
 
-						<?php							
+						<?php					
 							if( isset($_POST['deleteID']) ){															
 								$id = ($_POST['deleteID']);
 								
@@ -169,17 +169,17 @@
 				</div>
 
 				<tr>
-					<th class="thStyle">Migraine ID</th>
-					<th class="thStyle">Start Timestamp</th>
-					<th class="thStyle">End Timestamp</th>
-					<th class="thStyle">Migraine Intensity ID</th>
-					<th class="thStyle">Hormone Trigger Value</th>
-					<th class="thStyle">Water Intake Trigger Value</th>
-					<th class="thStyle">Stress Trigger Value</th>
-					<th class="thStyle">Physical Activity Trigger Value</th>
-					<th class="thStyle">Sleep Trigger Value</th>
-					<th class="thStyle">Food Trigger Value</th>
-					<th class="thStyle">Sensory Trigger Value</th>
+					<th class="thStyle2">Migraine <br>ID</th>
+					<th class="thStyle2">Start <br>Timestamp</th>
+					<th class="thStyle2">End <br>Timestamp</th>
+					<th class="thStyle2">Migraine <br>Intensity <br>ID</th>
+					<th class="thStyle2">Hormone <br>Trigger <br>Value</th>
+					<th class="thStyle2">Water <br>Intake <br>Trigger Value</th>
+					<th class="thStyle2">Stress <br>Trigger <br>Value</th>
+					<th class="thStyle2">Physical <br>Activity <br>Trigger<br> Value</th>
+					<th class="thStyle2">Sleep <br>Trigger <br>Value</th>
+					<th class="thStyle2">Food <br>Trigger <br>Value</th>
+					<th class="thStyle2">Sensory <br>Trigger <br>Value</th>
 				</tr>
 				
 					<!-- MySqli statements for filling table -->
