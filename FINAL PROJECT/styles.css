@@ -1,0 +1,317 @@
+/*Form page(main.php)*/
+body{
+	max-width: 1100px;
+	margin: auto;
+	background-color: #f0efef;
+}
+
+.navbar-default {
+	background-color: #90EE90;
+	background-image: none;
+	font-weight: bold;
+	border: green;
+}
+
+/*Citation: https://stackoverflow.com/questions/21854138/changing-the-background-for-bootstrap-dropdown-a-on-hover*/
+.navbar .navbar-nav > li > a:hover,
+.dropdown-menu> li > a:hover,
+.dropdown-menu{
+  background-color: #d5f4e6;
+  background-image:none;
+}
+
+.dropColor{
+	background-color:#90EE90;
+}
+
+.dropdown-menu{
+	background-color:#90EE90;
+}
+
+/*Citation: https://stackoverflow.com/questions/11288998/how-to-change-color-of-opened-bootstrap-dropdown-toggle (Bimal Das's answer)*/
+.dropdown-toggle:active, .open .dropdown-toggle {
+        background:#d5f4e6 !important; 
+    }
+
+h3{
+	color: #86af49;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.labelStyle{
+    width: 200px;
+    text-align: right;
+}
+
+.checkboxAlign{
+	margin-left: 205px;
+}
+.formStyle{
+	border: 3px solid black;
+	border-radius: 5px;
+	background-color: #deeaee;
+	padding:15px;
+}
+.buttonStyle{
+	border-radius: 5px; 
+	height: 50px; 
+	width: 100px;
+	font-weight: bold;
+}
+
+#migraineDataCancel{
+	background-color: #c94c4c;
+}
+
+#migraineDataSubmit{
+	background-color: #b7d7e8;
+}
+
+.buttonAlign{
+	margin-left: 205px;
+}
+
+/*Form Completion message file (submitCompMsg.php)*/
+.submitCompMsg{
+	color:blue;
+	padding-top:65px;
+	padding-left:20px;
+}
+
+#submitCompMsgBox{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:850px;
+	height:600px;
+	background-color: #F5F5DC;
+	margin-top:200px;
+}
+
+.nameStyle{
+	margin-left:22px;
+	font-size:25px;
+}
+
+.anotherRecord{
+	color: brown;
+	padding-top:85px;
+	padding-left:20px;
+}
+/*Results page(allMigrainerecords.php, averageMigraineAttack.php, averageMigraineDuration.php, averageMigrainteIntesntiy.php, mostCommonTriggers.php)*/
+h2{
+	color: #b8a9c9;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.resultBoxesStyle{
+	border: 3px solid black;
+	border-radius: 5px;
+	background-color: #d5f4e6;
+	padding:12px;
+}
+
+.resultBoxesStyle2{
+	border: 3px solid black;
+	border-radius: 5px;
+	background-color: #F0E68C;
+	padding:12px;
+}
+
+.rButtonStyle{
+	border-radius: 5px; 
+	height: 50px; 
+	width: 100px;
+	font-weight: bold;
+}
+
+#rDataCancel{
+	background-color: #c94c4c;
+}
+
+#rDataSubmit{
+	background-color: #b7d7e8;
+}
+
+/*Results table(allMigrainerecords.php, averageMigraineAttack.php, averageMigraineDuration.php, averageMigrainteIntesntiy.php, mostCommonTriggers.php)*/
+#triggerDiv{
+	margin-top: 10px;
+	border: 3px solid black;
+	height: auto;
+	width: 1100px;
+	border-radius: 5px;
+	background-color: #fbefcc;
+}
+
+#triggersTable, table, th, td{
+	background-color: #cfe0e8;
+	border: 3px solid #96897f;
+}
+
+.thStyle{
+	font-weight:bold;
+	font-size:24px;
+	color:#f18973;
+}
+
+.thStyle2{
+	font-weight:bold;
+	font-size:16px;
+	color:#f18973;
+}
+/*Login page (landing.html)*/
+.jumbotron_title{
+	font-size:60px; 
+	color:#003366;
+}
+
+#logInBox{
+	margin-top:-525px; 
+	margin-left:245px
+}
+
+.header-text{
+	color:#003366;
+}
+
+#signUpTag{
+	margin-top:8px;
+}
+
+#hrLineAlign{
+	margin-top:300px;
+}
+
+#hrFooter{
+	border-color:grey;
+}
+
+#copyRight{
+	margin-top:-10px;
+}
+
+/*Signup page(userSignUp.php)*/
+.signUpBox{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:40%;
+	height:200px;
+	background-color: #deeaee;
+
+}
+.signUpStyle{
+	width: 170px;
+    text-align: right;
+}
+
+#fnID{
+	padding-top:40px;
+}
+
+.buttonCenter{
+	text-align:center;
+	padding-top:4px;
+}
+
+
+/*About Us(aboutUs.html)*/
+#aboutUsMessageBox{
+	border: 3px solid black;
+	height: 380px;
+	width: 1100px;
+	border-radius: 5px;
+	background-color: #c6bcb6;
+}
+
+.aboutUsMessage{
+	font-size:17px;
+	padding-top:8px;
+	padding-right:10px;
+	padding-left:10px;
+	text-indent:30px;
+}
+
+/*Home page after logging in (home.php)*/
+.smallBoxNewsTop{
+	height:95px;
+	width:45.455%;
+	float:left;
+	background-color:#FFFAFA;
+	border: 1px solid #e0e2e4;
+	margin-bottom:10px;
+}
+
+#marginFix{
+	margin-right:100px;
+}
+.smallBoxNewsBottom{
+	height:95px;
+	width:45.455%;
+	float:left;
+	background-color:#FFFAFA;
+	border: 1px solid #e0e2e4;
+	margin-bottom:10px;
+}
+
+.capImgSize{
+	height:93px;
+	width:40%;
+}
+
+#caption1{
+	float:right;
+	padding-right:60px;
+	padding-top:5px;
+}
+
+#caption2{
+	float:right;
+	padding-right:50px;
+	padding-top:5px;
+}
+
+#caption3{
+	float:right;
+	padding-right:28px;
+	padding-top:5px;
+}
+
+#caption4{
+	float:right;
+	padding-right:35px;
+	padding-top:5px;
+}
+
+#homeHR{
+	border-color:grey;
+}
+
+
+/*Signup page Error(userLoginError.html)*/
+#loginError{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:800px;
+	height:100px;
+	background-color: #F5F5DC;
+	margin-top:200px;
+	padding-left:20px;
+	color:red;
+}
+
+
+/*userSignUpComp page(userSignUpComp.php)*/
+#submitCompMsgBox2{
+	margin:0 auto;
+	border: 3px solid black;
+	border-radius: 5px;
+	width:800px;
+	height:300px;
+	background-color: #F5F5DC;
+	margin-top:200px;
+}
+
