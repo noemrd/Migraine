@@ -132,7 +132,7 @@
 								}												
 								$stmt->close();					
 								
-								$del = "DELETE FROM HasFoodTriggers Where MigraineID = 'NULL';";
+								$del = "DELETE FROM HasFoodTriggers Where MigraineID IS NULL;";
 								if(!($stmt = $mysqli->prepare( $del ))){
 									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 								}
@@ -141,7 +141,7 @@
 								}												
 								$stmt->close();					
 								
-								$del = "DELETE FROM HasSensoryTriggers Where MigraineID = 'NULL';";								
+								$del = "DELETE FROM HasSensoryTriggers Where MigraineID IS NULL;";								
 								if(!($stmt = $mysqli->prepare( $del ))){
 									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 								}
