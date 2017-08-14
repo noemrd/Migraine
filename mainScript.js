@@ -48,8 +48,15 @@ function checkCheckboxSensory(){
 }
 
 function compareDates() {     
-
 	if(!checkLength()){
+		return false;
+	}
+
+    if(!checkCheckboxFood()){
+		return false;
+	}
+
+	if(!checkCheckboxSensory()){
 		return false;
 	}
 
@@ -98,13 +105,5 @@ function compareDates() {
          highlight("#MigraineEndTimestamp","#MigraineEndTimestamp");
          return false;
     }
-
-    if(!checkCheckboxFood()){
-		return false;
-	}
-
-	if(!checkCheckboxSensory()){
-		return false;
-	}
 
  }
