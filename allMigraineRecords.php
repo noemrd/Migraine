@@ -11,8 +11,6 @@
 	
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -100,18 +98,24 @@
 						<label class="labelStyle" for="text">Please select an ID number</label>
 						<select name="deleteID" style="width:50px">						
 						-->
+						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
+						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>">
+				
 
 						<?php					
 							if( isset($_POST['deleteID']) ){															
+								$user = $_POST['UserScreenName'];
 								$id = ($_POST['deleteID']);
 								
-								$del = "DELETE FROM Migraine WHERE MigraineID = '$id';";
+								
+								$del = "DELETE FROM Migraine WHERE MigraineID = '$id' AND UserID = (SELECT UserID FROM Users WHERE UserScreenName = '$user') ;";
 								if(!($stmt = $mysqli->prepare( $del ))){
 									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 								}
 								if(!$stmt->execute()){
 									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 								}												
+								else {
 								$stmt->close();					
 								
 								$del = "DELETE FROM HasFoodTriggers Where MigraineID = '$id';";
@@ -148,7 +152,9 @@
 								if(!$stmt->execute()){
 									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 								}												
-								$stmt->close();													
+								$stmt->close();	
+
+								}												
 							}
 						?>
 
