@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Migraine Tracker</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- Bootstrap -->
+  <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Personal CSS-->
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+
+</style>
+  </head>
+
+  <body>
+    <!--Navigation menu bar-->
+    <!--Citation: https://getbootstrap.com/components/#navbar-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="landing.html">Migraine Tracker</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="navbar-brand" href="aboutUs.html">About Us</a></li>
+          <li><a class="navbar-brand" href="userSignUp.php">Sign Up</a></li>
+        </ul>
+      </div>
+    </nav>
+
+		<div class="text-center">
+			<h1 class="jumbotron_title">Migraine Tracker</h1>
+        <blockquote>
+          Our goal is to eliminate migraines by tracking certain triggers by logging daily activities, etc.
+        </blockquote>
+			<img src="img/migraineCombo.jpg" style="width:1100px">
+		</div>
+
+
+    <div class="container" id="logInBox">
+        <div class="row">
+              <div class="container col-md-7">
+                <form action="userLogin.php" method="post" class="form-style img-rounded col-md-12" role="form">
+                    <div>
+                      <h3 class="header-text">Migraine Login</h3>
+                    </div>
+                    <hr>
+                      <a name="login"></a>
+
+                    <div class="row">
+                          <label class="col-md-2 control-label" for="UserScreenName">Screen Name:</label>
+                          <div class="col-md-8">
+                              <input class="form-control" type="text" id="UserScreenName" name="UserScreenName" placeholder="">
+                          </div>
+  					         </div>
+  					
+          					<div class="row">	
+          						<label class="col-md-2 control-label pull-left" for="UserPassword">Password:</label>
+                          <div class="col-md-8">
+                               <input class="form-control" type="password" id="UserPassword" name="UserPassword" placeholder="">
+                          </div>
+                    </div>
+                                                     
+          					<div class="row">
+                      <small class="col-md-offset-2 col-md-10 text-muted">Enter your Screen Name and Password to login</small>
+                    </div>
+
+            				<div class="row">
+            						<div class="col-md-offset-2">
+            							<input type="submit" class="btn btn-primary button-style" value="Login">
+                          <a href="userSignUp.php"><input type="button" value="Sign Up"  class="btn btn-success" id="signUpTag"></a>
+            					   </div>
+          					</div>
+  				      </form>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="hrLineAlign">
+      <hr id="hrFooter">
+    </div>
+
+    <p id="copyRight">Copyright &copy; 2017, Migraine Tracker.</p>
+  </body>
+</html>

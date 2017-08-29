@@ -15,7 +15,8 @@
 	if(!($stmt = $mysqli->prepare("
 		SELECT UserFirstName, UserLastName, UserScreenName, UserPassword
 		FROM Users
-		WHERE (Users.UserPassword = '$passwordVar')" ))){
+		WHERE UserPassword = '$passwordVar'
+		AND	UserScreenName = '$user'"))){
 		echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 	}
 
@@ -34,13 +35,6 @@
 	} else {
 		header("Refresh: 0, url=main.php?user=$user"); // User is Logged in proceed to next page
 	}
-	
-	//while($stmt->fetch()){
-	//	echo "User First Name: " . $UserFirstName . PHP_EOL;
-	//	echo "User Last Name: " . $UserLastName . PHP_EOL;
-	//	echo "User Screen Name: " . $UserScreenName . PHP_EOL;
-	//	echo "User Password: " . $UserPassword . PHP_EOL;
-	//}
-	
+		
 	$stmt->close();
 ?>

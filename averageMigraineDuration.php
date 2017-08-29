@@ -1,31 +1,4 @@
-<script>
-     function highlight(id1, id2){
-     		$(id1).css("background-color", "yellow");
-     		$(id2).css("background-color", "yellow");
-     }
-	//Citation: https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript(trisweb answer)
-	//Checks if there is at least 1 week gap between two dates.
-     function compareDates() {       
-         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
-         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-
-         var difference = endDate - startDate;
-         var numberOfDays = Math.floor((difference)/(1000*60*60*24));
-
-         if(numberOfDays>=7){
-         	return true;
-
-         }
-         else{
-         	alert("Please make sure the difference from Starting to Ending date is at least a week.")
-         	highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
-         	return false;
-         }       
-}
-   
-</script>
-
-
+<script src="resultsScript.js"></script>
 
 <?php
 	ini_set('display_errors', 'On');
@@ -41,26 +14,26 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <title>Migraine Tracker</title>
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">  
+	  <title>Migraine Tracker</title>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<!-- Personal CSS -->
-	<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<!-- Personal CSS -->
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
 
-</head>
+	</head>
 
 	<body>
 		<!--Navigation menu bar-->
@@ -68,7 +41,6 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php?user=<?php echo $_GET['user'] ?>">Migraine Form</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results<span class="caret"></span></a>
@@ -100,9 +72,8 @@
 						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
 						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
 
-						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
-						<br>
-
+						<p>Please enter dates in the following format YYYY-MM-DD HH:MM:SS. For example, 2017-07-02 14:35:10</p>
+						<p>There must be a minimum of 1 week gap between Start Date and End Date.</p>
 
 						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
 						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 

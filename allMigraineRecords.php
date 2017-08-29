@@ -1,31 +1,4 @@
-<script>
-     function highlight(id1, id2){
-     		$(id1).css("background-color", "yellow");
-     		$(id2).css("background-color", "yellow");
-     }
-	//Citation: https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript(trisweb answer)
-	//Checks if there is at least 1 week gap between two dates.
-     function compareDates() {       
-         var startDate = new Date(document.getElementById("MigraineStartTimestamp").value);
-         var endDate = new Date(document.getElementById("MigraineEndTimestamp").value);
-
-         var difference = endDate - startDate;
-         var numberOfDays = Math.floor((difference)/(1000*60*60*24));
-
-         if(numberOfDays>=7){
-         	return true;
-
-         }
-         else{
-         	alert("Please make sure the difference from Starting to Ending date is at least a week.")
-            highlight("#MigraineStartTimestamp","#MigraineEndTimestamp");
-         	return false;
-         }       
-}
-   
-</script>
-
-
+<script src="resultsScript.js"></script>
 
 <?php
 	ini_set('display_errors', 'On');
@@ -35,32 +8,31 @@
 	if($mysqli->connect_errno){
 	  echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}
+	
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <title>Migraine Tracker</title>
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">  
+	  <title>Migraine Tracker</title>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<!-- Personal CSS -->
-	<link rel="stylesheet" type="text/css" href="styles.css"/>
+		<!-- Personal CSS -->
+		<link rel="stylesheet" type="text/css" href="styles.css"/>
 
-</head>
+	</head>
 
 	<body>
 		<!--Navigation menu bar-->
@@ -68,7 +40,6 @@
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="home.php">Home</a></li>
 					<li><a href="main.php?user=<?php echo $_GET['user'] ?>">Migraine Form</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Results<span class="caret"></span></a>
@@ -100,9 +71,8 @@
 						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
 						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>"><br>	
 				
-						Please enter dates in the following format YYYY-MM-DD HH::MM:SS. For example, 2017-07-02 14::35:10
-						<br>
-
+						<p>Please enter dates in the following format YYYY-MM-DD HH:MM:SS. For example, 2017-07-02 14:35:10</p>
+						<p>There must be a minimum of 1 week gap between Start Date and End Date.</p>
 
 						<label class="labelStyle" for="text">Migraine Start Date and Time:</label>
 						<input type="datetime" name="MigraineStartTimestamp" id="MigraineStartTimestamp"> 
@@ -122,35 +92,70 @@
 					<h2>Delete Migraine Record</h2>
 					<form class="form-horizontal" role="form" name="migraineForm" method="post">
 						<label class="labelStyle" for="text">Please select an ID number</label>
-						<input type="number" id="deleteID"><br>
+						<input type="number" id="deleteID" name="deleteID"><br>
 
 						<!--
 						<label class="labelStyle" for="text">Please select an ID number</label>
-						<select name="deleteID" style="width:50px">
+						<select name="deleteID" style="width:50px">						
 						-->
+						<label hidden class="labelStyle" for="text">UserScreenName:</label>					
+						<input hidden type="text" name="UserScreenName" id="UserScreenName" value="<?php echo $_GET['user'] ?>">
+				
 
-						<?php
-							
+						<?php					
 							if( isset($_POST['deleteID']) ){															
-								$id = intval($_POST['deleteID']);
+								$user = $_POST['UserScreenName'];
+								$id = ($_POST['deleteID']);
 								
-								if(!($stmt = $mysqli->prepare("
-																				DELETE FROM Migraine Where MigraineID = '$id';
-																				DELETE FROM HasFoodTriggers Where MigraineID = '$id';
-																				DELETE FROM HasSensoryTriggers Where MigraineID = '$id';
-																				DELETE FROM HasFoodTriggers Where MigraineID IS NULL;
-																				DELETE FROM HasSensoryTriggers Where MigraineID IS NULL;
-																				"
-																			))){
+								
+								$del = "DELETE FROM Migraine WHERE MigraineID = '$id' AND UserID = (SELECT UserID FROM Users WHERE UserScreenName = '$user') ;";
+								if(!($stmt = $mysqli->prepare( $del ))){
 									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 								}
-
 								if(!$stmt->execute()){
 									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
-								}								
-								$stmt->close();															
+								}												
+								else {
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasFoodTriggers Where MigraineID = '$id';";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasSensoryTriggers Where MigraineID = '$id';";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasFoodTriggers Where MigraineID IS NULL;";
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();					
+								
+								$del = "DELETE FROM HasSensoryTriggers Where MigraineID IS NULL;";								
+								if(!($stmt = $mysqli->prepare( $del ))){
+									echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+								}
+								if(!$stmt->execute()){
+									echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
+								}												
+								$stmt->close();	
+
+								}												
 							}
-							
 						?>
 
 						</select>
@@ -170,22 +175,23 @@
 				</div>
 
 				<tr>
-					<th class="thStyle">Migraine ID</th>
-					<th class="thStyle">Start Timestamp</th>
-					<th class="thStyle">End Timestamp</th>
-					<th class="thStyle">Migraine Intensity ID</th>
-					<th class="thStyle">Hormone Trigger Value</th>
-					<th class="thStyle">Water Intake Trigger Value</th>
-					<th class="thStyle">Stress Trigger Value</th>
-					<th class="thStyle">Physical Activity Trigger Value</th>
-					<th class="thStyle">Sleep Trigger Value</th>
-					<th class="thStyle">Food Trigger Value</th>
-					<th class="thStyle">Sensory Trigger Value</th>
+					<th class="thStyle2">Migraine <br>ID</th>
+					<th class="thStyle2">Start <br>Timestamp</th>
+					<th class="thStyle2">End <br>Timestamp</th>
+					<th class="thStyle2">Migraine <br>Intensity <br>ID</th>
+					<th class="thStyle2">Hormone <br>Trigger <br>Value</th>
+					<th class="thStyle2">Water <br>Intake <br>Trigger Value</th>
+					<th class="thStyle2">Stress <br>Trigger <br>Value</th>
+					<th class="thStyle2">Physical <br>Activity <br>Trigger<br> Value</th>
+					<th class="thStyle2">Sleep <br>Trigger <br>Value</th>
+					<th class="thStyle2">Food <br>Trigger <br>Value</th>
+					<th class="thStyle2">Sensory <br>Trigger <br>Value</th>
 				</tr>
 				
 					<!-- MySqli statements for filling table -->
 				
 					<?php
+					
 						if( isset($_POST['MigraineStartTimestamp']) &&  isset($_POST['MigraineEndTimestamp']) ){
 							
 							$user = $_POST['UserScreenName'];	  
